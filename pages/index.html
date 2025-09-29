@@ -31,6 +31,8 @@
         }
     </script>
 
+    <link rel="stylesheet" href="../styles/slider.css">
+
 </head>
 
 <body class="font-sans bg-[#282624] text-[#01101B]">
@@ -40,27 +42,29 @@
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Логотип и название -->
-                <div class="flex-shrink-0 flex items-center min-w-0">
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
                     <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
                     <span
                         class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
                         X НЕЗАВИСИМОСТЬ
                     </span>
-                </div>
+                </a>
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
+                    <a href="./loan.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
+                    <a href="./tradein.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
+                    <a href="./stocks.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
+                    <a href="./contacts.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
@@ -94,16 +98,54 @@
     </header>
 
 
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
     <main>
-
-        <!-- Подключаем Swiper CSS в <head> -->
-
-        <!-- Твоя карусель с сохранением всех классов и стилей -->
         <div class="carousel-container w-full overflow-hidden relative">
             <div class="swiper w-full">
                 <div class="swiper-wrapper">
 
-                    <!-- Слайд 1 — точная копия твоего -->
                     <div class="swiper-slide">
                         <section
                             class="relative w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[800px] overflow-hidden bg-cover bg-center"
@@ -139,8 +181,6 @@
                                     Рассчитать авто в кредит
                                 </button>
                             </div>
-
-                            <!-- Убираем статичные точки — Swiper сам отрисует пагинацию -->
                         </section>
                     </div>
 
@@ -189,7 +229,6 @@
                         </section>
                     </div>
 
-                    <!-- Слайд 3 -->
                     <div class="swiper-slide">
                         <section
                             class="relative w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[800px] overflow-hidden bg-cover bg-center"
@@ -426,225 +465,177 @@
         </section>
 
 
-<section class="p-6  text-white ">
-    <div class="max-w-3xl mx-auto space-y-6">
+        <section class="p-6  text-white ">
+            <div class="max-w-4xl mx-auto space-y-6">
 
-        <!-- Заголовок -->
-        <h1 class="text-2xl font-bold text-center">Рассчитать кредит</h1>
+                <!-- Заголовок -->
+                <h1 class="text-[52px] font-bold text-center">Рассчитать кредит</h1>
 
-        <!-- МОБИЛЬНАЯ ВЕРСИЯ (видна только на экранах < 768px) -->
-        <div class="md:hidden space-y-6">
+                <!-- МОБИЛЬНАЯ ВЕРСИЯ (видна только на экранах < 768px) -->
+                <div class="md:hidden space-y-6">
 
-            <!-- Шаг 1: Выберите авто -->
-            <div class="space-y-4">
-                <h2 class="text-sm font-medium text-gray-300">1. Выберите авто</h2>
-                <select
-                    class="w-full p-2 bg-[#EDEDED33] text-white rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                    <option class="text-gray-400">Комплектация</option>
-                </select>
+                    <!-- Шаг 1: Выберите авто -->
+                    <div class="space-y-4">
+                        <h2 class="text-[20px] font-medium text-gray-300">1. Выберите авто</h2>
+                        <select
+                            class="w-full p-2 bg-[#EDEDED33] text-white rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <option class="text-gray-400">Комплектация</option>
+                        </select>
 
-                <!-- Карточка авто -->
-                <div class="mt-4  rounded-xl overflow-hidden">
-                    <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Новый Т90"
-                        class="w-full h-40 object-cover">
+                        <!-- Карточка авто -->
+                        <div class="mt-4  rounded-xl overflow-hidden">
+                            <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Новый Т90"
+                                class="w-full h-40 object-cover">
 
-                    <div class="p-4 space-y-2">
-                        <div class="text-xs text-gray-400">BESTUNE</div>
-                        <h3 class="text-xl font-bold">T77</h3>
-                        <p class="text-xs text-gray-400">PRESTIGE PLUS (ДСТ) B70, 2023</p>
-                        <p class="text-lg font-bold text-blue-400">2 036 000 ₽</p>
-                        <p class="text-xs text-gray-400">Платеж от 11 444 ₽/мес</p>
+                            <div class="p-4 space-y-2">
+                                <div class="text-xs text-gray-400">BESTUNE</div>
+                                <h3 class="text-xl font-bold">T77</h3>
+                                <p class="text-xs text-gray-400">PRESTIGE PLUS (ДСТ) B70, 2023</p>
+                                <p class="text-lg font-bold text-blue-400">2 036 000 ₽</p>
+                                <p class="text-xs text-gray-400">Платеж от 11 444 ₽/мес</p>
 
-                        <div class="mt-4 space-y-2 text-xs">
-                            <div class="flex justify-between py-1 border-t border-gray-700">
-                                <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8v6h-8V7z"/></svg> Двигатель</span>
-                                <span>1.5 160 л.с.</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-t border-gray-700">
-                                <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 100 4h12a2 2 0 100-4H7z"/></svg> Трансмиссия</span>
-                                <span>7DCT</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-t border-gray-700">
-                                <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6m-11-5L21 12l-7 7"/></svg> Привод</span>
-                                <span>Передний (2WD)</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-t border-gray-700">
-                                <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4a2 2 0 002 2h2a2 2 0 002-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-3 7h3m-3 4h3m-6-4h6m6 4h.01M9 16h.01"/></svg> Комплектация</span>
-                                <span>PRESTIGE PLUS (ДСТ) B70</span>
-                            </div>
-                            <div class="flex justify-between py-1 border-t border-gray-700">
-                                <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z"/></svg> Цвет</span>
-                                <span>Серебро</span>
+                                <div class="mt-4 space-y-2 text-xs">
+                                    <div class="flex justify-between py-1 border-t border-gray-700">
+                                        <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8v6h-8V7z" />
+                                            </svg> Двигатель</span>
+                                        <span>1.5 160 л.с.</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 border-t border-gray-700">
+                                        <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9M5 11V9m2 2a2 2 0 100 4h12a2 2 0 100-4H7z" />
+                                            </svg> Трансмиссия</span>
+                                        <span>7DCT</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 border-t border-gray-700">
+                                        <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6v6m-11-5L21 12l-7 7" />
+                                            </svg> Привод</span>
+                                        <span>Передний (2WD)</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 border-t border-gray-700">
+                                        <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5H7a2 2 0 00-2 2v6a2 2 0 002 2h2v4a2 2 0 002 2h2a2 2 0 002-2v-4h2a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002-2h2a2 2 0 002 2m-3 7h3m-3 4h3m-6-4h6m6 4h.01M9 16h.01" />
+                                            </svg> Комплектация</span>
+                                        <span>PRESTIGE PLUS (ДСТ) B70</span>
+                                    </div>
+                                    <div class="flex justify-between py-1 border-t border-gray-700">
+                                        <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z" />
+                                            </svg> Цвет</span>
+                                        <span>Серебро</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Шаг 2: Первоначальный взнос -->
-            <div class="space-y-4">
-                <h2 class="text-sm font-medium text-gray-300">2. Введите сумму первоначального взноса</h2>
-                <input type="range" min="0" max="100" value="10" id="downPaymentSliderMobile"
-                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider">
+                    <!-- Шаг 2: Первоначальный взнос -->
+                    <div class="space-y-4">
+                        <h2 class="text-sm font-medium text-gray-300">2. Введите сумму первоначального взноса</h2>
+                        <input type="range" min="0" max="100" value="10" id="downPaymentSliderMobile"
+                            class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer slider">
 
-                <div class="flex justify-between items-center text-xs">
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">10%</span>
-                    <span class="text-gray-400">Первоначальный взнос</span>
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">500 000 ₽</span>
-                </div>
-            </div>
-
-            <!-- Шаг 3: Срок кредита -->
-            <div class="space-y-4">
-                <h2 class="text-sm font-medium text-gray-300">3. Выберите комфортный платёж</h2>
-                <input type="range" min="1" max="10" value="10" id="loanTermSliderMobile"
-                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider">
-
-                <div class="flex justify-between items-center text-xs">
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">10 лет</span>
-                    <span class="text-gray-400">Срок кредита</span>
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">500 000 ₽</span>
-                </div>
-                <div class="text-xs text-gray-400 text-center">Ежемесячный платёж</div>
-            </div>
-
-            <!-- Кнопка рассчитать -->
-            <button
-                class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition text-sm">
-                РАССЧИТАТЬ
-            </button>
-        </div>
-
-        <!-- ДЕСКТОПНАЯ ВЕРСИЯ (видна только на экранах ≥ 768px) -->
-        <div class="hidden md:block space-y-6">
-
-            <!-- Шаг 1: Выберите авто -->
-            <div class="space-y-4">
-                <h2 class="text-lg font-medium text-white">1. Выберите авто</h2>
-                <select
-                    class="w-full p-3 bg-white/30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option class="text-gray-300">Модель и комплектация</option>
-                </select>
-
-                <div class="mt-4 p-4 bg-white/30 rounded-xl flex items-center justify-between">
-                    <div class="space-y-1">
-                        <h3 class="text-xl font-bold text-white">Новый Т90</h3>
-                        <p class="text-sm text-gray-300">PRESTIGE 1.5T (DCT) (new b70) (160 л.с.)</p>
-                        <p class="text-xs text-gray-400 mt-2">Стоимость</p>
-                        <p class="text-2xl font-bold text-white">2 036 000 ₽</p>
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-3 py-1 text-white border border-gray-500 rounded-md">10%</span>
+                            <span class="text-gray-400">Первоначальный взнос</span>
+                            <span class="px-3 py-1 text-white border border-gray-500 rounded-md">500 000 ₽</span>
+                        </div>
                     </div>
-                    <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Новый Т90"
-                        class="rounded-md">
+
+                    <!-- Шаг 3: Срок кредита -->
+                    <div class="space-y-4">
+                        <h2 class="text-sm font-medium text-gray-300">3. Выберите комфортный платёж</h2>
+                        <input type="range" min="1" max="10" value="10" id="loanTermSliderMobile"
+                            class="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer slider">
+
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="px-3 py-1 text-white border border-gray-500 rounded-md">10 лет</span>
+                            <span class="text-gray-400">Срок кредита</span>
+                            <span class="px-3 py-1 text-white border border-gray-500 rounded-md">500 000 ₽</span>
+                        </div>
+                        <div class="text-xs text-gray-400 text-center">Ежемесячный платёж</div>
+                    </div>
+
+                    <!-- Кнопка рассчитать -->
+                    <button
+                        class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition text-sm">
+                        РАССЧИТАТЬ
+                    </button>
                 </div>
-            </div>
 
-            <!-- Шаг 2: Первоначальный взнос -->
-            <div class="space-y-4">
-                <h2 class="text-white">2. Введите сумму первоначального взноса</h2>
-                <input type="range" min="0" max="100" value="10" id="downPaymentSliderDesktop"
-                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                <!-- ДЕСКТОПНАЯ ВЕРСИЯ (видна только на экранах ≥ 768px) -->
+                <div class="hidden md:block space-y-6">
 
-                <div class="flex justify-between items-center">
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">10%</span>
-                    <span class="text-sm text-gray-300">Первоначальный взнос</span>
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">500 000 ₽</span>
+                    <!-- Шаг 1: Выберите авто -->
+                    <div class="space-y-4">
+                        <h2 class="text-lg font-medium text-white">1. Выберите авто</h2>
+                        <select
+                            class="w-full p-3 bg-white/20 text-white rounded-lg border border-[1px] border-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option class="text-gray-300">Модель и комплектация</option>
+                        </select>
+
+                        <div
+                            class="mt-4 p-4 bg-white/20 border border-[1px] border-white/50 rounded-xl flex items-center justify-between">
+                            <div class="space-y-1">
+                                <h3 class="text-[40px] font-light text-white">Новый Т90</h3>
+                                <p class="text-[20px] text-white/40">PRESTIGE 1.5T (DCT) (new b70) (160 л.с.)</p>
+                                <p class="text-[20px] text-white/40 mt-2">Стоимость</p>
+                                <p class="text-[40px] font-medium text-white">2 036 000 ₽</p>
+                            </div>
+                            <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Новый Т90"
+                                class="rounded-md">
+                        </div>
+                    </div>
+
+                    <!-- Шаг 2: Первоначальный взнос -->
+                    <div class="space-y-4">
+                        <h2 class="text-white text-[20px]">2. Введите сумму первоначального взноса</h2>
+                        <input type="range" min="0" max="100" value="10" id="downPaymentSliderDesktop"
+                            class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+
+                        <div class="flex justify-between items-center">
+                            <span id="downPaymentPercent"
+                                class="px-3 py-1 text-white border border-white rounded-md">10%</span>
+                            <span class="text-sm text-gray-300">Первоначальный взнос</span>
+                            <span id="downPaymentAmount" class="px-3 py-1 text-white border border-white rounded-md">500
+                                000 ₽</span>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 3: Срок кредита -->
+                    <div class="space-y-4">
+                        <h2 class="text-white text-[20px]">3. Выберите комфортный платёж</h2>
+                        <input type="range" min="1" max="10" value="10" id="loanTermSliderDesktop"
+                            class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+
+                        <div class="flex justify-between items-center">
+                            <span id="loanTermYears" class="px-3 py-1 text-white border border-white rounded-md">10
+                                лет</span>
+                            <span class="text-sm text-gray-300">Срок кредита</span>
+                            <span id="monthlyPayment" class="px-3 py-1 text-white border border-white rounded-md">500
+                                000 ₽</span>
+                        </div>
+                    </div>
+                    <!-- Кнопка рассчитать -->
+                    <button
+                        class="w-full py-3 bg-[#3366BD] text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+                        РАССЧИТАТЬ
+                    </button>
                 </div>
+
             </div>
-
-            <!-- Шаг 3: Срок кредита -->
-            <div class="space-y-4">
-                <h2 class="text-white">3. Выберите комфортный платёж</h2>
-                <input type="range" min="1" max="10" value="10" id="loanTermSliderDesktop"
-                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
-
-                <div class="flex justify-between items-center">
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">10 лет</span>
-                    <span class="text-sm text-gray-300">Срок кредита</span>
-                    <span class="px-3 py-1 bg-gray-700 text-white border border-gray-600 rounded-md">Ежемесячный платёж 500 000 ₽</span>
-                </div>
-            </div>
-
-            <!-- Кнопка рассчитать -->
-            <button
-                class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
-                РАССЧИТАТЬ
-            </button>
-        </div>
-
-    </div>
-</section>
-
-<style>
-    /* Стили для слайдера (работает и на мобилке, и на десктопе) */
-    .slider::-webkit-slider-thumb {
-        appearance: none;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: #fff;
-        cursor: pointer;
-        border: 2px solid #3b82f6;
-    }
-
-    .slider::-moz-range-thumb {
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: #fff;
-        cursor: pointer;
-        border: 2px solid #3b82f6;
-    }
-</style>
-
-<style>
-    /* Стили для слайдера */
-    .slider::-webkit-slider-thumb {
-        appearance: none;
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: #fff;
-        cursor: pointer;
-        border: 2px solid #3b82f6;
-    }
-
-    .slider::-moz-range-thumb {
-        height: 16px;
-        width: 16px;
-        border-radius: 50%;
-        background: #fff;
-        cursor: pointer;
-        border: 2px solid #3b82f6;
-    }
-</style>
-        <script>
-            // Обновление заполненной части ползунков
-            function updateSliderFill(slider) {
-                const value = slider.value;
-                const max = slider.max;
-                const percent = (value / max) * 100;
-                slider.style.setProperty('--fill-percent', `${percent}%`);
-            }
-
-            // Инициализация ползунков
-            const downPaymentSlider = document.getElementById('downPaymentSlider');
-            const loanTermSlider = document.getElementById('loanTermSlider');
-
-            updateSliderFill(downPaymentSlider);
-            updateSliderFill(loanTermSlider);
-
-            // Обновление при изменении значения
-            downPaymentSlider.addEventListener('input', function () {
-                updateSliderFill(this);
-            });
-
-            loanTermSlider.addEventListener('input', function () {
-                updateSliderFill(this);
-            });
-        </script>
-        <!-- Стили для слайдеров (для точного соответствия) -->
-
-
+        </section>
         <section>
             <div class="relative w-full h-[800px] overflow-hidden bg-cover bg-center"
                 style="background-image: url('../assets/common/ce610be9824a05d4b4b7d6459feb210382493e3e.jpg')">
@@ -689,7 +680,7 @@
     </main>
 
     <footer class=" text-white pt-12 pb-8">
-        <div class="w-full px-6 md:px-12 lg:px-24"> <!-- можно оставить небольшие отступы для читаемости -->
+        <div class="w-full px-6 md:px-12 lg:px-24">
 
             <!-- Логотип -->
             <div class="mb-10 flex items-center space-x-2">
@@ -743,6 +734,10 @@
         </div>
     </footer>
 
+
+
+
+
     <script>
         const btn = document.getElementById('mobile-menu-button');
         const menu = document.getElementById('mobile-menu');
@@ -754,6 +749,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../scripts/modules/iterations/car.js"></script>
     <script src="../scripts/components/sliders/bannerSlider.js"></script>
+    <script src="../scripts/components/modals/dialog/dropModelsDown.js"></script>
 
 
 </body>

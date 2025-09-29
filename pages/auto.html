@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О компании</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066cc',
+                        customGray: '#1a1a1a',
+                        lightGray: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Mulish', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="font-sans bg-[#282624] text-[#01101B]">
+
+
+    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Логотип и название -->
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <span
+                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                        X НЕЗАВИСИМОСТЬ
+                    </span>
+                </a>
+
+                <!-- Меню для средних и больших экранов -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                        наличии</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                </nav>
+
+                <!-- Бургер только на маленьких экранах (<768px) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
+                    наличии</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+                <a href="#"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="bg-white">
+        <section class="container mx-auto flex flex-col md:flex-row items-center gap-8 p-6 ">
+            <!-- Изображение автомобиля -->
+            <div class="w-full md:w-1/2">
+                <img src="../assets/common/Rectangle 2 (1).png" alt="BESTUNE T77"
+                    class="w-full h-auto rounded-lg shadow-md" />
+                <!-- Миниатюры -->
+                <div class="flex gap-4 mt-4">
+                    <img src="../assets/common/Rectangle 4.png" alt="Interior"
+                        class="w-40 h-20 object-cover rounded-md cursor-pointer" />
+                    <img src="../assets/common/Rectangle 4.png" alt="Interior"
+                        class="w-40 h-20 object-cover rounded-md cursor-pointer" />
+                </div>
+            </div>
+
+            <!-- Информация о автомобиле -->
+            <div class="w-full md:w-1/2 space-y-4">
+                <h1 class="text-3xl font-bold">BESTUNE T77</h1>
+
+                <!-- Цвета -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 bg-white border-2 border-gray-300 rounded"></div>
+                    <div class="w-8 h-8 bg-gray-400 border-2 border-blue-500 rounded"></div>
+                    <div class="w-8 h-8 bg-black border-2 border-gray-300 rounded"></div>
+                    <div class="w-8 h-8 bg-gray-300 border-2 border-gray-300 rounded"></div>
+                </div>
+
+                <!-- Цена -->
+                <div class="space-y-1">
+                    <p class="text-sm text-gray-500">Стоимость</p>
+                    <p class="text-xl line-through text-gray-400">2 448 000 ₽</p>
+                    <p class="text-2xl font-bold text-blue-600">2 036 000 ₽</p>
+                    <p class="text-sm text-gray-500">Платеж от 11 444 ₽/месяц</p>
+                </div>
+
+                <!-- Кнопки -->
+                <div class="flex gap-4">
+                    <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        РАССЧИТАТЬ В КРЕДИТ →
+                    </button>
+                    <button
+                        class="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                        ОБМЕНЯТЬ ПО TRADE-IN →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="container mx-auto p-6">
+            <!-- Заголовки вкладок -->
+            <div class="flex justify-between border-b border-gray-200 pb-2 mb-4">
+                <h2 class="text-xl font-medium text-center flex-1 border-b-2 border-transparent pb-1">Комплектации</h2>
+                <h2 class="text-xl font-medium text-center flex-1 border-b-2 border-black pb-1">Характеристики</h2>
+            </div>
+
+            <!-- Столбцы комплектаций (выраженные сверху) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
+                <div class="col-span-1"></div> <!-- Пустой блок для выравнивания -->
+                <div class="font-medium text-base md:text-lg">2.5 л. 6АКПП (180 л.с.) FWD</div>
+                <div class="font-medium text-base md:text-lg">2.0 л. 6АКПП (150 л.с.) FWD</div>
+            </div>
+
+            <!-- Таблица характеристик -->
+            <div class="space-y-6">
+
+                <!-- Двигатель -->
+                <div>
+                    <h3 class="font-bold text-lg md:text-xl mb-3">Двигатель</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-gray-700 text-base">Объем двигателя, л</div>
+                        <div class="text-center text-base font-medium">2.5</div>
+                        <div class="text-center text-base font-medium">2</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                        <div class="text-gray-700 text-base">Рабочий объем двигателя, см³</div>
+                        <div class="text-center text-base font-medium">2497</div>
+                        <div class="text-center text-base font-medium">1999</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                        <div class="text-gray-700 text-base">Тип привода</div>
+                        <div class="text-center text-base font-medium">Передний</div>
+                        <div class="text-center text-base font-medium">Передний</div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                        <div class="text-gray-700 text-base">Мощность, л.с.</div>
+                        <div class="text-center text-base font-medium">180</div>
+                        <div class="text-center text-base font-medium">150</div>
+                    </div>
+                </div>
+
+                <!-- Кузов -->
+                <div>
+                    <h3 class="font-bold text-lg md:text-xl mb-3">Кузов</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-gray-700 text-base">Длина</div>
+                        <div class="text-center text-base font-medium">1860</div>
+                        <div class="text-center text-base font-medium">1860</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class=" text-white pt-12 pb-8">
+        <div class="w-full px-6 md:px-12 lg:px-24">
+
+            <!-- Логотип -->
+            <div class="mb-10 flex items-center space-x-2">
+                <img src="../assets/common/Bestune (1).svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                <span class="text-lg font-medium">× НЕЗАВИСИМОСТЬ</span>
+            </div>
+
+            <!-- Основной контент: 3 колонки -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+
+                <!-- Колонка "МОДЕЛИ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Модели</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">T55</a></li>
+                        <li><a href="#" class="hover:text-gray-300">B70</a></li>
+                        <li><a href="#" class="hover:text-gray-300">T77</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый T90</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый B70</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка "ПОКУПАТЕЛЯМ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Покупателям</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">Модели</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Кредит</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Trade-in</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Спецпредложения</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-8 text-xs leading-relaxed">
+                Производитель сохраняет за собой исключительное право в любое время вносить дополнения, изменения,
+                обновления в информацию о параметрах продукта, конфигурации, материалы, цвета и в другую информацию о
+                транспортном средстве без предварительного уведомления. Приобретение любой продукции бренда BESTUNE
+                осуществляется в соответствии с условиями индивидуального договора купли-продажи. Представленное
+                изображение, цвет, технические характеристики и комплектация автомобилей могут отличаться от
+                реализуемого. Упоминаемое оборудование может быть опциональным. Для получения подробной информации об
+                актуальных ценах на продукцию BESTUNE и наличии автомобилей обращайтесь к официальным дилерам. Не
+                является публичной офертой.
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs space-y-4 sm:space-y-0">
+                <a href="#" class="hover:text-gray-300">Политика конфиденциальности</a>
+                <a href="#" class="hover:text-gray-300">Контакты</a>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
