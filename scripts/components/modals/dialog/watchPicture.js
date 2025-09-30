@@ -8,16 +8,13 @@
     let currentImages = [];
     let currentIndex = 0;
 
-    // Находим ВСЕ блоки с авто (и мобильный, и десктоп)
     const carInfoBlocks = document.querySelectorAll('[data-car-info]');
 
     carInfoBlocks.forEach(block => {
-      // Берём ТОЛЬКО миниатюры, которые находятся в .flex (это ваши 2 картинки: интерьер + вид сбоку)
-      const thumbnails = block.querySelectorAll('.flex img');
+      const thumbnails = block.querySelectorAll('.flex > img:not([src*="icons/"])');
 
       thumbnails.forEach((img, index) => {
         img.addEventListener('click', (e) => {
-          // Собираем все изображения из этого .flex
           currentImages = Array.from(thumbnails).map(thumb => thumb.src);
           currentIndex = index;
           openModal();
@@ -50,17 +47,14 @@
       modalImg.src = currentImages[currentIndex];
     }
 
-    // Обработчики кнопок
     closeModalBtn.addEventListener('click', closeModal);
     prevBtn.addEventListener('click', showPrev);
     nextBtn.addEventListener('click', showNext);
 
-    // Закрытие по клику вне изображения
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
     });
 
-    // Навигация стрелками
     document.addEventListener('keydown', (e) => {
       if (modal.classList.contains('hidden')) return;
       if (e.key === 'Escape') closeModal();
