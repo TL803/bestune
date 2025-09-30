@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>О компании</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../styles/checkbox.css">
+    <link rel="stylesheet" href="../styles/slider.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066cc',
+                        customGray: '#1a1a1a',
+                        lightGray: '#333333'
+                    },
+                    fontFamily: {
+                        sans: ['Mulish', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="font-sans  text-[#01101B]">
+
+
+    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Логотип и название -->
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <span
+                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                        X НЕЗАВИСИМОСТЬ
+                    </span>
+                </a>
+
+                <!-- Меню для средних и больших экранов -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                        наличии</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                </nav>
+
+                <!-- Бургер только на маленьких экранах (<768px) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
+                    наличии</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+                <a href="#"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="container mx-auto py-8">
+            <h1 class="text-3xl font-bold text-center mb-6">Кредит</h1>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                <!-- Форма -->
+                <div class="w-full lg:w-[45%] bg-[#282624] rounded-xl p-6 sm:p-8 md:p-10 shadow-lg">
+                    <form data-car-form class="space-y-8">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">1. Выберите авто</h3>
+                            <select name="car_model"
+                                class="w-full bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] appearance-none text-base">
+                                <option value="">Модель</option>
+                                <option value="Kaiyi X3 Pro">Kaiyi X3 Pro</option>
+                                <option value="Bestune T77">Bestune T77</option>
+                            </select>
+                            <select name="complectation"
+                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] appearance-none text-base">
+                                <option value="">Комплектация</option>
+                                <option value="Premium">Premium</option>
+                                <option value="PRESTIGE PLUS (DCT) (t77)">PRESTIGE PLUS (DCT) (t77)</option>
+                            </select>
+                        </div>
+
+                        <!-- Мобильный блок (только на мобильных) -->
+                        <div class="w-full lg:w-[55%] flex lg:hidden justify-center items-start mt-8">
+                            <div data-car-placeholder class="text-center py-16 text-gray-500">
+                                <img src="../assets/loanandsoon/Rectangle 2 (2).png" alt="Автомобиль"
+                                    class="w-full h-auto rounded-md" />
+                            </div>
+
+                            <div data-car-info class="mx-auto rounded-lg shadow-sm p-4 font-sans text-white hidden">
+                                <!-- Динамическое название бренда и модели -->
+                                <div class="text-xs text-gray-300 mb-1">BESTUNE</div>
+                                <h2 data-car-model-title class="text-2xl font-bold mb-1">—</h2>
+                                <div data-car-complectation-text class="text-sm text-gray-300 mb-4">—</div>
+
+                                <div class="mb-4">
+                                    <img src="../assets/loanandsoon/Rectangle 2 (2).png" alt="Автомобиль"
+                                        class="w-full h-auto rounded-md" />
+                                </div>
+
+                                <div class="flex gap-2 mb-4">
+                                    <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                        alt="Интерьер" class="w-26 h-16 object-cover rounded" />
+                                    <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                        alt="Вид сбоку" class="w-26 h-16 object-cover rounded" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="text-sm text-gray-300">Стоимость</div>
+                                    <div class="text-xl font-bold text-blue-300">2 036 000 ₽</div>
+                                    <div class="text-xs text-gray-300">Платеж от 11 444 ₽/месяц</div>
+                                </div>
+
+                                <!-- Характеристики -->
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between py-2 border-b border-gray-600">
+                                        <div class="flex items-center gap-2">
+                                            <img src="../assets/icons/Engine (1).svg" alt="">
+                                            <span>Двигатель</span>
+                                        </div>
+                                        <div>1.5 160 л.с.</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-2 border-b border-gray-600">
+                                        <div class="flex items-center gap-2">
+                                            <img src="../assets/icons/2608061 1.svg" alt="">
+
+                                            <span>Трансмиссия</span>
+                                        </div>
+                                        <div>7DCT</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-2 border-b border-gray-600">
+                                        <div class="flex items-center gap-2">
+                                            <img src="../assets/icons/Vector (6).svg" alt="">
+
+                                            <span>Привод</span>
+                                        </div>
+                                        <div>Передний (2WD)</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-2 border-b border-gray-600">
+                                        <div class="flex items-center gap-2">
+                                            <img src="../assets/icons/Gear.svg" alt="">
+
+                                            <span>Комплектация</span>
+                                        </div>
+                                        <div data-car-complectation-detail>—</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-2 border-b border-gray-600">
+                                        <div class="flex items-center gap-2">
+                                            <img src="../assets/icons/PaintBrush.svg" alt="">
+
+                                            <span>Цвет</span>
+                                        </div>
+                                        <div>Серебро</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Остальные шаги -->
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">2. Введите сумму
+                                первоначального взноса</h3>
+                            <div class="relative">
+                                <div class="slider-track" id="initialPaymentTrack"></div>
+                                <input type="range" id="initialPaymentSlider" min="0" max="90" step="10" value="20"
+                                    class="custom-slider" />
+                            </div>
+                            <div class="slider-labels">
+                                <span><span class="slider-value-box" id="initialPaymentPercent">20%</span></span>
+                                <span class="text-white text-base font-medium">Первоначальный взнос</span>
+                                <span><span class="slider-value-box" id="initialPaymentAmount">407 200 ₽</span></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">3. Выберите комфортный платёж
+                            </h3>
+                            <div class="relative">
+                                <div class="slider-track" id="termTrack"></div>
+                                <input type="range" id="termSlider" min="1" max="7" step="1" value="5"
+                                    class="custom-slider" />
+                            </div>
+                            <div class="slider-labels">
+                                <span><span class="slider-value-box" id="termYears">5 лет</span></span>
+                                <span class="text-white text-base font-medium">Срок кредита</span>
+                                <span><span class="slider-value-box" id="monthlyPayment">24 500 ₽</span></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">4. Введите ваши контакты</h3>
+                            <input type="text" id="calc-name" name="name" data-validate="name" placeholder="ФИО"
+                                class="w-full bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
+
+                            <input type="tel" id="calc-phone" name="telephone" data-validate="phone"
+                                placeholder="Телефон"
+                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
+
+                            <div class="flex items-start space-x-3 mt-6">
+                                <label class="custom-checkbox-square">
+                                    <input type="checkbox" id="myCheckbox" data-validate="required" checked />
+                                    <span class="checkmark">✓</span>
+                                </label>
+                                <span class="text-sm text-gray-300 leading-relaxed">
+                                    Согласен с <a href="./privacypolicy.html"
+                                        class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки
+                                        персональных данных</a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-4 mt-6 bg-[#3366BD] text-white text-lg font-semibold rounded-xl transition-all duration-300 hover:bg-[#2a55a0] focus:outline-none focus:ring-2 focus:ring-[#3366BD] focus:ring-offset-2 focus:ring-offset-[#282624]">
+                            Отправить заявку
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Правая панель: авто или заглушка (только на десктопе) -->
+                <div class="w-full lg:w-[55%]  justify-center hidden lg:flex items-start">
+                    <div data-car-placeholder class="text-center py-16 text-gray-500">
+                        <img src="../assets/loanandsoon/Rectangle 2 (2).png" alt="Автомобиль"
+                            class="w-full h-auto rounded-md hidden lg:block" />
+                    </div>
+
+                    <div data-car-info class="mx-auto bg-white rounded-lg shadow-sm p-4 font-sans text-gray-800 hidden">
+                        <!-- Динамическое название бренда и модели -->
+                        <div class="text-xs text-gray-500 mb-1">BESTUNE</div>
+                        <h2 data-car-model-title class="text-2xl font-bold mb-1">—</h2>
+                        <div data-car-complectation-text class="text-sm text-gray-600 mb-4">—</div>
+
+                        <div class="mb-4">
+                            <img src="../assets/loanandsoon/Rectangle 2 (2).png" alt="Автомобиль"
+                                class="w-full h-auto rounded-md" />
+                        </div>
+
+                        <div class="flex gap-2 mb-4">
+                            <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                alt="Интерьер" class="w-26 h-16 object-cover rounded" />
+                            <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                alt="Вид сбоку" class="w-26 h-16 object-cover rounded" />
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="text-sm text-gray-500">Стоимость</div>
+                            <div class="text-xl font-bold text-blue-600">2 036 000 ₽</div>
+                            <div class="text-xs text-gray-500">Платеж от 11 444 ₽/месяц</div>
+                        </div>
+
+                        <!-- Характеристики -->
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/Engine (3).svg" alt="">
+                                    <span>Двигатель</span>
+                                </div>
+                                <div>1.5 160 л.с.</div>
+                            </div>
+
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/Vector (7).svg" alt="">
+
+                                    <span>Трансмиссия</span>
+                                </div>
+                                <div>7DCT</div>
+                            </div>
+
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/Vector (8).svg" alt="">
+
+                                    <span>Привод</span>
+                                </div>
+                                <div>Передний (2WD)</div>
+                            </div>
+
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/Gear (1).svg" alt="">
+
+                                    <span>Комплектация</span>
+                                </div>
+                                <div data-car-complectation-detail>—</div>
+                            </div>
+
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/PaintBrush (1).svg" alt="">
+
+                                    <span>Цвет</span>
+                                </div>
+                                <div>Серебро</div>
+                            </div>
+
+                            <div class="flex justify-between py-2 border-b border-gray-200">
+                                <div class="flex items-center gap-2">
+                                    <img src="../assets/icons/black/CarSimple.svg" alt="">
+
+                                    <span>Интерьер</span>
+                                </div>
+                                <div>Кожа</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="relative">
+            <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A2f2202fa136a481d760214704b1330b6ae5791c0ecf17ef3c34b3eeb9f9ea285&amp;source=constructor"
+                class="w-full h-[300px] sm:h-[400px] md:h-[500px]" frameborder="0"></iframe>
+            <div
+                class="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 lg:bottom-20 lg:left-20 bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-lg max-w-[90%] sm:max-w-[80%] md:max-w-auto">
+                <p class="flex items-center text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4">
+                    <img src="../assets/contacts/ic_place_48px.svg" alt=""
+                        class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3">
+                    г. Москва, Береговой проезд, 4/6, стр. 3
+                </p>
+                <p class="flex items-center text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4">
+                    <img src="../assets/contacts/ic_phone_in_talk_48px (1).svg" alt=""
+                        class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3">
+                    +7 (499) 229-89-99
+                </p>
+                <p class="flex items-center text-sm sm:text-base md:text-lg">
+                    <img src="../assets/contacts/ic_schedule_48px (1).svg" alt=""
+                        class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 sm:mr-3">
+                    Пн-вс, 9:00–21:00
+                </p>
+            </div>
+        </div>
+        <section>
+            <div class="relative w-full h-[800px] overflow-hidden bg-cover bg-center"
+                style="background-image: url('../assets/common/ce610be9824a05d4b4b7d6459feb210382493e3e.jpg')">
+                <!-- Полупрозрачный оверлей -->
+                <div class="absolute inset-0 bg-black/50"></div>
+
+                <!-- Контент слева -->
+                <div
+                    class="absolute top-8 left-6 sm:top-10 sm:left-10 md:top-12 md:left-12 lg:top-16 lg:left-16 z-10 text-white max-w-5xl">
+                    <!-- Заголовок -->
+                    <h1 class="text-2xl sm:text-3xl md:text-[40px] font-light leading-tight mb-4">
+                        Независимость — официальный дилер BESTUNE
+                    </h1>
+
+                    <!-- Описание — 4 абзаца -->
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        «Независимость» — это официальный дилер, предлагающий автомобили BESTUNE. Каждая машина
+                        сопровождается заводской гарантией и полным пакетом сервисной поддержки. Наши клиенты ценят нас
+                        за прозрачные условия покупки, честную оценку автомобилей по программе трейд-ин, выгодные
+                        финансовые решения и профессиональное обслуживание с использованием оригинальных запчастей.
+                    </p>
+
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        В «Независимости» покупка BESTUNE — это уверенность на каждом километре. Мы создаём комфортные
+                        условия на всех этапах владения автомобилем: от быстрой записи на тест-драйв и индивидуального
+                        подбора комплектации до оформления кредита, рассрочки или страхования.
+                    </p>
+
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        Наши специалисты помогут вам выгодно обменять автомобиль по трейд-ин, оформить сделку
+                        максимально удобно и предложат отличные условия на сервисное обслуживание.
+                    </p>
+
+                    <p class="text-sm sm:text-base md:text-[18px] leading-relaxed">
+                        Приходите в автосалон «Независимость» или оставьте заявку онлайн — мы свяжемся с вами в удобное
+                        время и подготовим персональное предложение.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- Lightbox Modal -->
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-full max-h-full flex flex-col items-center">
+            <!-- Кнопка закрытия -->
+            <button id="closeModal" class="absolute -top-12 right-0 text-white text-2xl font-bold">&times;</button>
+
+            <!-- Изображение -->
+            <img id="modalImage" src="" alt="Увеличенное изображение" class="max-w-full max-h-[80vh] object-contain" />
+
+            <!-- Кнопки навигации -->
+            <button id="prevBtn"
+                class="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none">
+                < </button>
+                    <button id="nextBtn"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none">
+                        >
+                    </button>
+        </div>
+    </div>
+
+    <footer class=" text-white bg-[#282624] pt-12 pb-8">
+        <div class="w-full px-6 md:px-12 lg:px-24">
+
+            <!-- Логотип -->
+            <div class="mb-10 flex items-center space-x-2">
+                <img src="../assets/common/Bestune (1).svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                <span class="text-lg font-medium">× НЕЗАВИСИМОСТЬ</span>
+            </div>
+
+            <!-- Основной контент: 3 колонки -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+
+                <!-- Колонка "МОДЕЛИ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Модели</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">T55</a></li>
+                        <li><a href="#" class="hover:text-gray-300">B70</a></li>
+                        <li><a href="#" class="hover:text-gray-300">T77</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый T90</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый B70</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка "ПОКУПАТЕЛЯМ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Покупателям</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">Модели</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Кредит</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Trade-in</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Спецпредложения</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-8 text-xs leading-relaxed">
+                Производитель сохраняет за собой исключительное право в любое время вносить дополнения, изменения,
+                обновления в информацию о параметрах продукта, конфигурации, материалы, цвета и в другую информацию о
+                транспортном средстве без предварительного уведомления. Приобретение любой продукции бренда BESTUNE
+                осуществляется в соответствии с условиями индивидуального договора купли-продажи. Представленное
+                изображение, цвет, технические характеристики и комплектация автомобилей могут отличаться от
+                реализуемого. Упоминаемое оборудование может быть опциональным. Для получения подробной информации об
+                актуальных ценах на продукцию BESTUNE и наличии автомобилей обращайтесь к официальным дилерам. Не
+                является публичной офертой.
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs space-y-4 sm:space-y-0">
+                <a href="#" class="hover:text-gray-300">Политика конфиденциальности</a>
+                <a href="#" class="hover:text-gray-300">Контакты</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="../scripts/components/modals/dialog/watchPicture.js"></script>
+    <script src="https://unpkg.com/imask@7.0.0/dist/imask.min.js"></script>
+    <script src="../scripts/modules/show/selectCar.js"></script>
+    <script src="../scripts/components/sliders/range/loan.js"></script>
+    <script src="../scripts/utils/validation.js"></script>
+</body>
+
+</html>

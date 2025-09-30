@@ -130,74 +130,380 @@
                 </div>
 
                 <!-- Кнопки -->
-                <div class="flex gap-4">
-                    <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                <div class="flex flex-col gap-4 w-full">
+                    <!-- Верхний ряд: две кнопки -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <!-- Кнопка "Записаться на тест-драйв" -->
+                        <button
+                            class="flex-1 px-6 py-3 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition font-medium text-sm leading-tight">
+                            ЗАПИСАТЬСЯ НА ТЕСТ-ДРАЙВ →
+                        </button>
+
+                        <!-- Кнопка "Обменять по Trade-in" -->
+                        <button
+                            class="flex-1 px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition font-medium text-sm leading-tight">
+                            ОБМЕНЯТЬ ПО TRADE-IN →
+                        </button>
+                    </div>
+
+                    <!-- Нижняя кнопка: "Рассчитать в кредит" -->
+                    <button
+                        class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium text-sm leading-tight">
                         РАССЧИТАТЬ В КРЕДИТ →
                     </button>
-                    <button
-                        class="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
-                        ОБМЕНЯТЬ ПО TRADE-IN →
-                    </button>
                 </div>
             </div>
         </section>
-
-
-
         <section class="container mx-auto p-6">
-            <!-- Заголовки вкладок -->
+            <!-- Вкладки -->
             <div class="flex justify-between border-b border-gray-200 pb-2 mb-4">
-                <h2 class="text-xl font-medium text-center flex-1 border-b-2 border-transparent pb-1">Комплектации</h2>
-                <h2 class="text-xl font-medium text-center flex-1 border-b-2 border-black pb-1">Характеристики</h2>
+                <button id="tab-completions" class="text-xl font-medium text-center flex-1 pb-1 border-b-2 border-black"
+                    onclick="switchTab('completions')">
+                    Комплектации
+                </button>
+                <button id="tab-specs" class="text-xl font-medium text-center flex-1 pb-1 border-b-2 border-transparent"
+                    onclick="switchTab('specs')">
+                    Характеристики
+                </button>
             </div>
 
-            <!-- Столбцы комплектаций (выраженные сверху) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
-                <div class="col-span-1"></div> <!-- Пустой блок для выравнивания -->
-                <div class="font-medium text-base md:text-lg">2.5 л. 6АКПП (180 л.с.) FWD</div>
-                <div class="font-medium text-base md:text-lg">2.0 л. 6АКПП (150 л.с.) FWD</div>
+            <!-- Контент: Комплектации -->
+            <div id="content-completions" class="block">
+                <div class="w-full">
+                    <div class="mx-auto px-4 py-4 space-y-6">
+
+                        <!-- 2.5 л. 6АКПП (180 л.с.) FWD -->
+                        <h2 class="text-xl lg:text-2xl font-semibold mb-6 text-blue-600">
+                            2.5 л. 6АКПП (180 л.с.) FWD
+                        </h2>
+
+                        <div>
+                            <details class="w-full group space-y-4">
+                                <summary class="list-none cursor-pointer">
+                                    <div
+                                        class="grid grid-cols-1 xl:grid-cols-5 gap-3 lg:gap-6 items-center bg-white lg:bg-[#fafafa] p-3 lg:p-5 rounded-xl hover:shadow-sm transition-shadow">
+                                        <div class="flex items-center gap-2 justify-center xl:justify-start">
+                                            <span
+                                                class="font-semibold text-base lg:text-lg text-gray-800">Comfort</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span
+                                                class="line-through text-base lg:text-lg text-gray-500 hidden xl:block">
+                                                2 300 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="flex justify-center">
+                                            <span
+                                                class="text-blue-600 font-semibold text-base lg:text-lg flex items-center gap-2 whitespace-nowrap">
+                                                <span class="xl:hidden line-through text-gray-400 text-xs">2 300 000
+                                                    ₽</span>
+                                                от 1 950 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span class="text-gray-600 text-sm lg:text-base whitespace-nowrap">
+                                                В кредит от 9 500 ₽/мес.
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
+                                            <button data-toggle-timer-container="Credit"
+                                                class="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                В кредит
+                                            </button>
+                                            <button data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                Trade-in
+                                            </button>
+                                        </div>
+                                    </div>
+                                </summary>
+
+                                <div class="rounded-xl p-4 lg:p-6 mt-[-1px] bg-white lg:bg-[#fafafa]">
+                                    <div
+                                        class="space-y-3 text-gray-700 columns-1 sm:columns-2 lg:columns-3 [&>div]:break-inside-avoid [&>div]:mb-4">
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Безопасность:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• 6 подушек безопасности</li>
+                                                <li class="text-xs leading-tight">• ABS + EBD</li>
+                                                <li class="text-xs leading-tight">• ESP + Hill Start Assist</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Интерьер:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• Тканевая обивка сидений</li>
+                                                <li class="text-xs leading-tight">• Климат-контроль</li>
+                                                <li class="text-xs leading-tight">• Подогрев передних сидений</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Мультимедиа:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• 8" сенсорный экран</li>
+                                                <li class="text-xs leading-tight">• Apple CarPlay / Android Auto</li>
+                                                <li class="text-xs leading-tight">• 6 динамиков</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="mt-6">
+                            <details class="w-full group space-y-4">
+                                <summary class="list-none cursor-pointer">
+                                    <div
+                                        class="grid grid-cols-1 xl:grid-cols-5 gap-3 lg:gap-6 items-center bg-white lg:bg-[#fafafa] p-3 lg:p-5 rounded-xl hover:shadow-sm transition-shadow">
+                                        <div class="flex items-center gap-2 justify-center xl:justify-start">
+    
+                                            <span class="font-semibold text-base lg:text-lg text-gray-800">Luxury</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span
+                                                class="line-through text-base lg:text-lg text-gray-500 hidden xl:block">
+                                                2 700 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="flex justify-center">
+                                            <span
+                                                class="text-blue-600 font-semibold text-base lg:text-lg flex items-center gap-2 whitespace-nowrap">
+                                                <span class="xl:hidden line-through text-gray-400 text-xs">2 700 000
+                                                    ₽</span>
+                                                от 2 350 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span class="text-gray-600 text-sm lg:text-base whitespace-nowrap">
+                                                В кредит от 11 400 ₽/мес.
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
+                                            <button data-toggle-timer-container="Credit"
+                                                class="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                В кредит
+                                            </button>
+                                            <button data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                Trade-in
+                                            </button>
+                                        </div>
+                                    </div>
+                                </summary>
+
+                                <div class="rounded-xl p-4 lg:p-6 mt-[-1px] bg-white lg:bg-[#fafafa]">
+                                    <div
+                                        class="space-y-3 text-gray-700 columns-1 sm:columns-2 lg:columns-3 [&>div]:break-inside-avoid [&>div]:mb-4">
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Безопасность:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• 8 подушек безопасности</li>
+                                                <li class="text-xs leading-tight">• Адаптивный круиз-контроль</li>
+                                                <li class="text-xs leading-tight">• Система распознавания дорожных
+                                                    знаков</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Интерьер:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• Кожаный салон</li>
+                                                <li class="text-xs leading-tight">• Панорамная крыша</li>
+                                                <li class="text-xs leading-tight">• Электрорегулировка сидений</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Технологии:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• Цифровая приборная панель 12.3"</li>
+                                                <li class="text-xs leading-tight">• Беспроводная зарядка</li>
+                                                <li class="text-xs leading-tight">• Камера 360°</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <!-- 2.0 л. 6АКПП (150 л.с.) FWD -->
+                        <h2 class="text-xl lg:text-2xl font-semibold mt-10 mb-6 text-blue-600">
+                            2.0 л. 6АКПП (150 л.с.) FWD
+                        </h2>
+
+                        <div>
+                            <details class="w-full group space-y-4">
+                                <summary class="list-none cursor-pointer">
+                                    <div
+                                        class="grid grid-cols-1 xl:grid-cols-5 gap-3 lg:gap-6 items-center bg-white lg:bg-[#fafafa] p-3 lg:p-5 rounded-xl hover:shadow-sm transition-shadow">
+                                        <div class="flex items-center gap-2 justify-center xl:justify-start">
+
+                                            <span
+                                                class="font-semibold text-base lg:text-lg text-gray-800">Comfort</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span
+                                                class="line-through text-base lg:text-lg text-gray-500 hidden xl:block">
+                                                2 100 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="flex justify-center">
+                                            <span
+                                                class="text-blue-600 font-semibold text-base lg:text-lg flex items-center gap-2 whitespace-nowrap">
+                                                <span class="xl:hidden line-through text-gray-400 text-xs">2 100 000
+                                                    ₽</span>
+                                                от 1 780 000 ₽
+                                            </span>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <span class="text-gray-600 text-sm lg:text-base whitespace-nowrap">
+                                                В кредит от 8 650 ₽/мес.
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
+                                            <button data-toggle-timer-container="Credit"
+                                                class="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-700 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                В кредит
+                                            </button>
+                                            <button data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                                Trade-in
+                                            </button>
+                                        </div>
+                                    </div>
+                                </summary>
+
+                                <div class="rounded-xl p-4 lg:p-6 mt-[-1px] bg-white lg:bg-[#fafafa]">
+                                    <div
+                                        class="space-y-3 text-gray-700 columns-1 sm:columns-2 lg:columns-3 [&>div]:break-inside-avoid [&>div]:mb-4">
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Безопасность:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• 6 подушек безопасности</li>
+                                                <li class="text-xs leading-tight">• ABS + EBD</li>
+                                                <li class="text-xs leading-tight">• ESP</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Интерьер:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• Тканевая обивка</li>
+                                                <li class="text-xs leading-tight">• Кондиционер</li>
+                                                <li class="text-xs leading-tight">• Подогрев зеркал</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <strong class="text-gray-800 block mb-1 text-sm">Мультимедиа:</strong>
+                                            <ul class="list-none pl-4 space-y-1">
+                                                <li class="text-xs leading-tight">• 7" экран</li>
+                                                <li class="text-xs leading-tight">• Bluetooth</li>
+                                                <li class="text-xs leading-tight">• USB / AUX</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Таблица характеристик -->
-            <div class="space-y-6">
-
-                <!-- Двигатель -->
-                <div>
-                    <h3 class="font-bold text-lg md:text-xl mb-3">Двигатель</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="text-gray-700 text-base">Объем двигателя, л</div>
-                        <div class="text-center text-base font-medium">2.5</div>
-                        <div class="text-center text-base font-medium">2</div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                        <div class="text-gray-700 text-base">Рабочий объем двигателя, см³</div>
-                        <div class="text-center text-base font-medium">2497</div>
-                        <div class="text-center text-base font-medium">1999</div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                        <div class="text-gray-700 text-base">Тип привода</div>
-                        <div class="text-center text-base font-medium">Передний</div>
-                        <div class="text-center text-base font-medium">Передний</div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                        <div class="text-gray-700 text-base">Мощность, л.с.</div>
-                        <div class="text-center text-base font-medium">180</div>
-                        <div class="text-center text-base font-medium">150</div>
-                    </div>
+            <!-- Контент: Характеристики — без изменений -->
+            <div id="content-specs" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
+                    <div class="col-span-1"></div>
+                    <div class="font-medium text-base md:text-lg">2.5 л. 6АКПП (180 л.с.) FWD</div>
+                    <div class="font-medium text-base md:text-lg">2.0 л. 6АКПП (150 л.с.) FWD</div>
                 </div>
 
-                <!-- Кузов -->
-                <div>
-                    <h3 class="font-bold text-lg md:text-xl mb-3">Кузов</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="text-gray-700 text-base">Длина</div>
-                        <div class="text-center text-base font-medium">1860</div>
-                        <div class="text-center text-base font-medium">1860</div>
+                <div class="space-y-6">
+                    <!-- Двигатель -->
+                    <div>
+                        <h3 class="font-bold text-lg md:text-xl mb-3">Двигатель</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="text-gray-700 text-base">Объем двигателя, л</div>
+                            <div class="text-center text-base font-medium">2.5</div>
+                            <div class="text-center text-base font-medium">2</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                            <div class="text-gray-700 text-base">Рабочий объем двигателя, см³</div>
+                            <div class="text-center text-base font-medium">2497</div>
+                            <div class="text-center text-base font-medium">1999</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                            <div class="text-gray-700 text-base">Тип привода</div>
+                            <div class="text-center text-base font-medium">Передний</div>
+                            <div class="text-center text-base font-medium">Передний</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                            <div class="text-gray-700 text-base">Мощность, л.с.</div>
+                            <div class="text-center text-base font-medium">180</div>
+                            <div class="text-center text-base font-medium">150</div>
+                        </div>
+                    </div>
+
+                    <!-- Кузов -->
+                    <div>
+                        <h3 class="font-bold text-lg md:text-xl mb-3">Кузов</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="text-gray-700 text-base">Длина</div>
+                            <div class="text-center text-base font-medium">1860</div>
+                            <div class="text-center text-base font-medium">1860</div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
+
+        <script>
+            function switchTab(tabName) {
+                document.getElementById('content-completions').classList.add('hidden');
+                document.getElementById('content-specs').classList.add('hidden');
+
+                if (tabName === 'completions') {
+                    document.getElementById('content-completions').classList.remove('hidden');
+                    document.getElementById('tab-completions').classList.replace('border-transparent', 'border-black');
+                    document.getElementById('tab-specs').classList.replace('border-black', 'border-transparent');
+                } else if (tabName === 'specs') {
+                    document.getElementById('content-specs').classList.remove('hidden');
+                    document.getElementById('tab-specs').classList.replace('border-transparent', 'border-black');
+                    document.getElementById('tab-completions').classList.replace('border-black', 'border-transparent');
+                }
+            }
+        </script>
+
+
     </main>
 
     <footer class=" text-white pt-12 pb-8">
@@ -255,8 +561,25 @@
         </div>
     </footer>
 
+    <!-- JavaScript для переключения вкладок -->
+    <script>
+        function switchTab(tabName) {
+            // Скрыть оба контента
+            document.getElementById('content-completions').classList.add('hidden');
+            document.getElementById('content-specs').classList.add('hidden');
 
-
+            // Показать нужный
+            if (tabName === 'completions') {
+                document.getElementById('content-completions').classList.remove('hidden');
+                document.getElementById('tab-completions').classList.replace('border-transparent', 'border-black');
+                document.getElementById('tab-specs').classList.replace('border-black', 'border-transparent');
+            } else if (tabName === 'specs') {
+                document.getElementById('content-specs').classList.remove('hidden');
+                document.getElementById('tab-specs').classList.replace('border-transparent', 'border-black');
+                document.getElementById('tab-completions').classList.replace('border-black', 'border-transparent');
+            }
+        }
+    </script>
 </body>
 
 </html>
