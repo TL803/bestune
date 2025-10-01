@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Автомобили в наличии</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 font-sans">
+    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Логотип и название -->
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <span
+                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                        X НЕЗАВИСИМОСТЬ
+                    </span>
+                </a>
+
+                <!-- Меню для средних и больших экранов -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                        наличии</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                </nav>
+
+                <!-- Бургер только на маленьких экранах (<768px) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
+                    наличии</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+                <a href="#"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+            </div>
+        </div>
+    </header>
+    <!-- Заголовок -->
+    <main class=" min-h-screen">
+        <!-- Заголовок -->
+        <div class="text-center py-8">
+            <h1 class="text-3xl font-bold">Автомобили в наличии</h1>
+        </div>
+
+        <!-- Верхняя панель: Скрыть параметры / Найдено / Сравнение -->
+        <div class="flex justify-between items-center px-4 sm:px-6 lg:px-8  bg-white border-b border-gray-200 py-3">
+            <div class="flex items-center text-sm text-blue-600 font-medium cursor-pointer">
+                <i class="fas fa-sliders-h mr-2"></i>
+                Скрыть параметры
+            </div>
+            <div class="flex items-center text-sm text-gray-500 font-medium cursor-pointer">
+                <span>Сравнение</span>
+                <i class="fas fa-chart-bar ml-1 text-blue-600"></i>
+                <span class="ml-1 bg-gray-200 rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+            </div>
+        </div>
+
+        <!-- Основной контейнер -->
+        <div class="flex gap-6 bg-gray-100 pb-8">
+
+            <!-- Левая панель фильтров -->
+            <div class="w-64 bg-white border-r border-gray-200 h-[calc(100vh-80px)] sticky top-[80px] overflow-y-auto">
+                <div class="py-4 space-y-0">
+                    <!-- Каждый фильтр — с разделителем снизу -->
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Модель</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Цена, ₽</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Комплектация</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Двигатель</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Трансмиссия</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
+                        <span class="text-sm font-medium">Привод</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                    <div class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer">
+                        <span class="text-sm font-medium">Цвет</span>
+                        <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточки автомобилей -->
+            <div class="flex-1">
+                <div class="text-sm text-gray-500 font-medium py-4">Найдено 79 автомобилей</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+
+                    <div
+                        class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden w-[434px] flex flex-col">
+                        <div class="p-4 flex-1 flex flex-col">
+
+                            <!-- Статус -->
+                            <div class="mb-3">
+                                <span
+                                    class="inline-block px-2 py-1 text-[12px] font-bold text-amber-800 bg-amber-100 rounded-full">В
+                                    пути</span>
+                            </div>
+
+                            <!-- Изображение — высота 180px, объект центрирован -->
+                            <div class="mb-4">
+                                <img src="../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png" alt="T77"
+                                    class="w-full h-48 object-contain rounded-md bg-gray-50" />
+                            </div>
+
+                            <!-- Название модели -->
+                            <h3 class="text-[24px] font-normal mb-1">T77</h3>
+
+                            <!-- Комплектация и год -->
+                            <p class="text-[16px] text-gray-600 mb-3">PRESTIGE PLUS (DCT) (t77), 2023</p>
+
+                            <!-- Характеристики с иконками -->
+                            <div class="space-y-2 mb-4 text-[14px] text-gray-700 flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
+                                    <span>1.5 160 л.с.</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-cogs text-gray-500 mr-2"></i>
+                                    <span>7DCT</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-car-side text-gray-500 mr-2"></i>
+                                    <span>Передний (2WD)</span>
+                                </div>
+                            </div>
+
+                            <!-- Цена -->
+                            <div class="text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
+
+                            <!-- Платеж -->
+                            <div class="text-[12px] text-gray-500 mb-4">Платеж от 11 444 ₽/месяц</div>
+
+                            <!-- Адрес и сравнение -->
+                            <div class="flex justify-between items-center text-[12px] text-gray-500">
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
+                                    <span>Береговой пр., 4/6с3, Москва</span>
+                                </div>
+                                <i class="fas fa-chart-bar text-blue-600 cursor-pointer hover:text-blue-700"></i>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Кнопка "Показать еще" -->
+                <div class="mt-8 text-center">
+                    <button
+                        class="px-6 py-2.5 border border-blue-600 text-blue-600 rounded-md font-medium hover:bg-blue-50 transition">
+                        ПОКАЗАТЬ ЕЩЕ
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer class=" text-white bg-[#282624] pt-12 pb-8">
+        <div class="w-full px-6 md:px-12 lg:px-24">
+
+            <!-- Логотип -->
+            <div class="mb-10 flex items-center space-x-2">
+                <img src="../../assets/common/Bestune (1).svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                <span class="text-lg font-medium">× НЕЗАВИСИМОСТЬ</span>
+            </div>
+
+            <!-- Основной контент: 3 колонки -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+
+                <!-- Колонка "МОДЕЛИ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Модели</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">T55</a></li>
+                        <li><a href="#" class="hover:text-gray-300">B70</a></li>
+                        <li><a href="#" class="hover:text-gray-300">T77</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый T90</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Новый B70</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка "ПОКУПАТЕЛЯМ" -->
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Покупателям</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gray-300">Модели</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Кредит</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Trade-in</a></li>
+                        <li><a href="#" class="hover:text-gray-300">Спецпредложения</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-8 text-xs leading-relaxed">
+                Производитель сохраняет за собой исключительное право в любое время вносить дополнения, изменения,
+                обновления в информацию о параметрах продукта, конфигурации, материалы, цвета и в другую информацию о
+                транспортном средстве без предварительного уведомления. Приобретение любой продукции бренда BESTUNE
+                осуществляется в соответствии с условиями индивидуального договора купли-продажи. Представленное
+                изображение, цвет, технические характеристики и комплектация автомобилей могут отличаться от
+                реализуемого. Упоминаемое оборудование может быть опциональным. Для получения подробной информации об
+                актуальных ценах на продукцию BESTUNE и наличии автомобилей обращайтесь к официальным дилерам. Не
+                является публичной офертой.
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs space-y-4 sm:space-y-0">
+                <a href="#" class="hover:text-gray-300">Политика конфиденциальности</a>
+                <a href="#" class="hover:text-gray-300">Контакты</a>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>
