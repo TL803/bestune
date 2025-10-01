@@ -69,7 +69,7 @@ cars.forEach((car) => {
                 </div>
 
                 <button
-                    class="absolute bottom-6 left-6 right-6 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                    class="absolute bottom-6 left-6 right-6 bg-[#3366BD] text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                     О модели
                 </button>
     `
