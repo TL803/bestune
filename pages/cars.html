@@ -7,11 +7,15 @@
     <title>Автомобили в наличии</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../styles/checkbox.css">
+    <link rel="stylesheet" href="../styles/animations.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
     </style>
+
+
 </head>
 
 <body class="bg-white text-gray-800 font-sans">
@@ -80,128 +84,232 @@
 
         <!-- Верхняя панель: Скрыть параметры / Найдено / Сравнение -->
         <div class="flex justify-between items-center px-4 sm:px-6 lg:px-8  bg-white border-b border-gray-200 py-3">
-            <div class="flex items-center text-sm text-blue-600 font-medium cursor-pointer">
+            <div id="toggle-sidebar"
+                class="flex select-none items-center text-sm text-blue-600 font-medium cursor-pointer">
                 <i class="fas fa-sliders-h mr-2"></i>
                 Скрыть параметры
             </div>
-            <div class="flex items-center text-sm text-gray-500 font-medium cursor-pointer">
-                <span>Сравнение</span>
-                <i class="fas fa-chart-bar ml-1 text-blue-600"></i>
+            <div class="flex items-center text-sm text-gray-500 font-medium space-x-2 cursor-pointer">
+                <span class="select-none">Сравнение</span>
+                <img src="../assets/scales-light.svg" alt="">
                 <span class="ml-1 bg-gray-200 rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
             </div>
         </div>
 
         <!-- Основной контейнер -->
-        <div class="flex gap-6 bg-gray-100 pb-8">
+        <div class="flex gap-6 bg-gray-100">
 
             <!-- Левая панель фильтров -->
-            <div class="w-64 bg-white border-r border-gray-200 h-[calc(100vh-80px)] sticky top-[80px] overflow-y-auto">
-                <div class="py-4 space-y-0">
-                    <!-- Каждый фильтр — с разделителем снизу -->
-                    <div
+            <div id="sidebar" class="w-full lg:w-[400px] bg-white border-r border-gray-200">
+                <div class="py-4 space-y-0 bg-white">
+                    <div data-toggle-filter="model"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Модель</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div
+
+                    <!-- Блок с карточками моделей -->
+                    <div data-toggle-content="model" class="filter-content px-4 py-3 space-y-4">
+                        <!-- Карточка 1 -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+                            <img src="../assets/models/B70.png" alt="T77" class="w-20 h-16 object-contain mr-4">
+                            <div>
+                                <p class="text-lg font-semibold">T77</p>
+                                <p class="text-sm text-gray-700">от 2 036 000 ₽</p>
+                                <p class="text-xs text-gray-500">Платеж от 11 444 ₽/месяц</p>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 2 -->
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+                            <img src="../assets/models/B70.png" alt="T77" class="w-20 h-16 object-contain mr-4">
+                            <div>
+                                <p class="text-lg font-semibold">T77</p>
+                                <p class="text-sm text-gray-700">от 2 036 000 ₽</p>
+                                <p class="text-xs text-gray-500">Платеж от 11 444 ₽/месяц</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-toggle-filter="price"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Цена, ₽</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div
+
+                    <!-- Блок фильтра по цене -->
+                    <div data-toggle-content="price" class="filter-content px-4 py-3 space-y-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-medium text-gray-700">от</label>
+                            <label class="text-xs font-medium text-gray-700">до</label>
+                        </div>
+
+                        <div class="flex justify-between gap-3 mb-3">
+                            <input type="text" id="minPrice" value="1 000 000"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                oninput="formatPriceInput(this)">
+
+                            <input type="text" id="maxPrice" value="2 000 000"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                oninput="formatPriceInput(this)">
+                        </div>
+
+                        <!-- Слайдер -->
+                        <div class="relative w-full h-2 bg-blue-200 rounded-full" id="priceSlider">
+                            <div class="absolute top-0 h-full bg-blue-600 rounded-full" id="sliderRange"></div>
+                            <div class="absolute top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                                id="minThumb"></div>
+                            <div class="absolute top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white border-2 border-blue-600 rounded-full cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+                                id="maxThumb"></div>
+                        </div>
+                    </div>
+                    <div data-toggle-filter="complectation"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Комплектация</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div
+
+
+                    <!-- Блок с чекбоксами комплектаций -->
+                    <div data-toggle-content="complectation" class=" filter-content px-4 py-3 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="comfort" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">COMFORT 1.5 (DCT) (t55)</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="prestige" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">PRESTIGE 1.5 (DCT) (t55)</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="transcend" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">TRANSCEND 1.5 (DCT) (t55)</span>
+                        </div>
+                    </div>
+                    <div data-toggle-filter="engine"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Двигатель</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div
+
+                    <!-- Блок с чекбоксами двигателей -->
+                    <div data-toggle-content="engine" class="filter-content px-4 py-3 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="engine-1.5" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">1.5 160 л.с</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="engine-2.0" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">2.0 217 л.с</span>
+                        </div>
+                    </div>
+                    <div data-toggle-filter="transmission"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Трансмиссия</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div
+
+                    <!-- Блок с чекбоксами трансмиссий -->
+                    <div data-toggle-content="transmission" class="filter-content px-4 py-3 space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="transmission-7dct" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">7DCT</span>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="transmission-6at" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">6AT</span>
+                        </div>
+                    </div>
+                    <div data-toggle-filter="drive"
                         class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer border-b border-gray-100">
                         <span class="text-sm font-medium">Привод</span>
                         <i class="fas fa-plus text-blue-600"></i>
                     </div>
-                    <div class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer">
+
+                    <!-- Блок с чекбоксом привода -->
+                    <div data-toggle-content="drive" class="filter-content px-4 py-3 space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <label class="custom-checkbox-square">
+                                <input type="checkbox" id="drive-front" />
+                                <span class="checkmark">✓</span>
+                            </label>
+                            <span class="text-sm text-gray-700 leading-relaxed">Передний (2WD)</span>
+                        </div>
+                    </div>
+                    <div data-toggle-filter="color"
+                        class="px-4 py-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer">
                         <span class="text-sm font-medium">Цвет</span>
                         <i class="fas fa-plus text-blue-600"></i>
+                    </div>
+
+                    <!-- Блок с выбором цветов -->
+                    <div data-toggle-content="color" class="filter-content px-4 py-3 space-y-3">
+                        <!-- Белый -->
+                        <div class="flex items-start space-x-3">
+
+                            <div class="flex items-center space-x-2">
+                                <span class="w-6 h-6 bg-white border border-gray-300 rounded"></span>
+                                <span class="text-sm text-gray-700 leading-relaxed">Белый</span>
+                            </div>
+                        </div>
+
+                        <!-- Красный -->
+                        <div class="flex items-start space-x-3">
+
+                            <div class="flex items-center space-x-2">
+                                <span class="w-6 h-6 bg-red-500 rounded"></span>
+                                <span class="text-sm text-gray-700 leading-relaxed">Красный</span>
+                            </div>
+                        </div>
+
+                        <!-- Синий -->
+                        <div class="flex items-start space-x-3">
+
+                            <div class="flex items-center space-x-2">
+                                <span class="w-6 h-6 bg-blue-500 rounded"></span>
+                                <span class="text-sm text-gray-700 leading-relaxed">Синий</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Карточки автомобилей -->
             <div class="flex-1">
-                <div class="text-sm text-gray-500 font-medium py-4">Найдено 79 автомобилей</div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-
-                    <div
-                        class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden w-[434px] flex flex-col">
-                        <div class="p-4 flex-1 flex flex-col">
-
-                            <!-- Статус -->
-                            <div class="mb-3">
-                                <span
-                                    class="inline-block px-2 py-1 text-[12px] font-bold text-amber-800 bg-amber-100 rounded-full">В
-                                    пути</span>
-                            </div>
-
-                            <!-- Изображение — высота 180px, объект центрирован -->
-                            <div class="mb-4">
-                                <img src="../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png" alt="T77"
-                                    class="w-full h-48 object-contain rounded-md bg-gray-50" />
-                            </div>
-
-                            <!-- Название модели -->
-                            <h3 class="text-[24px] font-normal mb-1">T77</h3>
-
-                            <!-- Комплектация и год -->
-                            <p class="text-[16px] text-gray-600 mb-3">PRESTIGE PLUS (DCT) (t77), 2023</p>
-
-                            <!-- Характеристики с иконками -->
-                            <div class="space-y-2 mb-4 text-[14px] text-gray-700 flex-1">
-                                <div class="flex items-center">
-                                    <i class="fas fa-tachometer-alt text-gray-500 mr-2"></i>
-                                    <span>1.5 160 л.с.</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-cogs text-gray-500 mr-2"></i>
-                                    <span>7DCT</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-car-side text-gray-500 mr-2"></i>
-                                    <span>Передний (2WD)</span>
-                                </div>
-                            </div>
-
-                            <!-- Цена -->
-                            <div class="text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
-
-                            <!-- Платеж -->
-                            <div class="text-[12px] text-gray-500 mb-4">Платеж от 11 444 ₽/месяц</div>
-
-                            <!-- Адрес и сравнение -->
-                            <div class="flex justify-between items-center text-[12px] text-gray-500">
-                                <div class="flex items-center">
-                                    <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
-                                    <span>Береговой пр., 4/6с3, Москва</span>
-                                </div>
-                                <i class="fas fa-chart-bar text-blue-600 cursor-pointer hover:text-blue-700"></i>
-                            </div>
-
-                        </div>
-                    </div>
-
+                <div class="text-sm text-gray-500 font-medium py-4 px-6">Найдено <span id="cars-count">0</span>
+                    автомобилей</div>
+                <div data-avaliable-cars-container
+                    class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6">
+                    <!-- Карточки машин будут здесь -->
                 </div>
 
                 <!-- Кнопка "Показать еще" -->
-                <div class="mt-8 text-center">
-                    <button
+                <div class="mt-8 text-center flex justify-center mb-8 mx-auto">
+                    <button id="show-more-btn"
                         class="px-6 py-2.5 border border-blue-600 text-blue-600 rounded-md font-medium hover:bg-blue-50 transition">
                         ПОКАЗАТЬ ЕЩЕ
                     </button>
@@ -264,6 +372,9 @@
 
         </div>
     </footer>
+    <script src="../scripts/modules/show/filters/calcPrice.js"></script>
+    <script src="../scripts/modules/show/filters/toggleFilter.js"></script>
+    <script src="../scripts/modules/iterations/avaliableCars.js"></script>
 </body>
 
 </html>

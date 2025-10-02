@@ -189,9 +189,18 @@ class SliderManager {
       const termSlider = document.getElementById(`loanTermSlider${suffix}`);
 
       if (downSlider) {
+        // Устанавливаем ограничения: мин 0%, макс 90%, шаг 10%
+        downSlider.min = 0;
+        downSlider.max = 90;
+        downSlider.step = 10;
+        
         this.bindSliderTrack(downSlider);
         downSlider.addEventListener('input', (e) => {
-          this.updateDownPaymentDisplay(e.target.value, suffix);
+          // Обеспечиваем шаг 10%
+          let value = Math.round(e.target.value / 10) * 10;
+          value = Math.max(0, Math.min(90, value)); // Ограничиваем диапазон (0-90%)
+          e.target.value = value;
+          this.updateDownPaymentDisplay(value, suffix);
         });
       }
 
