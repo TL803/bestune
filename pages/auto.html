@@ -51,17 +51,19 @@
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
+                    <a href="./loan.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
+                    <a href="./tradein.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
+                    <a href="./stocks.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
+                    <a href="./contacts.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
@@ -95,13 +97,57 @@
     </header>
 
 
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
     <main class="bg-white">
-        <section class="container mx-auto flex flex-col md:flex-row items-center gap-8 p-6 ">
+        <section class="container mx-auto flex flex-col md:flex-row items-center gap-8 p-6">
             <!-- Изображение автомобиля -->
             <div class="w-full md:w-1/2">
-                <img src="../assets/common/Rectangle 2 (1).png" alt="BESTUNE T77"
+                <!-- Добавлен id="car-image" для удобного доступа из JS -->
+                <img id="car-image" src="../assets/common/car-red.png" alt="BESTUNE T77"
                     class="w-full h-auto rounded-lg shadow-md" />
-                <!-- Миниатюры -->
+                <!-- Миниатюры (оставлены как есть) -->
                 <div class="flex gap-4 mt-4">
                     <img src="../assets/common/Rectangle 4.png" alt="Interior"
                         class="w-40 h-20 object-cover rounded-md cursor-pointer" />
@@ -115,11 +161,7 @@
                 <h1 class="text-3xl font-bold">BESTUNE T77</h1>
 
                 <!-- Цвета -->
-                <div class="flex gap-2">
-                    <div class="w-8 h-8 bg-white border-2 border-gray-300 rounded"></div>
-                    <div class="w-8 h-8 bg-gray-400 border-2 border-blue-500 rounded"></div>
-                    <div class="w-8 h-8 bg-black border-2 border-gray-300 rounded"></div>
-                    <div class="w-8 h-8 bg-gray-300 border-2 border-gray-300 rounded"></div>
+                <div id="colors-container" class="flex gap-2">
                 </div>
 
                 <!-- Цена -->
@@ -132,22 +174,16 @@
 
                 <!-- Кнопки -->
                 <div class="flex flex-col gap-4 w-full">
-                    <!-- Верхний ряд: две кнопки -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <!-- Кнопка "Записаться на тест-драйв" -->
-                        <button
+                        <a href="./forms/testdrive.html"
                             class="flex-1 px-6 py-3 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition font-medium text-sm leading-tight">
                             ЗАПИСАТЬСЯ НА ТЕСТ-ДРАЙВ →
-                        </button>
-
-                        <!-- Кнопка "Обменять по Trade-in" -->
-                        <button
+                        </a>
+                        <a href="./forms/tradein.html"
                             class="flex-1 px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition font-medium text-sm leading-tight">
                             ОБМЕНЯТЬ ПО TRADE-IN →
-                        </button>
+                        </a>
                     </div>
-
-                    <!-- Нижняя кнопка: "Рассчитать в кредит" -->
                     <button
                         class="w-full px-6 py-3 bg-[#3366BD] text-white rounded-lg hover:bg-[#3366BD] transition font-medium text-sm leading-tight">
                         РАССЧИТАТЬ В КРЕДИТ →
@@ -218,14 +254,14 @@
 
                                         <div
                                             class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
-                                            <button data-toggle-timer-container="Credit"
+                                            <a href="./forms/loan.html" data-toggle-timer-container="Credit"
                                                 class="px-4 py-2 bg-[#3366BD] text-white rounded-md hover:bg-[#3366BD] transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 В кредит
-                                            </button>
-                                            <button data-toggle-timer-container="Trade-in"
-                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                            </a>
+                                            <a href="./forms/tradein.html" data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-[#dbeafe] text-[#3366bd] rounded-md  transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 Trade-in
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </summary>
@@ -268,7 +304,7 @@
                                     <div
                                         class="grid grid-cols-1 xl:grid-cols-5 gap-3 lg:gap-6 items-center bg-white lg:bg-[#fafafa] p-3 lg:p-5 rounded-xl hover:shadow-sm transition-shadow">
                                         <div class="flex items-center gap-2 justify-center xl:justify-start">
-    
+
                                             <span class="font-semibold text-base lg:text-lg text-gray-800">Luxury</span>
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform duration-200"
@@ -302,14 +338,14 @@
 
                                         <div
                                             class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
-                                            <button data-toggle-timer-container="Credit"
+                                            <a href="./forms/loan.html" data-toggle-timer-container="Credit"
                                                 class="px-4 py-2 bg-[#3366BD] text-white rounded-md hover:bg-[#3366BD] transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 В кредит
-                                            </button>
-                                            <button data-toggle-timer-container="Trade-in"
-                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                            </a>
+                                            <a href="./forms/tradein.html" data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-[#dbeafe] text-[#3366bd] rounded-md  transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 Trade-in
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </summary>
@@ -393,14 +429,14 @@
 
                                         <div
                                             class="flex flex-col xl:flex-row gap-2 mt-2 xl:mt-0 justify-center xl:justify-start w-full xl:w-auto">
-                                            <button data-toggle-timer-container="Credit"
+                                            <a href="./forms/loan.html" data-toggle-timer-container="Credit"
                                                 class="px-4 py-2 bg-[#3366BD] text-white rounded-md hover:bg-[#3366BD] transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 В кредит
-                                            </button>
-                                            <button data-toggle-timer-container="Trade-in"
-                                                class="px-4 py-2 bg-cyan-400 text-white rounded-md hover:bg-cyan-300 transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
+                                            </a>
+                                            <a href="./forms/tradein.html" data-toggle-timer-container="Trade-in"
+                                                class="px-4 py-2 bg-[#dbeafe] text-[#3366bd] rounded-md transition-colors text-xs lg:text-sm font-medium whitespace-nowrap flex-shrink-0 w-full xl:w-auto">
                                                 Trade-in
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </summary>
@@ -488,7 +524,7 @@
         </section>
 
 
-                <section class="p-6 text-white bg-[#282624]">
+        <section class="p-6 text-white bg-[#282624]">
             <div class="max-w-4xl mx-auto space-y-6">
 
                 <!-- Заголовок -->
@@ -668,7 +704,7 @@
             </div>
         </section>
 
-                <section>
+        <section>
             <div class="relative w-full h-[800px] overflow-hidden bg-cover bg-center"
                 style="background-image: url('../assets/common/475eed1beab38eab41d618d1aec6e7bede6f0901 (1).png')">
                 <!-- Полупрозрачный оверлей -->
@@ -688,7 +724,7 @@
                     </p>
 
                     <!-- Кнопка -->
-                    <a href="#"
+                    <a href="./forms/tradein.html"
                         class="inline-block w-max px-6 py-3 bg-[#3366BD] hover:bg-[#3366BD] text-white font-medium rounded-lg transition-colors duration-300 flex items-center gap-2">
                         Подробнее →
                     </a>
@@ -770,6 +806,7 @@
         </div>
     </footer>
     <script src="../scripts/components/sliders/range/creditBlock.js" type="module"></script>
+    <script src="../scripts/modules/iterations/changeColors.js"></script>
     <!-- JavaScript для переключения вкладок -->
     <script>
         function switchTab(tabName) {

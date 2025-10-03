@@ -8,11 +8,11 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="  https://cdn.tailwindcss.com  "></script>
   <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css  " />
   <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js  "></script>
   <script>
     tailwind.config = {
       theme: {
@@ -36,55 +36,107 @@
 <body class="font-sans  text-[#01101B]">
 
 
-  <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <!-- Логотип и название -->
-        <a href="./" class="flex-shrink-0 flex items-center min-w-0">
-          <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
-          <span
-            class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
-            X НЕЗАВИСИМОСТЬ
-          </span>
-        </a>
+    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Логотип и название -->
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <span
+                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                        X НЕЗАВИСИМОСТЬ
+                    </span>
+                </a>
 
-        <!-- Меню для средних и больших экранов -->
-        <nav class="hidden lg:flex items-center space-x-6">
-          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
-            наличии</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-          <a href="#"
-            class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
-        </nav>
+                <!-- Меню для средних и больших экранов -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                        наличии</a>
+                    <a href="./loan.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="./tradein.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="./stocks.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="./contacts.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                </nav>
 
-        <!-- Бургер только на маленьких экранах (<768px) -->
-        <div class="lg:hidden flex items-center">
-          <button id="mobile-menu-button" class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+                <!-- Бургер только на маленьких экранах (<768px) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Мобильное меню -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-      <div class="px-4 pt-2 pb-4 space-y-1">
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
-          наличии</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
-        <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
-      </div>
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
+                    наличии</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+                <a href="#"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
     </div>
-  </header>
 
   <main>
     <section class="container mx-auto px-4 py-6 sm:py-8">
@@ -93,35 +145,35 @@
         Акции и спецпредложения
       </h2>
 
-      <!-- Блок 1: Единый карточный блок -->
-      <div
-        class="group grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 transition-transform duration-300 hover:scale-102">
-        <!-- Изображение -->
-        <div class="overflow-hidden rounded-xl">
-          <img src="../assets/stocks/475eed1beab38eab41d618d1aec6e7bede6f0901.png" alt="Автомобили"
-            class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
-        </div>
-
-        <!-- Текстовая часть -->
-        <div
-          class="bg-gray-50 p-5 sm:p-6 md:p-7 rounded-xl flex flex-col justify-between min-h-[280px] sm:min-h-[300px] md:min-h-[320px] transition-transform duration-300 group-hover:scale-102">
-          <div class="space-y-3 sm:space-y-4">
-            <h3 class="text-xl sm:text-2xl font-bold leading-tight">
-              Выгода по программе "Прямая скидка клиента" до 700 000 ₽
-            </h3>
-            <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
-              Программа "Прямая скидку клиенту" позволяет нашим клиентам получить дополнительную скидку на автомобили
-              Bestune T90, B70 new, B70, T55.
-            </p>
+      <!-- Блок 1: Единый карточный блок без отступов -->
+      <div class="group rounded-xl overflow-hidden mb-8 sm:mb-10 transition-transform duration-300 hover:scale-102 shadow-sm hover:shadow-md">
+        <div class="flex flex-col lg:flex-row">
+          <!-- Изображение -->
+          <div class="lg:w-1/2 overflow-hidden">
+            <img src="../assets/stocks/475eed1beab38eab41d618d1aec6e7bede6f0901.png" alt="Автомобили"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
           </div>
-          <button
-            class="mt-4 w-fit sm:w-auto bg-[#3366BD] hover:bg-[#3366BD] text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg flex items-center justify-center transition-colors">
-            получить
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+
+          <!-- Текстовая часть -->
+          <div class="lg:w-1/2 bg-gray-50 p-5 sm:p-6 md:p-7 flex flex-col justify-between">
+            <div class="space-y-3 sm:space-y-4">
+              <h3 class="text-xl sm:text-2xl font-bold leading-tight">
+                Выгода по программе "Прямая скидка клиента" до 700 000 ₽
+              </h3>
+              <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Программа "Прямая скидку клиенту" позволяет нашим клиентам получить дополнительную скидку на автомобили
+                Bestune T90, B70 new, B70, T55.
+              </p>
+            </div>
+            <button
+              class="mt-4 w-fit sm:w-auto bg-[#3366BD] hover:bg-[#3366BD] text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-5 rounded-lg flex items-center justify-center transition-colors">
+              получить
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -280,8 +332,6 @@
 
     </div>
   </footer>
-
-
 
 </body>
 

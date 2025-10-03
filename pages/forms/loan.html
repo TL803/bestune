@@ -42,7 +42,7 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Логотип и название -->
                 <a href="./" class="flex-shrink-0 flex items-center min-w-0">
-                    <img src="../../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
                     <span
                         class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
                         X НЕЗАВИСИМОСТЬ
@@ -51,17 +51,19 @@
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
+                    <a href="./loan.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
+                    <a href="./tradein.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
+                    <a href="./stocks.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
+                    <a href="./contacts.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
@@ -94,12 +96,54 @@
         </div>
     </header>
 
+
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
     <main class="bg-white py-[160px] px-4 md:px-8">
         <section class="container mx-auto">
-            <h1 class="text-[36px] md:text-[52px] font-light text-center mb-4">Прямая скидка</h1>
+            <h1 class="text-[36px] md:text-[52px] font-light text-center mb-4">Покупка в кредит</h1>
             <p class="text-[16px] md:text-[20px] font-light text-center text-gray-600 mb-8">
-                Хотите приобрести автомобиль на самых выгодных условиях? Программа «Прямая скидка клиенту» создана
-                специально для тех, кто ценит разумный выбор и комфорт.
+                Программа «Покупка в кредит» — это возможность не только приобрести новый автомобиль FAW Bestune, но и получить дополнительную скидку на популярные модели
             </p>
 
             <!-- Увеличена высота формы: добавлен py-6 и увеличен gap-y-8 -->
@@ -170,7 +214,21 @@
             </form>
         </section>
     </main>
-
+<!-- Модальное окно успешной отправки -->
+<div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+  <div class="bg-gray-900 rounded-2xl p-8 sm:p-12 w-full max-w-md text-center text-white">
+    <h2 class="text-xl sm:text-2xl font-medium mb-4">
+      Ваша заявка успешно отправлена!
+    </h2>
+    <p class="text-sm sm:text-base leading-relaxed mb-8">
+      Мы уже готовим для вас персональное предложение.<br>
+      Совсем скоро наш менеджер свяжется с вами, чтобы обсудить детали и помочь приблизить момент, когда ключи от нового автомобиля Bestune окажутся в ваших руках.
+    </p>
+    <button id="close-modal" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl w-full max-w-[300px] transition-colors duration-200">
+      Отлично
+    </button>
+  </div>
+</div>
     <footer class=" text-white bg-[#282624] pt-12 pb-8">
         <div class="w-full px-6 md:px-12 lg:px-24">
 
@@ -229,7 +287,92 @@
 
     <script src="../../scripts/utils/validation.js"></script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('[data-car-form]');
+    const modal = document.getElementById('success-modal');
+    const closeButton = document.getElementById('close-modal');
 
+    // Маска для телефона
+    const phoneInput = document.querySelector('input[data-validate="phone"]');
+    if (phoneInput) {
+      IMask(phoneInput, {
+        mask: '+{7} (000) 000-00-00'
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.querySelector('input[data-validate="name"]');
+        const phoneInput = document.querySelector('input[data-validate="phone"]');
+        const checkbox = document.querySelector('input[data-validate="required"]');
+
+        let isValid = true;
+
+        // Валидация имени
+        if (!nameInput.value.trim()) {
+          isValid = false;
+          nameInput.classList.add('border-red-500');
+        } else {
+          nameInput.classList.remove('border-red-500');
+        }
+
+        // Валидация телефона
+        if (!phoneInput.value || phoneInput.value.includes('_')) {
+          isValid = false;
+          phoneInput.classList.add('border-red-500');
+        } else {
+          phoneInput.classList.remove('border-red-500');
+        }
+
+        // Валидация чекбокса
+        if (!checkbox.checked) {
+          isValid = false;
+          checkbox.parentElement.classList.add('border-red-500');
+        } else {
+          checkbox.parentElement.classList.remove('border-red-500');
+        }
+
+        if (isValid) {
+          // Показать модалку
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+
+          // Очистить форму
+          form.reset();
+          if (phoneInput) phoneInput.value = ''; // IMask не сбрасывается через reset()
+
+          // Сброс ошибок
+          nameInput.classList.remove('border-red-500');
+          phoneInput.classList.remove('border-red-500');
+          checkbox.parentElement.classList.remove('border-red-500');
+        }
+      });
+    }
+
+    // Закрытие модалки
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    if (closeButton) {
+      closeButton.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  });
+</script>
 
 </body>
 

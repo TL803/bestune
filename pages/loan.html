@@ -53,17 +53,19 @@
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
+                    <a href="./loan.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
+                    <a href="./tradein.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
+                    <a href="./stocks.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
+                    <a href="./contacts.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
@@ -95,6 +97,49 @@
             </div>
         </div>
     </header>
+
+
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
     <main>
         <section class="container mx-auto py-8">
             <h1 class="text-3xl font-bold text-center mb-6">Кредит</h1>
@@ -200,7 +245,7 @@
                         </div>
 
                         <!-- Остальные шаги -->
-                        <div>
+                        <div data-step="payment">
                             <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">2. Введите сумму
                                 первоначального взноса</h3>
                             <div class="relative">
@@ -215,7 +260,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div data-step="term">
                             <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">3. Выберите комфортный платёж
                             </h3>
                             <div class="relative">
@@ -230,7 +275,7 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div data-step="contacts">
                             <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">4. Введите ваши контакты</h3>
                             <input type="text" id="calc-name" name="name" data-validate="name" placeholder="ФИО"
                                 class="w-full bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />

@@ -19,6 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const complectationTextEls = form.closest('.flex')?.querySelectorAll('[data-car-complectation-text]') || document.querySelectorAll('[data-car-complectation-text]');
     const complectationDetailEls = form.closest('.flex')?.querySelectorAll('[data-car-complectation-detail]') || document.querySelectorAll('[data-car-complectation-detail]');
 
+    // Находим блоки по data-атрибутам
+    const paymentSection = form.querySelector('[data-step="payment"]');
+    const termSection = form.querySelector('[data-step="term"]');
+    const contactsSection = form.querySelector('[data-step="contacts"]');
+
+    // Собираем все секции для скрытия
+    const sectionsToHide = [paymentSection, termSection, contactsSection].filter(Boolean);
+
     function updateCarInfo() {
       const model = carModelSelect?.value.trim() || '';
       const complectation = complectationSelect?.value.trim() || '';
@@ -32,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const ready = model && complectation;
 
+      // Показываем/скрываем блоки с автомобилем
       if (ready) {
         modelTitleEls.forEach(el => el.textContent = model);
         complectationTextEls.forEach(el => el.textContent = `${complectation}, 2023`);
@@ -39,9 +48,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         carInfoBlocks.forEach(el => el.classList.remove('hidden'));
         placeholderBlocks.forEach(el => el.classList.add('hidden'));
+        
+        // ПОКАЗЫВАЕМ блоки 2, 3, 4 когда машина выбрана
+        sectionsToHide.forEach(section => {
+          if (section) section.classList.remove('hidden');
+        });
       } else {
         carInfoBlocks.forEach(el => el.classList.add('hidden'));
         placeholderBlocks.forEach(el => el.classList.remove('hidden'));
+        
+        // СКРЫВАЕМ блоки 2, 3, 4 когда машина не выбрана
+        sectionsToHide.forEach(section => {
+          if (section) section.classList.add('hidden');
+        });
       }
     }
 

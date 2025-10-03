@@ -4,16 +4,107 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>О компании</title>
+    <title>Прямая скидка - Bestune</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../../styles/checkbox.css">
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        .custom-checkbox-square {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .custom-checkbox-square input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .custom-checkbox-square .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+        }
+
+        .custom-checkbox-square input:checked ~ .checkmark {
+            background-color: #3366BD;
+            border-color: #3366BD;
+        }
+
+        .custom-checkbox-square .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .custom-checkbox-square input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .custom-checkbox-square .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        /* Стили для модального окна */
+        #success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #success-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 56px;
+            max-width: 640px;
+            width: 90%;
+            text-align: center;
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 40px 24px;
+            }
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -26,53 +117,42 @@
                     fontFamily: {
                         sans: ['Mulish', 'ui-sans-serif', 'system-ui', 'sans-serif']
                     },
-
                 }
             }
         }
     </script>
-
 </head>
 
-<body class="font-sans  text-[#01101B]">
-
+<body class="font-sans text-[#01101B]">
 
     <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <!-- Логотип и название -->
                 <a href="./" class="flex-shrink-0 flex items-center min-w-0">
-                    <img src="../../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
-                    <span
-                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
+                    <span class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
                         X НЕЗАВИСИМОСТЬ
                     </span>
                 </a>
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal" class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                    <a href="./loan.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="./tradein.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="./stocks.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="./contacts.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
                 <!-- Бургер только на маленьких экранах (<768px) -->
                 <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-button"
-                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                    <button id="mobile-menu-button" class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -87,12 +167,52 @@
                     наличии</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
             </div>
         </div>
     </header>
+
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown" class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
 
     <main class="bg-white py-[160px] px-4 md:px-8">
         <section class="container mx-auto">
@@ -102,24 +222,25 @@
                 специально для тех, кто ценит разумный выбор и комфорт.
             </p>
 
-            <!-- Увеличена высота формы: добавлен py-6 и увеличен gap-y-8 -->
+            <!-- Форма -->
             <form action="" data-car-form class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 py-6">
 
                 <!-- Модель -->
                 <div>
                     <label class="block text-[12px] font-bold text-[#282624] mb-2">МОДЕЛЬ*</label>
                     <div class="relative">
-                        <select name="model"
-                            class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
+                        <select name="model" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
                             <option value="">Выберите</option>
-                            <!-- можно добавить опции -->
+                            <option value="t55">T55</option>
+                            <option value="b70">B70</option>
+                            <option value="t77">T77</option>
+                            <option value="new_t90">Новый T90</option>
+                            <option value="new_b70">Новый B70</option>
                         </select>
                         <!-- Кастомная синяя стрелка -->
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
-                            <svg class="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
+                            <svg class="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </div>
                     </div>
@@ -128,41 +249,36 @@
                 <!-- Имя -->
                 <div>
                     <label class="block text-[12px] font-bold text-[#282624] mb-2">ИМЯ*</label>
-                    <input type="text" placeholder="Введите" data-validate="name"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" placeholder="Введите" data-validate="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Телефон -->
                 <div>
                     <label class="block text-[12px] font-bold text-[#282624] mb-2">ТЕЛЕФОН*</label>
-                    <input type="text" placeholder="+7 (XXX) XXX-XX-XX" data-validate="phone"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" placeholder="+7 (XXX) XXX-XX-XX" data-validate="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Email -->
                 <div>
                     <label class="block text-[12px] font-bold text-[#282624] mb-2">EMAIL</label>
-                    <input type="email" placeholder="Введите"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" placeholder="Введите" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <!-- Чекбокс согласия -->
                 <div class="md:col-span-2 flex items-start space-x-3 mt-2">
                     <label class="custom-checkbox-square">
                         <input type="checkbox" id="myCheckbox" data-validate="required" checked />
-                        <span class="checkmark">✓</span>
+                        <span class="checkmark"></span>
                     </label>
                     <span class="text-sm text-gray-300 leading-relaxed">
-                        Согласен с <a href="./privacypolicy.html"
-                            class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки
+                        Согласен с <a href="./privacypolicy.html" class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки
                             персональных данных</a>
                     </span>
                 </div>
 
                 <!-- Кнопка отправить -->
                 <div class="md:col-span-2 mt-8 mx-auto">
-                    <button type="submit"
-                        class="w-full md:w-auto px-6 py-3 bg-[#3366BD] text-white font-medium rounded-lg hover:bg-[#3366BD] transition flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full md:w-auto px-6 py-3 bg-[#3366BD] text-white font-medium rounded-lg hover:bg-[#2a55a0] transition flex items-center justify-center gap-2">
                         ОТПРАВИТЬ →
                     </button>
                 </div>
@@ -171,7 +287,23 @@
         </section>
     </main>
 
-    <footer class=" text-white bg-[#282624] pt-12 pb-8">
+    <!-- Модальное окно успешной отправки -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-gray-900 rounded-2xl p-14 w-full max-w-3xl text-center text-white">
+            <h2 class="text-2xl font-medium mb-4 leading-tight">
+                Ваша заявка успешно отправлена!
+            </h2>
+            <p class="text-base leading-relaxed mb-8">
+                Мы уже готовим для вас персональное предложение.<br>
+                Совсем скоро наш менеджер свяжется с вами, чтобы обсудить детали и помочь приблизить момент, когда ключи от нового автомобиля Bestune окажутся в ваших руках.
+            </p>
+            <button id="close-modal" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl w-full max-w-[300px] transition-colors duration-200">
+                Отлично
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-white bg-[#282624] pt-12 pb-8">
         <div class="w-full px-6 md:px-12 lg:px-24">
 
             <!-- Логотип -->
@@ -225,11 +357,129 @@
 
         </div>
     </footer>
+
     <script src="https://unpkg.com/imask@7.0.0/dist/imask.min.js"></script>
 
-    <script src="../../scripts/utils/validation.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('[data-car-form]');
+    const modal = document.getElementById('success-modal');
+    const closeButton = document.getElementById('close-modal');
 
+    // Маска для телефона
+    const phoneInput = document.querySelector('input[data-validate="phone"]');
+    if (phoneInput) {
+      const phoneMask = IMask(phoneInput, {
+        mask: '+{7} (000) 000-00-00'
+      });
+    }
 
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.querySelector('input[data-validate="name"]');
+        const phoneInput = document.querySelector('input[data-validate="phone"]');
+        const checkbox = document.querySelector('input[data-validate="required"]');
+
+        let isValid = true;
+
+        // Валидация имени
+        if (!nameInput.value.trim()) {
+          isValid = false;
+          nameInput.classList.add('border-red-500');
+        } else {
+          nameInput.classList.remove('border-red-500');
+        }
+
+        // Валидация телефона
+        if (!phoneInput.value || phoneInput.value.includes('_')) {
+          isValid = false;
+          phoneInput.classList.add('border-red-500');
+        } else {
+          phoneInput.classList.remove('border-red-500');
+        }
+
+        // Валидация чекбокса
+        if (!checkbox.checked) {
+          isValid = false;
+          checkbox.parentElement.classList.add('border-red-500');
+        } else {
+          checkbox.parentElement.classList.remove('border-red-500');
+        }
+
+        if (isValid) {
+          // Показываем модальное окно
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+
+          // Логика отправки (можно заменить на fetch)
+          console.log('Форма отправлена:', {
+            model: form.model.value,
+            name: nameInput.value,
+            phone: phoneInput.value,
+            email: form.querySelector('input[type="email"]').value
+          });
+
+          // Очищаем форму
+          form.reset();
+          // Сбрасываем маску телефона
+          if (phoneInput) {
+            phoneInput.value = '';
+          }
+          // Сбрасываем стили ошибок
+          nameInput.classList.remove('border-red-500');
+          phoneInput.classList.remove('border-red-500');
+          checkbox.parentElement.classList.remove('border-red-500');
+        }
+      });
+    }
+
+    // Закрытие модального окна
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    if (closeButton) {
+      closeButton.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Мобильное меню
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Выпадающее меню "Модели"
+    const modelsDropdown = document.getElementById('models-dropdown');
+    const modelsButton = document.querySelector('[data-open-modal="models-modal"]');
+    if (modelsButton && modelsDropdown) {
+      modelsButton.addEventListener('click', () => {
+        modelsDropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!modelsButton.contains(e.target) && !modelsDropdown.contains(e.target)) {
+          modelsDropdown.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 

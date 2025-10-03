@@ -4,15 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>О компании</title>
+    <title>Автомобили в наличии — Сравнение</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -24,79 +21,55 @@
                     },
                     fontFamily: {
                         sans: ['Mulish', 'ui-sans-serif', 'system-ui', 'sans-serif']
-                    },
-
+                    }
                 }
             }
         }
     </script>
-
-    <link rel="stylesheet" href="../styles/slider.css">
-
 </head>
 
 <body class="font-sans text-[#01101B]">
 
-
     <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <!-- Логотип и название -->
                 <a href="./" class="flex-shrink-0 flex items-center min-w-0">
                     <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
-                    <span
-                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
+                    <span class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
                         X НЕЗАВИСИМОСТЬ
                     </span>
                 </a>
 
-                <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <p data-open-modal="models-modal"
-                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
-                        Модели</p>
-                    <a href="./avaliableauto.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
-                        наличии</a>
-                    <a href="./loan.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="./tradein.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="./stocks.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="./contacts.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                    <p data-open-modal="models-modal" class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</p>
+                    <a href="./avaliableauto.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в наличии</a>
+                    <a href="./loan.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="./tradein.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="./stocks.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="./contacts.html" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
-                <!-- Бургер только на маленьких экранах (<768px) -->
                 <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-button"
-                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
+                    <button id="mobile-menu-button" class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Мобильное меню -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
             <div class="px-4 pt-2 pb-4 space-y-1">
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
-                    наличии</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в наличии</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
             </div>
         </div>
     </header>
-
 
     <!-- Dropdown для "Модели" -->
     <div id="models-dropdown"
@@ -140,291 +113,520 @@
         </div>
     </div>
 
-    <main>
-        <main class="container  mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-8">
 
-            <!-- Заголовок -->
-            <div class="text-center mb-8">
-                <h1 class="text-2xl font-bold mb-2">Автомобили в наличии</h1>
-                <h2 class="text-xl text-gray-700">Сравнение</h2>
-            </div>
+        <!-- Заголовок -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold mb-2">Автомобили в наличии</h1>
+            <h2 class="text-xl text-gray-700">Сравнение</h2>
+        </div>
 
-            <!-- Назад к списку -->
-            <div class="mb-6 flex items-center text-sm text-blue-600 cursor-pointer">
-                <i class="fas fa-arrow-left mr-2"></i>
-                <span>Назад к списку</span>
-            </div>
+        <!-- Назад к списку -->
+        <div class="mb-6 flex items-center text-sm text-blue-600 cursor-pointer">
+            <i class="fas fa-arrow-left mr-2"></i>
+            <span>Назад к списку</span>
+        </div>
 
-            <!-- Карточки автомобилей -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                <!-- Карточка 1 -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100">
-                    <img src="https://via.placeholder.com/300x200?text=Car+Image" alt="T77"
-                        class="w-full h-40 object-contain mb-4" />
-                    <h3 class="font-bold text-sm mb-2">T77<br><span class="text-xs text-gray-600">PRESTIGE PLUS (DCT)
-                            (t77), 2023</span></h3>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-tachometer-alt mr-1"></i> 1.5 160 л.с.
+        <!-- Карточки автомобилей -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <!-- Карточка 1 -->
+            <div class="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col">
+                <div class="p-3 sm:p-4 flex-1 flex flex-col">
+                    <div class="mb-3 sm:mb-4">
+                        <div class="w-full h-32 sm:h-40 md:h-48 rounded-md bg-gray-50 flex items-center justify-center">
+                            <div class="text-gray-400 text-sm">Изображение автомобиля</div>
+                        </div>
                     </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-cogs mr-1"></i> 7DCT
+                    <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1">177</h3>
+                    <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2">
+                        PRESTIGE PLUS (DCT) (877), 2023
+                    </p>
+                    <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
+                        <div class="flex items-center">
+                            <span>1.5.180 л.с.</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span>№ 70СТ</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span>№ Перирнев (39/0)</span>
+                        </div>
                     </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-2">
-                        <i class="fas fa-car mr-1"></i> Передний (2WD)
-                    </div>
-                    <div class="font-bold text-lg mb-1">2 036 000 ₽</div>
-                    <div class="text-xs text-gray-500 mb-2">Платеж от 11 444 ₽/мес.</div>
-                    <div class="flex justify-between items-center text-xs text-gray-500">
-                        <span>Береговой пр., 49с3, Москва</span>
-                        <i class="fas fa-car-side text-blue-500"></i>
-                    </div>
-                </div>
-
-                <!-- Карточка 2 -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100">
-                    <img src="https://via.placeholder.com/300x200?text=Car+Image" alt="T77"
-                        class="w-full h-40 object-contain mb-4" />
-                    <h3 class="font-bold text-sm mb-2">T77<br><span class="text-xs text-gray-600">PRESTIGE PLUS (DCT)
-                            (t77), 2023</span></h3>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-tachometer-alt mr-1"></i> 1.5 160 л.с.
-                    </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-cogs mr-1"></i> 7DCT
-                    </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-2">
-                        <i class="fas fa-car mr-1"></i> Передний (2WD)
-                    </div>
-                    <div class="font-bold text-lg mb-1">2 036 000 ₽</div>
-                    <div class="text-xs text-gray-500 mb-2">Платеж от 11 444 ₽/мес.</div>
-                    <div class="flex justify-between items-center text-xs text-gray-500">
-                        <span>Береговой пр., 49с3, Москва</span>
-                        <i class="fas fa-car-side text-blue-500"></i>
-                    </div>
-                </div>
-
-                <!-- Карточка 3 -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100">
-                    <img src="https://via.placeholder.com/300x200?text=Car+Image" alt="T77"
-                        class="w-full h-40 object-contain mb-4" />
-                    <h3 class="font-bold text-sm mb-2">T77<br><span class="text-xs text-gray-600">PRESTIGE PLUS (DCT)
-                            (t77), 2023</span></h3>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-tachometer-alt mr-1"></i> 1.5 160 л.с.
-                    </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-1">
-                        <i class="fas fa-cogs mr-1"></i> 7DCT
-                    </div>
-                    <div class="flex items-center text-xs text-gray-600 mb-2">
-                        <i class="fas fa-car mr-1"></i> Передний (2WD)
-                    </div>
-                    <div class="font-bold text-lg mb-1">2 036 000 ₽</div>
-                    <div class="text-xs text-gray-500 mb-2">Платеж от 11 444 ₽/мес.</div>
-                    <div class="flex justify-between items-center text-xs text-gray-500">
-                        <span>Береговой пр., 49с3, Москва</span>
-                        <i class="fas fa-car-side text-blue-500"></i>
+                    <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
+                    <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4">Платеж от 11 444 ₽/месяц</div>
+                    <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
+                        <div class="flex items-center flex-1 min-w-0">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0 text-lg"></i>
+                            <span class="truncate">Береговой пр., 49с3, Москва</span>
+                        </div>
+                        <img src="../assets/scales-light.svg" alt="Сравнить" class="w-5 h-5">
                     </div>
                 </div>
             </div>
 
-            <!-- Основное сравнение -->
-            <div class="mb-8">
-                <h2 class="text-xl font-bold mb-4 border-b pb-2">Основное</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Колонка 1 -->
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Двигатель</span>
-                            <span>1.5 160 л.с.</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Трансмиссия</span>
-                            <span>7DCT</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Комплектация</span>
-                            <span>PRESTIGE PLUS (DCT) (t77)</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Год выпуска</span>
-                            <span>2023</span>
+            <!-- Карточка 2 -->
+            <div class="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col">
+                <div class="p-3 sm:p-4 flex-1 flex flex-col">
+                    <div class="mb-3 sm:mb-4">
+                        <div class="w-full h-32 sm:h-40 md:h-48 rounded-md bg-gray-50 flex items-center justify-center">
+                            <div class="text-gray-400 text-sm">Изображение автомобиля</div>
                         </div>
                     </div>
-
-                    <!-- Колонка 2 -->
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Двигатель</span>
-                            <span>1.5 160 л.с.</span>
+                    <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1">177</h3>
+                    <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2">
+                        PRESTIGE PLUS (DCT) (877), 2023
+                    </p>
+                    <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
+                        <div class="flex items-center">
+                            <span>1.5.180 л.с.</span>
                         </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Трансмиссия</span>
-                            <span>7DCT</span>
+                        <div class="flex items-center">
+                            <span>№ 70СТ</span>
                         </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Комплектация</span>
-                            <span>COMFORT 1.5 (DCT) (t55)</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Год выпуска</span>
-                            <span>2023</span>
+                        <div class="flex items-center">
+                            <span>№ Перирнев (39/0)</span>
                         </div>
                     </div>
-
-                    <!-- Колонка 3 -->
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Двигатель</span>
-                            <span>1.5 160 л.с.</span>
+                    <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
+                    <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4">Платеж от 11 444 ₽/месяц</div>
+                    <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
+                        <div class="flex items-center flex-1 min-w-0">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0 text-lg"></i>
+                            <span class="truncate">Береговой пр., 49с3, Москва</span>
                         </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Трансмиссия</span>
-                            <span>7DCT</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Комплектация</span>
-                            <span>COMFORT 1.5 (DCT) (t55)</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-600">Год выпуска</span>
-                            <span>2023</span>
-                        </div>
+                        <img src="../assets/scales-light.svg" alt="Сравнить" class="w-5 h-5">
                     </div>
                 </div>
             </div>
 
-            <!-- Стандартное оборудование / Технические характеристики -->
-            <div class="mb-8">
-                <div class="flex border-b pb-2 mb-4">
-                    <h3 class="font-bold mr-8">Стандартное оборудование</h3>
-                    <h3 class="font-bold">Технические характеристики</h3>
-                </div>
-
-                <!-- Экстерьер -->
-                <div class="mb-4">
-                    <div class="flex justify-between items-center py-2 border-b">
-                        <span class="font-medium">Экстерьер</span>
-                        <span>—</span>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            <span class="text-sm">Светодиодные (LED) фары</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            <span class="text-sm">Светодиодные (LED) фары</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            <span class="text-sm">Светодиодные (LED) фары</span>
+            <!-- Карточка 3 -->
+            <div class="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col">
+                <div class="p-3 sm:p-4 flex-1 flex flex-col">
+                    <div class="mb-3 sm:mb-4">
+                        <div class="w-full h-32 sm:h-40 md:h-48 rounded-md bg-gray-50 flex items-center justify-center">
+                            <div class="text-gray-400 text-sm">Изображение автомобиля</div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                    <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1">177</h3>
+                    <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2">
+                        PRESTIGE PLUS (DCT) (877), 2023
+                    </p>
+                    <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
                         <div class="flex items-center">
-                            <span class="text-sm">Светодиодные (LED) задние фонари</span>
-                            <span class="ml-auto">—</span>
+                            <span>1.5.180 л.с.</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-check text-green-500 mr-2"></i>
-                            <span class="text-sm">Светодиодные (LED) задние фонари</span>
+                            <span>№ 70СТ</span>
                         </div>
                         <div class="flex items-center">
-                            <span class="text-sm">Светодиодные (LED) задние фонари</span>
-                            <span class="ml-auto">—</span>
+                            <span>№ Перирнев (39/0)</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Аккордеоны -->
-                <div class="space-y-2">
-                    <!-- Интерьер -->
-                    <div class="border-t border-gray-300">
-                        <button class="w-full flex justify-between items-center py-2 text-left font-medium"
-                            onclick="toggleAccordion(this)">
-                            Интерьер
-                            <i class="fas fa-plus text-sm"></i>
-                        </button>
-                    </div>
-                    <!-- Безопасность -->
-                    <div class="border-t border-gray-300">
-                        <button class="w-full flex justify-between items-center py-2 text-left font-medium"
-                            onclick="toggleAccordion(this)">
-                            Безопасность
-                            <i class="fas fa-plus text-sm"></i>
-                        </button>
-                    </div>
-                    <!-- Комфорт -->
-                    <div class="border-t border-gray-300">
-                        <button class="w-full flex justify-between items-center py-2 text-left font-medium"
-                            onclick="toggleAccordion(this)">
-                            Комфорт
-                            <i class="fas fa-plus text-sm"></i>
-                        </button>
-                    </div>
-                    <!-- Технологии -->
-                    <div class="border-t border-gray-300">
-                        <button class="w-full flex justify-between items-center py-2 text-left font-medium"
-                            onclick="toggleAccordion(this)">
-                            Технологии
-                            <i class="fas fa-plus text-sm"></i>
-                        </button>
-                    </div>
-                    <!-- Мультимедиа -->
-                    <div class="border-t border-gray-300">
-                        <button class="w-full flex justify-between items-center py-2 text-left font-medium"
-                            onclick="toggleAccordion(this)">
-                            Мультимедиа
-                            <i class="fas fa-plus text-sm"></i>
-                        </button>
+                    <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
+                    <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4">Платеж от 11 444 ₽/месяц</div>
+                    <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
+                        <div class="flex items-center flex-1 min-w-0">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0 text-lg"></i>
+                            <span class="truncate">Береговой пр., 49с3, Москва</span>
+                        </div>
+                        <img src="../assets/scales-light.svg" alt="Сравнить" class="w-5 h-5">
                     </div>
                 </div>
             </div>
 
-        </main>
+                        <div class="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col">
+                <div class="p-3 sm:p-4 flex-1 flex flex-col">
+                    <div class="mb-3 sm:mb-4">
+                        <div class="w-full h-32 sm:h-40 md:h-48 rounded-md bg-gray-50 flex items-center justify-center">
+                            <div class="text-gray-400 text-sm">Изображение автомобиля</div>
+                        </div>
+                    </div>
+                    <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1">177</h3>
+                    <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2">
+                        PRESTIGE PLUS (DCT) (877), 2023
+                    </p>
+                    <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
+                        <div class="flex items-center">
+                            <span>1.5.180 л.с.</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span>№ 70СТ</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span>№ Перирнев (39/0)</span>
+                        </div>
+                    </div>
+                    <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1">2 036 000 ₽</div>
+                    <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4">Платеж от 11 444 ₽/месяц</div>
+                    <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
+                        <div class="flex items-center flex-1 min-w-0">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0 text-lg"></i>
+                            <span class="truncate">Береговой пр., 49с3, Москва</span>
+                        </div>
+                        <img src="../assets/scales-light.svg" alt="Сравнить" class="w-5 h-5">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <script>
-            function toggleAccordion(button) {
-                const icon = button.querySelector('i');
-                const isExpanded = icon.classList.contains('fa-minus');
+        <!-- Таблица сравнения характеристик -->
+        <div class="space-y-2">
 
-                // Закрываем все
-                document.querySelectorAll('.accordion-content').forEach(el => {
-                    el.classList.add('hidden');
-                });
-                document.querySelectorAll('button i').forEach(i => {
-                    i.classList.replace('fa-minus', 'fa-plus');
-                });
+            <!-- Основное -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Основное
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Двигатель</div>
+                        <div>1.5 180 л.с.</div>
+                        <div>1.5 180 л.с.</div>
+                        <div>1.5 180 л.с.</div>
+                        
+                        <div class="text-gray-600">Трансмиссия</div>
+                        <div>15 180 л.с.</div>
+                        <div>15 180 л.с.</div>
+                        <div>15 180 л.с.</div>
+                        
+                        <div class="text-gray-600">Мощность</div>
+                        <div>1.5 180 л.с.</div>
+                        <div>1.5 180 л.с.</div>
+                        <div>1.5 180 л.с.</div>
+                        
+                        <div class="text-gray-600">Код</div>
+                        <div>70СТ</div>
+                        <div>70СТ</div>
+                        <div>70СТ</div>
+                        
+                        <div class="text-gray-600">Комплектация</div>
+                        <div>PRESTIGE PLUS (DCT) (877)</div>
+                        <div>PRESTIGE PLUS (DCT) (877)</div>
+                        <div>PRESTIGE PLUS (DCT) (877)</div>
+                        
+                        <div class="text-gray-600">Год выпуска</div>
+                        <div>2023</div>
+                        <div>2022</div>
+                        <div>2023</div>
+                    </div>
+                </div>
+            </div>
 
-                if (!isExpanded) {
-                    // Открываем текущий
-                    icon.classList.replace('fa-plus', 'fa-minus');
-                    let next = button.nextElementSibling;
-                    if (!next || !next.classList.contains('accordion-content')) {
-                        next = document.createElement('div');
-                        next.className = 'accordion-content bg-gray-50 p-4 mt-2';
-                        next.innerHTML = '<p class="text-sm text-gray-600">Детали для этой категории пока не доступны.</p>';
-                        button.parentNode.insertBefore(next, button.nextSibling);
-                    }
-                    next.classList.remove('hidden');
-                }
-            }
-        </script>
+            <!-- Двигатель -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Двигатель
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Тип двигателя</div>
+                        <div>Бензиновый</div>
+                        <div>Бензиновый</div>
+                        <div>Бензиновый</div>
+                        
+                        <div class="text-gray-600">Объем</div>
+                        <div>1.5 л</div>
+                        <div>1.5 л</div>
+                        <div>1.5 л</div>
+                        
+                        <div class="text-gray-600">Мощность</div>
+                        <div>180 л.с.</div>
+                        <div>180 л.с.</div>
+                        <div>180 л.с.</div>
+                        
+                        <div class="text-gray-600">Крутящий момент</div>
+                        <div>270 Н·м</div>
+                        <div>270 Н·м</div>
+                        <div>270 Н·м</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Трансмиссия -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Трансмиссия
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Тип</div>
+                        <div>Автоматическая</div>
+                        <div>Автоматическая</div>
+                        <div>Автоматическая</div>
+                        
+                        <div class="text-gray-600">Количество передач</div>
+                        <div>7</div>
+                        <div>7</div>
+                        <div>7</div>
+                        
+                        <div class="text-gray-600">Привод</div>
+                        <div>Передний</div>
+                        <div>Передний</div>
+                        <div>Передний</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Стандартное оборудование -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Стандартное оборудование
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Экстерьер</div>
+                        <div>Светодиодные (LED) фары</div>
+                        <div>Светодиодные (LED) фары</div>
+                        <div>Светодиодные (LED) фары</div>
+                        
+                        <div class="text-gray-600">Задние фонари</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Экстерьер -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Экстерьер
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Тип фар</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                        
+                        <div class="text-gray-600">Задние фонари</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                        <div>Светодиодные (LED)</div>
+                        
+                        <div class="text-gray-600">Диски</div>
+                        <div>Легкосплавные 17"</div>
+                        <div>Легкосплавные 17"</div>
+                        <div>Легкосплавные 17"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерьер -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Интерьер
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Отделка салона</div>
+                        <div>Кожа</div>
+                        <div>Кожа</div>
+                        <div>Кожа</div>
+                        
+                        <div class="text-gray-600">Климат-контроль</div>
+                        <div>2-зонный</div>
+                        <div>2-зонный</div>
+                        <div>2-зонный</div>
+                        
+                        <div class="text-gray-600">Мультимедийная система</div>
+                        <div>Сенсорный экран 8"</div>
+                        <div>Сенсорный экран 8"</div>
+                        <div>Сенсорный экран 8"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Безопасность -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Безопасность
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Подушки безопасности</div>
+                        <div>6</div>
+                        <div>6</div>
+                        <div>6</div>
+                        
+                        <div class="text-gray-600">ABS</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        
+                        <div class="text-gray-600">ESP</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        
+                        <div class="text-gray-600">Камера заднего вида</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Комфорт -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Комфорт
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Климат-контроль</div>
+                        <div>2-зонный</div>
+                        <div>2-зонный</div>
+                        <div>2-зонный</div>
+                        
+                        <div class="text-gray-600">Подогрев сидений</div>
+                        <div>Передние</div>
+                        <div>Передние</div>
+                        <div>Передние</div>
+                        
+                        <div class="text-gray-600">Электропривод сидений</div>
+                        <div>Водительское</div>
+                        <div>Водительское</div>
+                        <div>Водительское</div>
+                        
+                        <div class="text-gray-600">Круиз-контроль</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Технологии -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Технологии
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Мультимедиа</div>
+                        <div>Сенсорный экран 8"</div>
+                        <div>Сенсорный экран 8"</div>
+                        <div>Сенсорный экран 8"</div>
+                        
+                        <div class="text-gray-600">Apple CarPlay / Android Auto</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        
+                        <div class="text-gray-600">Bluetooth</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        
+                        <div class="text-gray-600">USB-порты</div>
+                        <div>2</div>
+                        <div>2</div>
+                        <div>2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Мультимедиа -->
+            <div class="border-t border-gray-300">
+                <button class="w-full flex justify-between items-center py-4 text-left font-medium" onclick="toggleAccordion(this)">
+                    Мультимедиа
+                    <i class="fas fa-plus text-sm"></i>
+                </button>
+                <div class="accordion-content hidden bg-gray-50 p-4 mt-2">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div class="font-medium text-gray-700">Характеристика</div>
+                        <div class="font-medium text-gray-700">Автомобиль 1</div>
+                        <div class="font-medium text-gray-700">Автомобиль 2</div>
+                        <div class="font-medium text-gray-700">Автомобиль 3</div>
+                        
+                        <div class="text-gray-600">Экран</div>
+                        <div>8" сенсорный</div>
+                        <div>8" сенсорный</div>
+                        <div>8" сенсорный</div>
+                        
+                        <div class="text-gray-600">Навигация</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        
+                        <div class="text-gray-600">Аудиосистема</div>
+                        <div>6 динамиков</div>
+                        <div>6 динамиков</div>
+                        <div>6 динамиков</div>
+                        
+                        <div class="text-gray-600">Apple CarPlay / Android Auto</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                        <div>✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <footer class=" bg-[#282624] text-white pt-12 pb-8">
+    <footer class="bg-[#282624] text-white pt-12 pb-8">
         <div class="w-full px-6 md:px-12 lg:px-24">
-
-            <!-- Логотип -->
             <div class="mb-10 flex items-center space-x-2">
                 <img src="../assets/common/Bestune (1).svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
                 <span class="text-lg font-medium">× НЕЗАВИСИМОСТЬ</span>
             </div>
-
-            <!-- Основной контент: 3 колонки -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-
-                <!-- Колонка "МОДЕЛИ" -->
                 <div>
                     <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Модели</h3>
                     <ul class="space-y-3 text-sm">
@@ -435,8 +637,6 @@
                         <li><a href="#" class="hover:text-gray-300">Новый B70</a></li>
                     </ul>
                 </div>
-
-                <!-- Колонка "ПОКУПАТЕЛЯМ" -->
                 <div>
                     <h3 class="text-sm font-semibold uppercase tracking-wider mb-6">Покупателям</h3>
                     <ul class="space-y-3 text-sm">
@@ -447,7 +647,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="mb-8 text-xs leading-relaxed">
                 Производитель сохраняет за собой исключительное право в любое время вносить дополнения, изменения,
                 обновления в информацию о параметрах продукта, конфигурации, материалы, цвета и в другую информацию о
@@ -458,31 +657,35 @@
                 актуальных ценах на продукцию BESTUNE и наличии автомобилей обращайтесь к официальным дилерам. Не
                 является публичной офертой.
             </div>
-
             <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs space-y-4 sm:space-y-0">
                 <a href="#" class="hover:text-gray-300">Политика конфиденциальности</a>
                 <a href="#" class="hover:text-gray-300">Контакты</a>
             </div>
-
         </div>
     </footer>
+
     <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        function openCarDetails(carId) {
+            console.log('Открыть детали автомобиля:', carId);
+        }
+
+        function toggleAccordion(button) {
+            const icon = button.querySelector('i');
+            const content = button.nextElementSibling;
+
+            if (content.classList.contains('hidden')) {
+                icon.classList.replace('fa-plus', 'fa-minus');
+                content.classList.remove('hidden');
+            } else {
+                icon.classList.replace('fa-minus', 'fa-plus');
+                content.classList.add('hidden');
+            }
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../scripts/modules/iterations/car.js"></script>
-    <script src="../scripts/components/sliders/bannerSlider.js"></script>
-    <script src="../scripts/components/modals/dialog/dropModelsDown.js"></script>
-    <script src="../scripts/modules/show/showCar.js"></script>
-    <script src="../scripts/components/sliders/range/creditBlock.js" type="module"></script>
-
-
-
-
 
 </body>
 

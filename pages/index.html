@@ -38,64 +38,61 @@
 <body class="font-sans bg-[#282624] text-[#01101B]">
 
 
-    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <!-- Логотип и название -->
-                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
-                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-8 w-auto flex-shrink-0" />
-                    <span
-                        class="ml-2 font-semibold text-gray-700 text-base whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] md:max-w-none">
-                        X НЕЗАВИСИМОСТЬ
-                    </span>
-                </a>
+<header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <!-- Логотип и название -->
+            <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-6 md:h-8 w-auto flex-shrink-0" />
+                <span
+                    class="ml-2 font-semibold text-gray-700 text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis md:max-w-[140px] md:max-w-none">
+                    X НЕЗАВИСИМОСТЬ
+                </span>
+            </a>
 
-                <!-- Меню для средних и больших экранов -->
-                <nav class="hidden lg:flex items-center space-x-6">
-                    <p data-open-modal="models-modal"
-                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
-                        Модели</p>
-                    <a href="./avaliableauto.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
-                        наличии</a>
-                    <a href="./loan.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="./tradein.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="./stocks.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="./contacts.html"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
-                </nav>
-
-                <!-- Бургер только на маленьких экранах (<768px) -->
-                <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-button"
-                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Мобильное меню -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
-            <div class="px-4 pt-2 pb-4 space-y-1">
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Модели</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в
+            <nav class="hidden lg:flex items-center space-x-6">
+                <p data-open-modal="models-modal"
+                    class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                    Модели</p>
+                <a href="./avaliableauto.html"
+                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                     наличии</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
-                <a href="#"
-                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
-                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+                <a href="./loan.html"
+                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                <a href="./tradein.html"
+                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                <a href="./stocks.html"
+                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                <a href="./contacts.html"
+                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+            </nav>
+
+            <!-- Бургер только на маленьких экранах (<1024px) -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-button"
+                    class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </div>
-    </header>
+    </div>
+
+    <!-- Мобильное меню с абсолютным позиционированием -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+        <div class="px-4 pt-2 pb-4 space-y-1">
+            <p data-open-modal="models-modal" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 cursor-pointer">Модели</p>
+            <a href="./avaliableauto.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в наличии</a>
+            <a href="./loan.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+            <a href="./tradein.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+            <a href="./stocks.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+            <a href="./contacts.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+        </div>
+    </div>
+</header>
 
 
     <!-- Dropdown для "Модели" -->
@@ -149,7 +146,7 @@
                     <div class="swiper-slide">
                         <section
                             class="relative w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[800px] overflow-hidden bg-cover bg-center"
-                            style="background-image: url(../assets/banners/6fa9c246c5fe85fbed84b6e3754f73e356f48fef.jpg);">
+                            style="background-image: url(../assets/banners/6fa9c246c5fe85fbed84b6e3754f73e356f48fef.jpg); background-position: center 60%;">
                             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
                             <div
@@ -163,23 +160,23 @@
                                     Bestune объединяет современный дизайн, продуманный комфорт и передовые технологии.
                                     B70 и T90 созданы для тех, кто выбирает динамику и надежность в каждой детали.
                                 </p>
-                                <button
+                                <a href="./loan.html"
                                     class="bg-[#3366BD] hover:bg-[#3366BD] px-6 py-3 rounded-lg font-medium transition-colors">
                                     Рассчитать авто в кредит
-                                </button>
+                                </a>
                             </div>
 
                             <div class="absolute left-4 top-4 lg:hidden text-white z-10 w-[calc(100%-2rem)] sm:w-auto">
                                 <p class="text-[10px] sm:text-xs font-bold uppercase tracking-wider opacity-90">
                                     Новые Bestune B70 и Bestune T90
                                 </p>
-                                <p class="text-lg sm:text-xl md:text-2xl font-bold mt-1">
+                                <p class="text-lg sm:text-xl md:text-2xl font-bold mt-1 mb-4">
                                     От 1 849 990 ₽
                                 </p>
-                                <button
-                                    class="bg-[#3366BD] hover:bg-[#3366BD] px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-colors mt-4 md:mt-6">
+                                <a href="./loan.html"
+                                    class="bg-[#3366BD] hover:bg-[#3366BD] px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-colors mt-6 md:mt-6">
                                     Рассчитать авто в кредит
-                                </button>
+                                </a>
                             </div>
                         </section>
                     </div>
@@ -188,7 +185,7 @@
                     <div class="swiper-slide">
                         <section
                             class="relative w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[800px] overflow-hidden bg-cover bg-center"
-                            style="background-image: url('../assets/banners/47d1a31e8261ce6d26f7153d4824cdc52ad1211b.jpg')">
+                            style="background-image: url('../assets/banners/47d1a31e8261ce6d26f7153d4824cdc52ad1211b.jpg'); background-position: center 70%;">
 
                             <div
                                 class="absolute left-4 sm:left-10 top-1/2 transform -translate-y-1/2 text-white z-10 max-w-md">
@@ -203,10 +200,10 @@
                                         уверенность
                                         на дороге и яркие эмоции от вождения.
                                     </p>
-                                    <button
+                                    <a href="./loan.html"
                                         class="bg-[#3366BD] hover:bg-[#3366BD] px-4 py-2 rounded-lg font-medium transition-colors">
                                         Рассчитать авто в кредит
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <div class="hidden lg:block p-6 rounded-lg bg-black bg-opacity-70">
@@ -220,10 +217,10 @@
                                         уверенность
                                         на дороге и яркие эмоции от вождения.
                                     </p>
-                                    <button
+                                    <a href="./loan.html"
                                         class="bg-[#3366BD] hover:bg-[#3366BD] px-6 py-3 rounded-lg font-medium transition-colors">
                                         Рассчитать авто в кредит
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </section>
@@ -232,7 +229,7 @@
                     <div class="swiper-slide">
                         <section
                             class="relative w-full h-[350px] sm:h-[450px] md:h-[550px] lg:h-[800px] overflow-hidden bg-cover bg-center"
-                            style="background-image: url('../assets/banners/97f420af310f262023043b8de37f3cfda48b7dae.jpg')">
+                            style="background-image: url('../assets/banners/97f420af310f262023043b8de37f3cfda48b7dae.jpg'); background-position: left center 70%;">
                             <div class="absolute inset-0 bg-black bg-opacity-30"></div>
 
                             <div
@@ -246,10 +243,10 @@
                                         Это больше, чем кроссовер. Новый T90 — это новые впечатления, свобода движения и
                                         комфорт, который сопровождает вас в каждой поездке.
                                     </p>
-                                    <button
+                                    <a href="./loan.html"
                                         class="bg-[#3366BD] hover:bg-[#3366BD] px-4 py-2 rounded-lg font-medium transition-colors">
                                         Рассчитать авто в кредит
-                                    </button>
+                                    </a>
                                 </div>
 
                                 <div class="hidden lg:block p-6 rounded-lg bg-black bg-opacity-70">
@@ -261,10 +258,10 @@
                                         Это больше, чем кроссовер. Новый T90 — это новые впечатления, свобода движения и
                                         комфорт, который сопровождает вас в каждой поездке.
                                     </p>
-                                    <button
+                                    <a href="./loan.html"
                                         class="bg-[#3366BD] hover:bg-[#3366BD] px-6 py-3 rounded-lg font-medium transition-colors">
                                         Рассчитать авто в кредит
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </section>
@@ -272,10 +269,7 @@
 
                 </div>
 
-                <!-- Кнопки навигации (твои классы сохранены) -->
-
-
-                <!-- Пагинация (Swiper сам заполнит её) -->
+                <!-- Пагинация -->
                 <div
                     class="carousel-pagination absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
                 </div>
@@ -394,7 +388,7 @@
                             </p>
                         </div>
                         <div class="px-6 pb-6">
-                            <button
+                            <a href="./forms/directdiscount.html"
                                 class="inline-flex items-center justify-between w-full py-2 px-4 bg-[#3366BD] text-white font-medium rounded-lg transition-colors duration-300">
                                 ПОДРОБНЕЕ
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
@@ -402,7 +396,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -423,7 +417,7 @@
                             </p>
                         </div>
                         <div class="px-6 pb-6">
-                            <button
+                            <a href="./forms/loan.html"
                                 class="inline-flex items-center justify-between w-full py-2 px-4 bg-[#3366BD] text-white font-medium rounded-lg transition-colors duration-300">
                                 ПОДРОБНЕЕ
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
@@ -431,7 +425,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -448,7 +442,7 @@
                             </p>
                         </div>
                         <div class="px-6 pb-6">
-                            <button
+                            <a href="./forms/tradein.html"
                                 class="inline-flex items-center justify-between w-full py-2 px-4 bg-[#3366BD] text-white font-medium rounded-lg transition-colors duration-300">
                                 ПОДРОБНЕЕ
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
@@ -456,7 +450,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
@@ -644,46 +638,46 @@
 
             </div>
         </section>
-<section>
-    <div class="relative w-full h-[800px] overflow-hidden bg-cover bg-center"
-        style="background-image: url('../assets/common/ce610be9824a05d4b4b7d6459feb210382493e3e.jpg')">
-        <!-- Полупрозрачный оверлей -->
-        <div class="absolute inset-0 bg-black/50"></div>
+        <section>
+            <div class="relative w-full h-[800px] overflow-hidden bg-cover bg-center"
+                style="background-image: url('../assets/common/ce610be9824a05d4b4b7d6459feb210382493e3e.jpg')">
+                <!-- Полупрозрачный оверлей -->
+                <div class="absolute inset-0 bg-black/50"></div>
 
-        <!-- Контент слева -->
-        <div
-            class="absolute top-8 left-6 sm:top-10 sm:left-10 md:top-12 md:left-12 lg:top-16 lg:left-16 z-10 text-white max-w-5xl">
-            <!-- Заголовок -->
-            <h1 class="text-2xl sm:text-3xl md:text-[40px] font-light leading-tight mb-4">
-                Независимость — официальный дилер BESTUNE
-            </h1>
+                <!-- Контент слева -->
+                <div
+                    class="absolute top-8 left-6 sm:top-10 sm:left-10 md:top-12 md:left-12 lg:top-16 lg:left-16 z-10 text-white max-w-5xl">
+                    <!-- Заголовок -->
+                    <h1 class="text-2xl sm:text-3xl md:text-[40px] font-light leading-tight mb-4">
+                        Независимость — официальный дилер BESTUNE
+                    </h1>
 
-            <!-- Описание — 4 абзаца -->
-            <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
-                «Независимость» — это официальный дилер, предлагающий автомобили BESTUNE. Каждая машина
-                сопровождается заводской гарантией и полным пакетом сервисной поддержки. Наши клиенты ценят нас
-                за прозрачные условия покупки, честную оценку автомобилей по программе трейд-ин, выгодные
-                финансовые решения и профессиональное обслуживание с использованием оригинальных запчастей.
-            </p>
+                    <!-- Описание — 4 абзаца -->
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        «Независимость» — это официальный дилер, предлагающий автомобили BESTUNE. Каждая машина
+                        сопровождается заводской гарантией и полным пакетом сервисной поддержки. Наши клиенты ценят нас
+                        за прозрачные условия покупки, честную оценку автомобилей по программе трейд-ин, выгодные
+                        финансовые решения и профессиональное обслуживание с использованием оригинальных запчастей.
+                    </p>
 
-            <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
-                В «Независимости» покупка BESTUNE — это уверенность на каждом километре. Мы создаём комфортные
-                условия на всех этапах владения автомобилем: от быстрой записи на тест-драйв и индивидуального
-                подбора комплектации до оформления кредита, рассрочки или страхования.
-            </p>
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        В «Независимости» покупка BESTUNE — это уверенность на каждом километре. Мы создаём комфортные
+                        условия на всех этапах владения автомобилем: от быстрой записи на тест-драйв и индивидуального
+                        подбора комплектации до оформления кредита, рассрочки или страхования.
+                    </p>
 
-            <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
-                Наши специалисты помогут вам выгодно обменять автомобиль по трейд-ин, оформить сделку
-                максимально удобно и предложат отличные условия на сервисное обслуживание.
-            </p>
+                    <p class="text-sm sm:text-base md:text-[18px] mb-4 leading-relaxed">
+                        Наши специалисты помогут вам выгодно обменять автомобиль по трейд-ин, оформить сделку
+                        максимально удобно и предложат отличные условия на сервисное обслуживание.
+                    </p>
 
-            <p class="text-sm sm:text-base md:text-[18px] leading-relaxed">
-                Приходите в автосалон «Независимость» или оставьте заявку онлайн — мы свяжемся с вами в удобное
-                время и подготовим персональное предложение.
-            </p>
-        </div>
-    </div>
-</section>
+                    <p class="text-sm sm:text-base md:text-[18px] leading-relaxed">
+                        Приходите в автосалон «Независимость» или оставьте заявку онлайн — мы свяжемся с вами в удобное
+                        время и подготовим персональное предложение.
+                    </p>
+                </div>
+            </div>
+        </section>
 
 
     </main>
@@ -742,13 +736,30 @@
 
         </div>
     </footer>
-    <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
         });
-    </script>
+        
+        // Закрытие меню при клике вне области
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Закрытие меню при нажатии Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../scripts/modules/iterations/car.js"></script>
     <script src="../scripts/components/sliders/bannerSlider.js"></script>

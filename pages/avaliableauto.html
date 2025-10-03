@@ -51,17 +51,19 @@
 
                 <!-- Меню для средних и больших экранов -->
                 <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="#"
-                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Модели</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./avaliableauto.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
-                    <a href="#"
+                    <a href="./loan.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                    <a href="#"
+                    <a href="./tradein.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                    <a href="#"
+                    <a href="./stocks.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                    <a href="#"
+                    <a href="./contacts.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
                 </nav>
 
@@ -93,6 +95,49 @@
             </div>
         </div>
     </header>
+
+
+    <!-- Dropdown для "Модели" -->
+    <div id="models-dropdown"
+        class="absolute left-0 top-14 right-0 mt-2 bg-white shadow-lg rounded-md hidden z-50 border border-gray-200">
+        <div class="py-2">
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T55.png" alt="T55" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/B70.png" alt="B70" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex justify-center items-center px-4 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-12 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
+        </div>
+    </div>
 
     <main>
         <!-- === БЛОК ПОДРОБНОСТЕЙ АВТО + КНОПКИ === -->
@@ -288,7 +333,7 @@
 
                         <div class="flex items-start space-x-3 mt-4 sm:mt-6 mb-4 sm:mb-6">
                             <label class="custom-checkbox-square relative">
-                                <input type="checkbox" data-validate="required" checked class="sr-only" />
+                                <input type="checkbox" data-validate="required" class="sr-only" />
                                 <span
                                     class="checkmark w-5 h-5 flex items-center justify-center border border-gray-600 rounded text-xs text-white">
                                     ✓
@@ -360,25 +405,25 @@
                 <!-- Поле Имя -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">ИМЯ*</label>
-                    <input type="text" id="name" name="name"
-                        class="important-input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    <input type="text" id="name" name="name" data-validate="name"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Введите" required />
                 </div>
 
                 <!-- Поле Телефон -->
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">ТЕЛЕФОН*</label>
-                    <input type="tel" id="phone" name="telephone"
-                        class="important-input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    <input type="tel" id="phone" name="telephone" data-validate="phone"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         placeholder="+7 (XXX) XXX-XX-XX" required />
                 </div>
 
                 <div class="flex items-start space-x-3 mt-6">
                     <label class="custom-checkbox-square">
-                        <input type="checkbox" id="myCheckbox" data-validate="required" checked />
+                        <input type="checkbox" id="agreement-checkbox" data-validate="required" checked/>
                         <span class="checkmark">✓</span>
                     </label>
-                    <span class="text-sm text-gray-300 leading-relaxed">
+                    <span class="text-sm text-gray-700 leading-relaxed">
                         Согласен с <a href="./privacypolicy.html"
                             class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки
                             персональных данных</a>
@@ -387,9 +432,9 @@
 
                 <!-- Кнопка отправки -->
                 <div class="pt-4">
-                    <button type="submit"
-                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#3366BD] hover:bg-[#3366BD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-                        disabled style="opacity: 0.6;">
+                    <button type="submit" id="submit-credit-btn"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#3366BD] hover:bg-[#3366BD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity"
+                        style="opacity: 0.6;" disabled>
                         ОТПРАВИТЬ →
                     </button>
                 </div>
@@ -506,6 +551,7 @@
 
         </div>
     </footer>
+    <script src="https://unpkg.com/imask@7.0.0/dist/imask.min.js"></script>
 
     <script src="../scripts/utils/validation.js"></script>
 
