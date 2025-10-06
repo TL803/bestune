@@ -17,7 +17,20 @@ const cars = [
         link: 'avaliableauto.html'
     },
     {
-        status: 'В пути',
+        status: 'В наличии',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'Забронировано',
         img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
         title: 'T77',
         complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
@@ -43,7 +56,20 @@ const cars = [
         link: 'avaliableauto.html'
     },
     {
-        status: 'В пути',
+        status: 'В наличии',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'Забронировано',
         img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
         title: 'T77',
         complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
@@ -69,7 +95,20 @@ const cars = [
         link: 'avaliableauto.html'
     },
     {
-        status: 'В пути',
+        status: 'В наличии',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'Забронировано',
         img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
         title: 'T77',
         complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
@@ -95,7 +134,7 @@ const cars = [
         link: 'avaliableauto.html'
     },
     {
-        status: 'В пути',
+        status: 'В наличии',
         img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
         title: 'T77',
         complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
@@ -108,7 +147,7 @@ const cars = [
         link: 'avaliableauto.html'
     },
     {
-        status: 'В пути',
+        status: 'Забронировано',
         img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
         title: 'T77',
         complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
@@ -120,46 +159,6 @@ const cars = [
         adress: 'Береговой пр., 4/6с3, Москва',
         link: 'avaliableauto.html'
     },
-    {
-        status: 'В пути',
-        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-        title: 'T77',
-        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-        engine: '1.5 160 л.с.',
-        transmission: '7DCT',
-        drive: 'Передний (2WD)',
-        price: '2 036 000',
-        monthlyPayment: '11 444',
-        adress: 'Береговой пр., 4/6с3, Москва',
-        link: 'avaliableauto.html'
-    },
-    {
-        status: 'В пути',
-        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-        title: 'T77',
-        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-        engine: '1.5 160 л.с.',
-        transmission: '7DCT',
-        drive: 'Передний (2WD)',
-        price: '2 036 000',
-        monthlyPayment: '11 444',
-        adress: 'Береговой пр., 4/6с3, Москва',
-        link: 'avaliableauto.html'
-    },
-    {
-        status: 'В пути',
-        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-        title: 'T77',
-        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-        engine: '1.5 160 л.с.',
-        transmission: '7DCT',
-        drive: 'Передний (2WD)',
-        price: '2 036 000',
-        monthlyPayment: '11 444',
-        adress: 'Береговой пр., 4/6с3, Москва',
-        link: 'avaliableauto.html'
-    },
-
 ];
 
 let currentPage = 1;
@@ -292,10 +291,12 @@ function createCarCard(car, index) {
 // Функция для получения цвета статуса
 function getStatusColor(status) {
     switch (status) {
-        case 'В пути':
-            return 'text-amber-800 bg-amber-100';
         case 'В наличии':
             return 'text-green-800 bg-green-100';
+        case 'В пути':
+            return 'text-amber-800 bg-amber-100';
+        case 'Забронировано':
+            return 'text-red-800 bg-red-100';
         default:
             return 'text-gray-800 bg-gray-100';
     }

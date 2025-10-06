@@ -223,10 +223,10 @@
             </p>
 
             <!-- Форма -->
-            <form action="" data-car-form class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 py-6">
+            <form action="" data-car-form class="grid grid-cols-1 gap-x-6 gap-y-8 py-6 max-w-2xl mx-auto">
 
-                <!-- Модель -->
-                <div>
+                <!-- Модель - теперь на всю ширину -->
+                <div class="col-span-1">
                     <label class="block text-[12px] font-bold text-[#282624] mb-2">МОДЕЛЬ*</label>
                     <div class="relative">
                         <select name="model" class="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white">
@@ -246,26 +246,23 @@
                     </div>
                 </div>
 
-                <!-- Имя -->
-                <div>
-                    <label class="block text-[12px] font-bold text-[#282624] mb-2">ИМЯ*</label>
-                    <input type="text" placeholder="Введите" data-validate="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
+                <!-- Имя и телефон в ряд -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Имя -->
+                    <div>
+                        <label class="block text-[12px] font-bold text-[#282624] mb-2">ИМЯ*</label>
+                        <input type="text" placeholder="Введите" data-validate="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
 
-                <!-- Телефон -->
-                <div>
-                    <label class="block text-[12px] font-bold text-[#282624] mb-2">ТЕЛЕФОН*</label>
-                    <input type="text" placeholder="+7 (XXX) XXX-XX-XX" data-validate="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label class="block text-[12px] font-bold text-[#282624] mb-2">EMAIL</label>
-                    <input type="email" placeholder="Введите" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <!-- Телефон -->
+                    <div>
+                        <label class="block text-[12px] font-bold text-[#282624] mb-2">ТЕЛЕФОН*</label>
+                        <input type="text" placeholder="+7 (XXX) XXX-XX-XX" data-validate="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
                 </div>
 
                 <!-- Чекбокс согласия -->
-                <div class="md:col-span-2 flex items-start space-x-3 mt-2">
+                <div class="flex items-start space-x-3 mt-2">
                     <label class="custom-checkbox-square">
                         <input type="checkbox" id="myCheckbox" data-validate="required" checked />
                         <span class="checkmark"></span>
@@ -277,7 +274,7 @@
                 </div>
 
                 <!-- Кнопка отправить -->
-                <div class="md:col-span-2 mt-8 mx-auto">
+                <div class="mt-8 mx-auto">
                     <button type="submit" class="w-full md:w-auto px-6 py-3 bg-[#3366BD] text-white font-medium rounded-lg hover:bg-[#2a55a0] transition flex items-center justify-center gap-2">
                         ОТПРАВИТЬ →
                     </button>
@@ -418,7 +415,7 @@
             model: form.model.value,
             name: nameInput.value,
             phone: phoneInput.value,
-            email: form.querySelector('input[type="email"]').value
+            email: form.querySelector('input[type="email"]')?.value
           });
 
           // Очищаем форму
