@@ -230,17 +230,27 @@
                         <div>
                             <h3 class="text-xl font-semibold text-white mb-4">1. Введите данные вашего авто</h3>
 
-                            <input type="text" name="old_car_brand" placeholder="Марка"
-                                class="w-full bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
+                            <!-- Марка: только буквы (включая кириллицу и латиницу) -->
+                            <input type="text" name="old_car_brand" placeholder="Марка" pattern="[a-zA-Zа-яА-ЯёЁ\s]+"
+                                title="Марка должна содержать только буквы и пробелы"
+                                class="w-full bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base"
+                                oninput="this.value = this.value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '')" />
 
+                            <!-- Модель: без ограничений -->
                             <input type="text" name="old_car_model" placeholder="Модель"
                                 class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
 
-                            <input type="text" name="old_car_mileage" placeholder="Пробег"
-                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
+                            <!-- Пробег: только цифры -->
+                            <input type="text" name="old_car_mileage" placeholder="Пробег" inputmode="numeric"
+                                pattern="[0-9]*" title="Пробег должен содержать только цифры"
+                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
 
-                            <input type="text" name="old_car_year" placeholder="Год"
-                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base" />
+                            <!-- Год: только цифры (4 цифры, например, 2020) -->
+                            <input type="text" name="old_car_year" placeholder="Год" inputmode="numeric"
+                                pattern="[0-9]{4}" title="Год должен содержать 4 цифры" maxlength="4"
+                                class="w-full mt-4 bg-[#403F3D] border border-gray-700 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-base"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4)" />
                         </div>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">2. Выберите новый авто</h3>
