@@ -1,387 +1,475 @@
-        const avaliableCarsContainer = document.querySelector('[data-avaliable-cars-container]');
-        const showMoreButton = document.getElementById('show-more-btn');
-        const carsCountElement = document.getElementById('cars-count');
+const avaliableCarsContainer = document.querySelector('[data-avaliable-cars-container]');
+const showMoreButton = document.getElementById('show-more-btn');
+const carsCountElement = document.getElementById('cars-count');
 
-        const cars = [
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В пути',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77',
-                complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
-                engine: '1.5 160 л.с.',
-                transmission: '7DCT',
-                drive: 'Передний (2WD)',
-                price: '2 036 000',
-                monthlyPayment: '11 444',
-                adress: 'Береговой пр., 4/6с3, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },
-            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },            {
-                status: 'В наличии',
-                img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
-                title: 'T77 Pro',
-                complectation: 'LUXURY (DCT) (t77), 2024',
-                engine: '2.0 200 л.с.',
-                transmission: '8DCT',
-                drive: 'Полный (4WD)',
-                price: '2 536 000',
-                monthlyPayment: '14 200',
-                adress: 'Ленинский пр., 12, Москва',
-                link: 'avaliableauto.html'
-            },
-        ];
+const cars = [
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
+    {
+        status: 'В пути',
+        img: '../assets/cars/d2c5d2c632acbfb2690e318c4787fff921a2272e.png',
+        title: 'T77',
+        complectation: 'PRESTIGE PLUS (DCT) (t77), 2023',
+        engine: '1.5 160 л.с.',
+        transmission: '7DCT',
+        drive: 'Передний (2WD)',
+        price: '2 036 000',
+        monthlyPayment: '11 444',
+        adress: 'Береговой пр., 4/6с3, Москва',
+        link: 'avaliableauto.html'
+    },
 
-        let currentPage = 1;
-        let carsPerPage = 0;
+];
 
-        function calculateCarsPerPage() {
-            const width = window.innerWidth;
-            
-            if (width >= 1536) { // 2xl: 4 колонки
-                return 8; // 2 строки × 4 колонки
-            } else if (width >= 1280) { // xl: 3 колонки
-                return 6; // 2 строки × 3 колонки
-            } else if (width >= 1024) { // lg: 2 колонки
-                return 4; // 2 строки × 2 колонки
-            } else if (width >= 640) { // sm: 2 колонки
-                return 4; // 2 строки × 2 колонки
-            } else { // xs: 1 колонка
-                return 2; // 2 строки × 1 колонка
-            }
-        }
+let currentPage = 1;
+let carsPerPage = 0;
 
-        // Функция для создания HTML карточки машины
-        function createCarCard(car) {
-            const carElement = document.createElement('a');
-            carElement.href = `./${car.link}`;
-            carElement.className = 'bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden w-full max-w-[434px] sm:max-w-none flex flex-col hover:shadow-md transition-shadow duration-300';
-carElement.innerHTML = `
-    <div class="p-3 sm:p-4 flex-1 flex flex-col">
-        <!-- Статус -->
-        <div class="mb-2 sm:mb-3">
-            <span class="inline-block px-2 py-1 text-xs sm:text-[12px] font-bold ${getStatusColor(car.status)} rounded-full">
-                ${car.status}
-            </span>
-        </div>
+function calculateCarsPerPage() {
+    const width = window.innerWidth;
 
-        <!-- Изображение -->
-        <div class="mb-3 sm:mb-4">
-            <img src="${car.img}" alt="${car.title}"
-                 class="w-full h-32 sm:h-40 md:h-48 object-contain rounded-md bg-gray-50" />
-        </div>
+    if (width >= 1536) {
+        return 8;
+    } else if (width >= 1280) {
+        return 6;
+    } else if (width >= 1024) {
+        return 4;
+    } else if (width >= 640) {
+        return 4;
+    } else {
+        return 2;
+    }
+}
 
-        <!-- Название модели -->
-        <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1">${car.title}</h3>
+// Функция для создания HTML карточки машины
+function createCarCard(car, index) {
+    const carElement = document.createElement('div');
+    carElement.className = 'bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden w-full flex flex-col hover:shadow-md transition-shadow duration-300';
 
-        <!-- Комплектация и год -->
-        <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2">${car.complectation}</p>
+    carElement.innerHTML = `
+                <div class="p-3 sm:p-4 flex-1 flex flex-col relative">
+                    <!-- Статус -->
+                    <div class="mb-2 sm:mb-3">
+                        <span class="inline-block px-2 py-1 text-xs sm:text-[12px] font-bold ${getStatusColor(car.status)} rounded-full">
+                            ${car.status}
+                        </span>
+                    </div>
 
-        <!-- Характеристики -->
-        <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
-            <div class="flex items-center">
-                <img src="../assets/icons/card/Component 1 (2).svg" alt="" class="w-5 h-5 mr-2" />  
-                <span>${car.engine}</span>
-            </div>
-            <div class="flex items-center">
-                <img src="../assets/icons/card/Component 1 (1).svg" alt="" class="w-5 h-5 mr-2" /> 
-                <span>${car.transmission}</span>
-            </div>
-            <div class="flex items-center">
-                <img src="../assets/icons/card/Component 1.svg" alt="" class="w-5 h-5 mr-2" /> 
-                <span>${car.drive}</span>
-            </div>
-        </div>
+                    <!-- Изображение -->
+                    <div class="mb-3 sm:mb-4 cursor-pointer" onclick="window.location.href='./${car.link}'">
+                        <img src="${car.img}" alt="${car.title}"
+                             class="w-full h-32 sm:h-40 md:h-48 object-contain" />
+                    </div>
 
-        <!-- Цена -->
-        <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1">${car.price} ₽</div>
+                    <!-- Название модели -->
+                    <h3 class="text-lg sm:text-xl md:text-[24px] font-normal mb-1 cursor-pointer" 
+                        onclick="window.location.href='./${car.link}'">${car.title}</h3>
 
-        <!-- Платеж -->
-        <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4">Платеж от ${car.monthlyPayment} ₽/месяц</div>
+                    <!-- Комплектация и год -->
+                    <p class="text-sm sm:text-[15px] md:text-[16px] text-gray-600 mb-2 sm:mb-3 line-clamp-2 cursor-pointer" 
+                       onclick="window.location.href='./${car.link}'">${car.complectation}</p>
 
-        <!-- Адрес и сравнение -->
-        <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
-            <div class="flex items-center flex-1 min-w-0">
-                <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0 text-lg"></i>
-                <span class="truncate">${car.adress}</span>
-            </div>
-            <img src="../assets/scales-light.svg" alt="Сравнить" class="w-5 h-5">
-        </div>
-    </div>
-`;
-return carElement;
-        }
+                    <!-- Характеристики -->
+                    <div class="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-[13px] md:text-[14px] text-gray-700 flex-1">
+                        <div class="flex items-center">
+                            <i class="fas fa-cog text-gray-400 w-5 h-5 mr-2"></i>
+                            <span>${car.engine}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-exchange-alt text-gray-400 w-5 h-5 mr-2"></i>
+                            <span>${car.transmission}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-car text-gray-400 w-5 h-5 mr-2"></i>
+                            <span>${car.drive}</span>
+                        </div>
+                    </div>
 
-        // Функция для получения цвета статуса
-        function getStatusColor(status) {
-            switch(status) {
-                case 'В пути':
-                    return 'text-amber-800 bg-amber-100';
-                case 'В наличии':
-                    return 'text-green-800 bg-green-100';
-                default:
-                    return 'text-gray-800 bg-gray-100';
-            }
-        }
+                    <!-- Цена -->
+                    <div class="text-lg sm:text-xl md:text-[24px] font-normal text-gray-900 mb-1 cursor-pointer" 
+                         onclick="window.location.href='./${car.link}'">${car.price} ₽</div>
 
-        // Функция для отображения машин
-        function displayCars() {
-            const endIndex = currentPage * carsPerPage;
-            const carsToShow = cars.slice(0, endIndex);
-            
-            // Очищаем контейнер
-            avaliableCarsContainer.innerHTML = '';
-            
-            // Добавляем машины
-            carsToShow.forEach(car => {
-                const carElement = createCarCard(car);
-                avaliableCarsContainer.appendChild(carElement);
-            });
-            
-            updateCarsCount();
-            
-            // Скрываем кнопку, если показаны все машины
-            if (endIndex >= cars.length) {
-                showMoreButton.style.display = 'none';
-            } else {
-                showMoreButton.style.display = 'block';
-            }
-        }
+                    <!-- Платеж -->
+                    <div class="text-xs sm:text-[12px] text-gray-500 mb-3 sm:mb-4 cursor-pointer" 
+                         onclick="window.location.href='./${car.link}'">Платеж от ${car.monthlyPayment} ₽/месяц</div>
 
-        // Функция для обновления счетчика
-        function updateCarsCount() {
-            const displayedCars = Math.min(currentPage * carsPerPage, cars.length);
-            carsCountElement.textContent = `${cars.length} (показано ${displayedCars})`;
-        }
+                    <!-- Адрес и сравнение -->
+                    <div class="flex justify-between items-center text-xs sm:text-[12px] text-gray-500">
+                        <div class="flex items-center flex-1 min-w-0 cursor-pointer" 
+                             onclick="window.location.href='./${car.link}'">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1 flex-shrink-0"></i>
+                            <span class="truncate">${car.adress}</span>
+                        </div>
+                        
+                        <!-- Контейнер для выпадающего меню с абсолютным позиционированием -->
+                        <div class="relative">
+                            <button type="button" 
+                                class="text-gray-500 hover:text-blue-600 transition-colors p-1 comparison-btn"
+                                data-dropdown-toggle data-car-index="${index}">
+                                <!-- SVG иконка весов -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                                </svg>
+                            </button>
+                            
+                            <!-- Выпадающее меню - абсолютное позиционирование относительно body -->
+                            <div class="fixed z-50 w-48 bg-white rounded-md shadow-lg border border-gray-200 hidden dropdown-menu" 
+                                 id="dropdown-menu-${index}" data-dropdown-menu>
+                                <div class="py-1">
+                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 border-b border-gray-100 dropdown-item" 
+                                       data-action="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                        УБРАТЬ ИЗ СРАВНЕНИЯ
+                                    </a>
+                                    
+                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-blue-600 hover:bg-gray-100 border-b border-gray-100 dropdown-item" 
+                                       data-action="add">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                        ДОБАВИТЬ СРАВНЕНИЕ
+                                    </a>
+                                    
+                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dropdown-item" 
+                                       data-action="go-to">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                        ПЕРЕЙТИ К СРАВНЕНИЮ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-        // Функция для загрузки дополнительных машин
-        function loadMoreCars() {
-            currentPage++;
-            displayCars();
-        }
+    return carElement;
+}
 
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Рассчитываем начальное количество машин
-            carsPerPage = calculateCarsPerPage();
-            
-            // Отображаем первые машины
-            displayCars();
-            
-            // Добавляем обработчик события для кнопки
-            showMoreButton.addEventListener('click', loadMoreCars);
-            
-            // Обработчик изменения размера окна для адаптивности
-            window.addEventListener('resize', function() {
-                const newCarsPerPage = calculateCarsPerPage();
-                if (newCarsPerPage !== carsPerPage) {
-                    carsPerPage = newCarsPerPage;
-                    currentPage = 1;
-                    displayCars();
-                }
-            });
+// Функция для получения цвета статуса
+function getStatusColor(status) {
+    switch (status) {
+        case 'В пути':
+            return 'text-amber-800 bg-amber-100';
+        case 'В наличии':
+            return 'text-green-800 bg-green-100';
+        default:
+            return 'text-gray-800 bg-gray-100';
+    }
+}
+
+// Функции для работы с выпадающими меню
+function initDropdowns() {
+    const toggleButtons = document.querySelectorAll('[data-dropdown-toggle]');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const carIndex = this.getAttribute('data-car-index');
+            const dropdownMenu = document.getElementById(`dropdown-menu-${carIndex}`);
+
+            if (!dropdownMenu) return;
+
+            // Получаем позицию кнопки
+            const rect = this.getBoundingClientRect();
+
+            // Позиционируем меню рядом с кнопкой
+            dropdownMenu.style.position = 'fixed';
+            dropdownMenu.style.left = `${rect.left}px`;
+            dropdownMenu.style.top = `${rect.top - dropdownMenu.offsetHeight - 5}px`;
+
+            toggleDropdown(dropdownMenu);
         });
+    });
+
+    // Обработчики для пунктов меню
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.dropdown-item')) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const item = e.target.closest('.dropdown-item');
+            const action = item.getAttribute('data-action');
+            const dropdownMenu = item.closest('[data-dropdown-menu]');
+            const carIndex = dropdownMenu.id.split('-')[2];
+
+            handleComparisonAction(action, carIndex);
+
+            // Визуальная обратная связь
+            item.classList.add('bg-blue-50');
+            setTimeout(() => {
+                item.classList.remove('bg-blue-50');
+            }, 300);
+
+            closeDropdown(dropdownMenu);
+        }
+
+        // Закрытие всех dropdown при клике вне области
+        if (!e.target.closest('.comparison-btn') && !e.target.closest('[data-dropdown-menu]')) {
+            closeAllDropdowns();
+        }
+    });
+}
+
+function toggleDropdown(dropdownMenu) {
+    if (dropdownMenu.classList.contains('hidden')) {
+        openDropdown(dropdownMenu);
+    } else {
+        closeDropdown(dropdownMenu);
+    }
+}
+
+function openDropdown(dropdownMenu) {
+    closeAllDropdowns();
+    dropdownMenu.classList.remove('hidden');
+}
+
+function closeDropdown(dropdownMenu) {
+    dropdownMenu.classList.add('hidden');
+}
+
+function closeAllDropdowns() {
+    const allDropdownMenus = document.querySelectorAll('[data-dropdown-menu]');
+    allDropdownMenus.forEach(menu => {
+        menu.classList.add('hidden');
+    });
+}
+
+// Глобальные функции для обработки действий сравнения
+function handleComparisonAction(action, carIndex) {
+    const car = cars[carIndex];
+    console.log(`Действие: ${action} для автомобиля: ${car.title}`);
+
+    switch (action) {
+        case 'remove':
+            console.log(`Удаление "${car.title}" из сравнения`);
+            showNotification(`"${car.title}" удален из сравнения`, 'success');
+            break;
+        case 'add':
+            console.log(`Добавление "${car.title}" в сравнение`);
+            showNotification(`"${car.title}" добавлен в сравнение`, 'success');
+            break;
+        case 'go-to':
+            console.log(`Переход к сравнению для "${car.title}"`);
+            window.location.href = './comparison.html';
+            break;
+    }
+}
+
+// Функция для показа уведомлений
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 ${type === 'success' ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'
+        }`;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Функция для отображения машин
+function displayCars() {
+    const endIndex = currentPage * carsPerPage;
+    const carsToShow = cars.slice(0, endIndex);
+
+    avaliableCarsContainer.innerHTML = '';
+
+    carsToShow.forEach((car, index) => {
+        const carElement = createCarCard(car, index);
+        avaliableCarsContainer.appendChild(carElement);
+    });
+
+    updateCarsCount();
+
+    // Инициализируем выпадающие меню для новых карточек
+    initDropdowns();
+
+    if (endIndex >= cars.length) {
+        showMoreButton.style.display = 'none';
+    } else {
+        showMoreButton.style.display = 'block';
+    }
+}
+
+// Функция для обновления счетчика
+function updateCarsCount() {
+    const displayedCars = Math.min(currentPage * carsPerPage, cars.length);
+    carsCountElement.textContent = `${cars.length} (показано ${displayedCars})`;
+}
+
+// Функция для загрузки дополнительных машин
+function loadMoreCars() {
+    currentPage++;
+    displayCars();
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function () {
+    carsPerPage = calculateCarsPerPage();
+    displayCars();
+
+    showMoreButton.addEventListener('click', loadMoreCars);
+
+    window.addEventListener('resize', function () {
+        const newCarsPerPage = calculateCarsPerPage();
+        if (newCarsPerPage !== carsPerPage) {
+            carsPerPage = newCarsPerPage;
+            currentPage = 1;
+            displayCars();
+        }
+    });
+});

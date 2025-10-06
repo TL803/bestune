@@ -11,7 +11,7 @@
     const carInfoBlocks = document.querySelectorAll('[data-car-info]');
 
     carInfoBlocks.forEach(block => {
-      const thumbnails = block.querySelectorAll('.flex > img:not([src*="icons/"])');
+      const thumbnails = block.querySelectorAll('.flex img:not([src*="icons/"])');
 
       thumbnails.forEach((img, index) => {
         img.addEventListener('click', (e) => {

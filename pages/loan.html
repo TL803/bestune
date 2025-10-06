@@ -56,7 +56,7 @@
                     <p data-open-modal="models-modal"
                         class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
                         Модели</p>
-                    <a href="./avaliableauto.html"
+                    <a href="./cars.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
                     <a href="./loan.html"
@@ -182,11 +182,13 @@
                                         class="w-full h-auto rounded-md" />
                                 </div>
 
-                                <div class="flex gap-2 mb-4">
+                                <div class="grid grid-cols-3 gap-1 mb-4">
                                     <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
-                                        alt="Интерьер" class="w-26 h-16 object-cover rounded" />
-                                    <img src="../assets/cars/9faa8cb55e628e2e95d1de5df15235650bca303f.png"
-                                        alt="Вид сбоку" class="w-26 h-16 object-cover rounded" />
+                                        alt="Интерьер" class="w-full h-auto object-cover rounded" />
+                                    <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                        alt="Вид сбоку" class="w-full h-auto object-cover rounded" />
+                                    <img src="../assets/loanandsoon/sideviews/4047cfe2bcf6e932384d7a18af9577a9a6de7ebd.png"
+                                        alt="Вид сбоку" class="w-full h-auto object-cover rounded" />
                                 </div>
 
                                 <div class="mb-4">
@@ -567,22 +569,29 @@
         </section>
     </main>
     <!-- Lightbox Modal -->
-    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
-        <div class="relative max-w-full max-h-full flex flex-col items-center">
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+        <div class="relative w-full h-full flex items-center justify-center">
             <!-- Кнопка закрытия -->
-            <button id="closeModal" class="absolute -top-12 right-0 text-white text-2xl font-bold">&times;</button>
+            <button id="closeModal"
+                class="absolute top-4 right-4 z-10 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75">
+                &times;
+            </button>
 
             <!-- Изображение -->
-            <img id="modalImage" src="" alt="Увеличенное изображение" class="max-w-full max-h-[80vh] object-contain" />
+            <div class="relative max-w-4xl max-h-full flex items-center justify-center">
+                <img id="modalImage" src="" alt="Увеличенное изображение"
+                    class="max-w-full max-h-[90vh] object-contain" />
+            </div>
 
             <!-- Кнопки навигации -->
             <button id="prevBtn"
-                class="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none">
-                < </button>
-                    <button id="nextBtn"
-                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none">
-                        >
-                    </button>
+                class="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 focus:outline-none text-xl">
+                ‹
+            </button>
+            <button id="nextBtn"
+                class="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-75 focus:outline-none text-xl">
+                ›
+            </button>
         </div>
     </div>
 
@@ -646,6 +655,8 @@
     <script src="../scripts/modules/show/selectCar.js"></script>
     <script src="../scripts/components/sliders/range/loan.js"></script>
     <script src="../scripts/utils/validation.js"></script>
+    <script src="../scripts/components/modals/dialog/dropModelsDown.js"></script>
+
 </body>
 
 </html>

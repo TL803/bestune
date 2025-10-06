@@ -2,14 +2,14 @@
   const carImage = document.getElementById('car-image');
 
   const colors = [
-    { name: "red", hex: "#ef4444" },
-    { name: "orange", hex: "#f97316" },
-    { name: "amber", hex: "#f59e0b" },
-    { name: "yellow", hex: "#eab308" },
-    { name: "lime", hex: "#84cc16" },
-    { name: "blue", hex: "#3b82f6" },
-    { name: "indigo", hex: "#6366f1" },
-    { name: "stone", hex: "#78716c" }
+    { name: "Rectangle 2 (2).png", hex: "#ef4444" },
+    { name: "Rectangle 2 (2).png", hex: "#f97316" },
+    { name: "Rectangle 2 (2).png", hex: "#f59e0b" },
+    { name: "Rectangle 2 (2).png", hex: "#eab308" },
+    { name: "Rectangle 2 (2).png", hex: "#84cc16" },
+    { name: "Rectangle 2 (2).png", hex: "#3b82f6" },
+    { name: "Rectangle 2 (2).png", hex: "#6366f1" },
+    { name: "Rectangle 2 (2).png", hex: "#78716c" }
   ];
 
   let activeColorElem = null;
@@ -33,7 +33,7 @@
       activeColorElem = e.target;
 
       const selectedColor = e.target.dataset.color;
-      carImage.src = `../assets/common/car-${selectedColor}.png`;
+      carImage.src = `../assets/loanandsoon/${selectedColor}`;
     }
   });
 

@@ -38,61 +38,118 @@
 <body class="font-sans bg-[#282624] text-[#01101B]">
 
 
-<header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
-    <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-            <!-- Логотип и название -->
-            <a href="./" class="flex-shrink-0 flex items-center min-w-0">
-                <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-6 md:h-8 w-auto flex-shrink-0" />
-                <span
-                    class="ml-2 font-semibold text-gray-700 text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis md:max-w-[140px] md:max-w-none">
-                    X НЕЗАВИСИМОСТЬ
-                </span>
-            </a>
+    <header class="border-b border-gray-200 bg-white" style="box-shadow: 0 4px 10px rgba(40, 38, 36, 0.1);">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Логотип и название -->
+                <a href="./" class="flex-shrink-0 flex items-center min-w-0">
+                    <img src="../assets/common/Bestune.svg" alt="Bestune" class="h-6 md:h-8 w-auto flex-shrink-0" />
+                    <span
+                        class="ml-2 font-semibold text-gray-700 text-sm md:text-base whitespace-nowrap overflow-hidden text-ellipsis md:max-w-[140px] md:max-w-none">
+                        X НЕЗАВИСИМОСТЬ
+                    </span>
+                </a>
 
-            <nav class="hidden lg:flex items-center space-x-6">
-                <p data-open-modal="models-modal"
-                    class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
-                    Модели</p>
-                <a href="./avaliableauto.html"
-                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
-                    наличии</a>
-                <a href="./loan.html"
-                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
-                <a href="./tradein.html"
-                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
-                <a href="./stocks.html"
-                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
-                <a href="./contacts.html"
-                    class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
-            </nav>
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <p data-open-modal="models-modal"
+                        class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
+                        Модели</p>
+                    <a href="./cars.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
+                        наличии</a>
+                    <a href="./loan.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Кредит</a>
+                    <a href="./tradein.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Trade-in</a>
+                    <a href="./stocks.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Спецпредложения</a>
+                    <a href="./contacts.html"
+                        class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Контакты</a>
+                </nav>
 
-            <!-- Бургер только на маленьких экранах (<1024px) -->
-            <div class="lg:hidden flex items-center">
-                <button id="mobile-menu-button"
-                    class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
+                <!-- Бургер только на маленьких экранах (<1024px) -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-button"
+                        class="p-2 rounded-md text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
+
+        <!-- Мобильное меню с абсолютным позиционированием -->
+<!-- Мобильное меню с абсолютным позиционированием -->
+<div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+    <!-- Основное меню -->
+    <div id="mobile-main-menu" class="px-4 pt-2 pb-4 space-y-1">
+        <p data-open-mobile-models class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 cursor-pointer flex items-center justify-between">
+            Модели
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </p>
+        <a href="./cars.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в наличии</a>
+        <a href="./loan.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
+        <a href="./tradein.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
+        <a href="./stocks.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
+        <a href="./contacts.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
     </div>
 
-    <!-- Мобильное меню с абсолютным позиционированием -->
-    <div id="mobile-menu" class="hidden lg:hidden absolute top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-        <div class="px-4 pt-2 pb-4 space-y-1">
-            <p data-open-modal="models-modal" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 cursor-pointer">Модели</p>
-            <a href="./avaliableauto.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Авто в наличии</a>
-            <a href="./loan.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Кредит</a>
-            <a href="./tradein.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Trade-in</a>
-            <a href="./stocks.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Спецпредложения</a>
-            <a href="./contacts.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900">Контакты</a>
+    <!-- Меню моделей (изначально скрыто) -->
+    <div id="mobile-models-menu" class="hidden px-4 pt-2 pb-4">
+        <!-- Кнопка назад -->
+        <button id="mobile-models-back" class="flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 mb-4 cursor-pointer">
+            <svg class="w-4 h-4 mr-2 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            Назад
+        </button>
+        
+        <!-- Список моделей -->
+        <div class="space-y-1">
+            <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-50 transition border-b border-gray-100">
+                <img src="../assets/models/Новый T90.png" alt="Новый Т90" class="h-10 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый Т90</div>
+                    <div class="text-xs text-gray-500">от 2 129 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-50 transition border-b border-gray-100">
+                <img src="../assets/models/Новый B70.png" alt="Новый В70" class="h-10 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">Новый В70</div>
+                    <div class="text-xs text-gray-500">от 1 849 990 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-50 transition border-b border-gray-100">
+                <img src="../assets/models/T55.png" alt="T55" class="h-10 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T55</div>
+                    <div class="text-xs text-gray-500">от 1 561 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-50 transition border-b border-gray-100">
+                <img src="../assets/models/B70.png" alt="B70" class="h-10 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">B70</div>
+                    <div class="text-xs text-gray-500">от 1 724 000 ₽*</div>
+                </div>
+            </a>
+            <a href="#" class="flex items-center px-3 py-3 hover:bg-gray-50 transition">
+                <img src="../assets/models/T77.png" alt="T77" class="h-10 w-auto mr-3">
+                <div>
+                    <div class="font-medium text-gray-900">T77</div>
+                    <div class="text-xs text-gray-500">от 1 924 000 ₽*</div>
+                </div>
+            </a>
         </div>
     </div>
-</header>
+</div>
+    </header>
 
 
     <!-- Dropdown для "Модели" -->
@@ -736,30 +793,68 @@
 
         </div>
     </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Закрытие меню при клике вне области
-        document.addEventListener('click', function(event) {
-            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-        
-        // Закрытие меню при нажатии Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                mobileMenu.classList.add('hidden');
-            }
-        });
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMainMenu = document.getElementById('mobile-main-menu');
+    const mobileModelsMenu = document.getElementById('mobile-models-menu');
+    const openMobileModelsBtn = document.querySelector('[data-open-mobile-models]');
+    const mobileModelsBackBtn = document.getElementById('mobile-models-back');
+
+    // Открытие/закрытие мобильного меню
+    mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+        // При открытии меню показываем основное меню
+        if (!mobileMenu.classList.contains('hidden')) {
+            showMainMenu();
+        }
     });
-</script>
+
+    // Открытие меню моделей
+    openMobileModelsBtn.addEventListener('click', function () {
+        showModelsMenu();
+    });
+
+    // Возврат к основному меню
+    mobileModelsBackBtn.addEventListener('click', function () {
+        showMainMenu();
+    });
+
+    // Функция показа основного меню
+    function showMainMenu() {
+        mobileMainMenu.classList.remove('hidden');
+        mobileModelsMenu.classList.add('hidden');
+    }
+
+    // Функция показа меню моделей
+    function showModelsMenu() {
+        mobileMainMenu.classList.add('hidden');
+        mobileModelsMenu.classList.remove('hidden');
+    }
+
+    // Закрытие меню при клике вне области
+    document.addEventListener('click', function (event) {
+        if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+            showMainMenu(); // Сбрасываем к основному меню при закрытии
+        }
+    });
+
+    // Закрытие меню при нажатии Escape
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            if (!mobileModelsMenu.classList.contains('hidden')) {
+                // Если открыто меню моделей - возвращаемся к основному
+                showMainMenu();
+            } else {
+                // Если открыто основное меню - закрываем всё
+                mobileMenu.classList.add('hidden');
+            }
+        }
+    });
+});
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../scripts/modules/iterations/car.js"></script>
     <script src="../scripts/components/sliders/bannerSlider.js"></script>

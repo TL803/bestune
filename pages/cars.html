@@ -36,7 +36,7 @@
                     <p data-open-modal="models-modal"
                         class="text-gray-700 cursor-pointer hover:text-gray-900 text-sm font-medium whitespace-nowrap">
                         Модели</p>
-                    <a href="./avaliableauto.html"
+                    <a href="./cars.html"
                         class="text-gray-700 hover:text-gray-900 text-sm font-medium whitespace-nowrap">Авто в
                         наличии</a>
                     <a href="./loan.html"
@@ -134,11 +134,11 @@
                 <i class="fas fa-sliders-h mr-2"></i>
                 Скрыть параметры
             </div>
-            <div class="flex items-center text-sm text-gray-500 font-medium space-x-2 cursor-pointer">
+            <a href="./comparison.html" class="flex items-center text-sm text-gray-500 font-medium space-x-2 cursor-pointer">
                 <span class="select-none">Сравнение</span>
                 <img src="../assets/scales-light.svg" alt="">
                 <span class="ml-1 bg-gray-200 rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
-            </div>
+            </a>
         </div>
 
         <!-- Основной контейнер -->
@@ -420,6 +420,8 @@
     <script src="../scripts/modules/show/filters/calcPrice.js"></script>
     <script src="../scripts/modules/show/filters/toggleFilter.js"></script>
     <script src="../scripts/modules/iterations/avaliableCars.js"></script>
+    <script src="../scripts/components/modals/dialog/dropModelsDown.js"></script>
+
 </body>
 
 </html>
