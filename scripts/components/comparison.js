@@ -284,29 +284,33 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    function createCharacteristicRow(characteristicName, characteristicKey) {
-        let values;
-        if (isMobileView) {
-            values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
-        } else {
-            values = cars.map(car => car.characteristics[characteristicKey]);
-        }
-
-        const colClass = isMobileView 
-            ? 'grid-cols-[1fr_1fr]' 
-            : 'grid-cols-[1fr_1fr_1fr_1fr]';
-
-        return `
-            <div class="grid ${colClass} gap-0 py-3 px-6 hover:bg-gray-50 transition-colors duration-150">
-                <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4">${characteristicName}</div>
-                ${values.map((value, index) => `
-                    <div class="text-gray-900 py-2 px-4 text-end ${
-                        index < values.length - 1 ? 'border-r border-gray-200' : ''
-                    }">${value || '—'}</div>
-                `).join('')}
-            </div>
-        `;
+function createCharacteristicRow(characteristicName, characteristicKey, isFirst = false) {
+    let values;
+    if (isMobileView) {
+        values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
+    } else {
+        values = cars.map(car => car.characteristics[characteristicKey]);
     }
+
+    const colClass = isMobileView 
+        ? 'grid-cols-[1fr_1fr]' 
+        : 'grid-cols-[1fr_1fr_1fr_1fr]';
+
+    return `
+        <div class="grid ${colClass} gap-0 py-3 px-6 hover:bg-gray-50 transition-colors duration-150 items-center">
+            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4">${characteristicName}</div>
+            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4"></div>
+            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4"></div>
+            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4"></div>
+            ${values.map((value, index) => `
+                <div class="text-gray-900 py-2 px-4 text-end ${
+                    index < values.length - 1 ? 'border-r border-gray-200' : ''
+                }">${value || '—'}</div>
+            `).join('')}
+        </div>
+        ${!isFirst ? '<!-- Добавляем горизонтальную линию-разделитель --><div class="h-px bg-gray-200 mx-6"></div>' : ''}
+    `;
+}
 
     function updateComparisonTable() {
         const sections = {
@@ -397,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         } else {
-            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 sticky top-0';
+            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 sticky bg-white top-0';
             cardsContainer.innerHTML = cars.map((car, index) => 
                 createCarCard(car, index)
             ).join('');
@@ -485,19 +489,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // === НИЖНЯЯ ПАНЕЛЬ ===
-
-    const bottomTabs = document.createElement('div');
-    bottomTabs.className = 'fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 flex justify-around items-center shadow-lg z-50';
-    bottomTabs.innerHTML = `
-        <button class="text-xs sm:text-sm font-medium text-gray-700 px-3 py-2 rounded-md hover:bg-gray-100 transition" onclick="switchTab('standard')">
-            Стандартное<br>оборудование
-        </button>
-        <button class="text-xs sm:text-sm font-medium text-gray-700 px-3 py-2 rounded-md hover:bg-gray-100 transition" onclick="switchTab('technical')">
-            Технические<br>характеристики
-        </button>
-    `;
-    document.body.appendChild(bottomTabs);
 
     // === РЕСАЙЗ ===
 
