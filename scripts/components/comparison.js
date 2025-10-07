@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (isMobileView) {
             // Мобильная версия — всегда 2 карточки со слайдерами
-            cardsContainer.className = 'grid grid-cols-2  gap-6 mb-10';
+            cardsContainer.className = 'grid grid-cols-2 gap-6 mb-10 sticky top-0';
             
             // Создаём или обновляем 2 карточки
             if (cardsContainer.children.length !== 2) {
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else {
             // Десктопная версия — 4 карточки без слайдеров
-            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10';
+            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 sticky top-0';
             cardsContainer.innerHTML = cars.map((car, index) => 
                 createCarCard(car, index)
             ).join('');
@@ -369,47 +369,48 @@ document.addEventListener("DOMContentLoaded", () => {
         updateComparisonTable();
     }
 
-    // Функция для создания секции характеристик
-    function createCharacteristicSection(sectionName, characteristics) {
-        return `
-            <div class="border-t border-gray-300">
-                <button class="w-full flex justify-between items-center py-4 text-left font-medium"
-                    onclick="toggleAccordion(this)">
-                    ${sectionName}
-                    <i class="fas fa-plus text-sm"></i>
-                </button>
-                <div class="accordion-content hidden p-4 mt-2">
-                    <div class="space-y-6">
-                        ${characteristics.map(char => createCharacteristicRow(char.name, char.key)).join('')}
-                    </div>
+// Функция для создания секции характеристик с таблицей
+function createCharacteristicSection(sectionName, characteristics) {
+    return `
+        <div class="comparison-section border border-gray-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+            <div class="bg-gray-50 px-6 py-4 font-semibold text-gray-900 border-b border-gray-300">
+                ${sectionName}
+            </div>
+            <div class="bg-white">
+                <div class="divide-y divide-gray-200">
+                    ${characteristics.map(char => createCharacteristicRow(char.name, char.key)).join('')}
                 </div>
             </div>
-        `;
+        </div>
+    `;
+}
+
+// Функция для создания строки характеристики как таблицы
+function createCharacteristicRow(characteristicName, characteristicKey) {
+    let values;
+    
+    if (isMobileView) {
+        values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
+    } else {
+        values = cars.map(car => car.characteristics[characteristicKey]);
     }
 
-    // Функция для создания строки характеристики
-    function createCharacteristicRow(characteristicName, characteristicKey) {
-        let values;
-        
-        if (isMobileView) {
-            // Для мобильной версии — только текущие выбранные автомобили
-            values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
-        } else {
-            // Для десктопной версии — все автомобили
-            values = cars.map(car => car.characteristics[characteristicKey]);
-        }
-        
-        return `
-            <div class="space-y-3">
-                <div class="text-gray-600 font-medium text-sm">${characteristicName}</div>
-                <div class="grid ${isMobileView ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 md:grid-cols-4'} gap-4">
-                    ${values.map(value => `
-                        <div class="text-gray-900 text-base">${value}</div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
+    const cols = isMobileView ? 2 : 4;
+    const colClass = isMobileView 
+        ? 'grid-cols-[1fr_1fr]' 
+        : 'grid-cols-[1fr_1fr_1fr_1fr]';
+
+    return `
+        <div class="grid ${colClass} gap-0 py-3 px-6 hover:bg-gray-50 transition-colors duration-150">
+            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4">${characteristicName}</div>
+            ${values.map((value, index) => `
+                <div class="text-gray-900 py-2 px-4 text-end ${
+                    index < values.length - 1 ? 'border-r border-gray-200' : ''
+                }">${value || '—'}</div>
+            `).join('')}
+        </div>
+    `;
+}
 
     // Функция для обновления таблицы характеристик
     function updateComparisonTable() {
