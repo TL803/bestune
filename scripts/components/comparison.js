@@ -186,34 +186,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
-    let currentCarIndexes = [0, 1]; // По умолчанию — первые две машины
+    let currentCarIndexes = [0, 1];
     let isMobileView = window.innerWidth < 1280;
 
-    // Функция для создания карточки автомобиля
+    // === ФУНКЦИИ РЕНДЕРА ===
+
     function createCarCard(car, index) {
         const statusColors = {
-            'amber': {
-                text: 'text-amber-800',
-                bg: 'bg-amber-100'
-            },
-            'green': {
-                text: 'text-green-800',
-                bg: 'bg-green-100'
-            }
+            'amber': { text: 'text-amber-800', bg: 'bg-amber-100' },
+            'green': { text: 'text-green-800', bg: 'bg-green-100' }
         };
-
         const colors = statusColors[car.statusColor] || statusColors.amber;
 
         return `
             <div class="bg-white rounded-lg shadow-md border border-gray-100 flex flex-col car-card" data-car-index="${index}">
                 <div class="p-3 sm:p-4 flex-1 flex flex-col">
-                    <!-- Статус -->
                     <div class="mb-2 sm:mb-3">
                         <span class="inline-block px-2 py-1 text-xs sm:text-[12px] font-bold ${colors.text} ${colors.bg} rounded-full">
                             ${car.status}
                         </span>
                     </div>
-
                     <div class="mb-3 sm:mb-4">
                         <div class="w-full h-32 sm:h-40 md:h-48 rounded-md flex items-center justify-center">
                             <img src="${car.img}" alt="${car.title}" class="object-contain h-full">
@@ -251,7 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // Функция для создания слайдера
     function createSlider(index) {
         const currentCarIndex = currentCarIndexes[index];
         return `
@@ -275,144 +266,48 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // Функция для рендеринга карточек и слайдеров
-    function renderCarCards() {
-        const cardsContainer = document.querySelector('[data-cars-comparison]');
-        
-        if (!cardsContainer) return;
+    // === АККОРДЕОН И ХАРАКТЕРИСТИКИ ===
 
-        // Определяем режим
-        isMobileView = window.innerWidth < 1280;
-
-        if (isMobileView) {
-            // Мобильная версия — всегда 2 карточки со слайдерами
-            cardsContainer.className = 'grid grid-cols-2 gap-6 mb-10 sticky top-0';
-            
-            // Создаём или обновляем 2 карточки
-            if (cardsContainer.children.length !== 2) {
-                cardsContainer.innerHTML = '';
-                for (let i = 0; i < 2; i++) {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'car-slider-wrapper';
-                    cardsContainer.appendChild(wrapper);
-                }
-            }
-
-            // Обновляем содержимое каждой карточки
-            const wrappers = cardsContainer.querySelectorAll('.car-slider-wrapper');
-            wrappers.forEach((wrapper, index) => {
-                wrapper.innerHTML = `
-                    ${createCarCard(cars[currentCarIndexes[index]], index)}
-                    ${createSlider(index)}
-                `;
-            });
-
-        } else {
-            // Десктопная версия — 4 карточки без слайдеров
-            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 sticky top-0';
-            cardsContainer.innerHTML = cars.map((car, index) => 
-                createCarCard(car, index)
-            ).join('');
-        }
-
-        addSliderEventListeners();
-    }
-
-    // Функция для добавления обработчиков событий слайдеров
-    function addSliderEventListeners() {
-        if (!isMobileView) return;
-
-        // Убираем старые обработчики (если есть)
-        document.querySelectorAll('.slider-prev').forEach(button => {
-            button.removeEventListener('click', sliderPrevHandler);
-            button.addEventListener('click', sliderPrevHandler);
-        });
-
-        document.querySelectorAll('.slider-next').forEach(button => {
-            button.removeEventListener('click', sliderNextHandler);
-            button.addEventListener('click', sliderNextHandler);
-        });
-    }
-
-    // Обработчики для кнопок слайдера
-    function sliderPrevHandler(e) {
-        const sliderIndex = parseInt(e.target.closest('.slider-prev').dataset.index);
-        navigateSlider(sliderIndex, -1);
-    }
-
-    function sliderNextHandler(e) {
-        const sliderIndex = parseInt(e.target.closest('.slider-next').dataset.index);
-        navigateSlider(sliderIndex, 1);
-    }
-
-    // Функция для навигации по слайдеру
-    function navigateSlider(sliderIndex, direction) {
-        let newIndex = currentCarIndexes[sliderIndex] + direction;
-        
-        // Циклическая навигация
-        if (newIndex < 0) newIndex = cars.length - 1;
-        if (newIndex >= cars.length) newIndex = 0;
-        
-        selectCar(sliderIndex, newIndex);
-    }
-
-    // Функция для выбора автомобиля в слайдере
-    function selectCar(sliderIndex, carIndex) {
-        // Проверка: если эта машина уже выбрана в другом слайдере — отмена
-        const otherIndex = sliderIndex === 0 ? 1 : 0;
-        if (currentCarIndexes[otherIndex] === carIndex) {
-            return;
-        }
-
-        currentCarIndexes[sliderIndex] = carIndex;
-        renderCarCards(); // Перерисовываем только карточки, не трогая аккордеоны
-        updateComparisonTable();
-    }
-
-// Функция для создания секции характеристик с таблицей
-function createCharacteristicSection(sectionName, characteristics) {
-    return `
-        <div class="comparison-section border border-gray-200 rounded-lg overflow-hidden mb-6 shadow-sm">
-            <div class="bg-gray-50 px-6 py-4 font-semibold text-gray-900 border-b border-gray-300">
-                ${sectionName}
-            </div>
-            <div class="bg-white">
-                <div class="divide-y divide-gray-200">
-                    ${characteristics.map(char => createCharacteristicRow(char.name, char.key)).join('')}
+    function createCharacteristicSection(sectionName, characteristics) {
+        return `
+            <div class="comparison-section border border-gray-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+                <button class="bg-gray-50 px-6 py-4 font-semibold text-gray-900 border-b border-gray-300 w-full text-left flex justify-between items-center" onclick="toggleAccordion(this)">
+                    ${sectionName}
+                    <i class="fas fa-plus text-gray-500"></i>
+                </button>
+                <div class="bg-white hidden">
+                    <div class="divide-y divide-gray-200">
+                        ${characteristics.map(char => createCharacteristicRow(char.name, char.key)).join('')}
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-}
-
-// Функция для создания строки характеристики как таблицы
-function createCharacteristicRow(characteristicName, characteristicKey) {
-    let values;
-    
-    if (isMobileView) {
-        values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
-    } else {
-        values = cars.map(car => car.characteristics[characteristicKey]);
+        `;
     }
 
-    const cols = isMobileView ? 2 : 4;
-    const colClass = isMobileView 
-        ? 'grid-cols-[1fr_1fr]' 
-        : 'grid-cols-[1fr_1fr_1fr_1fr]';
+    function createCharacteristicRow(characteristicName, characteristicKey) {
+        let values;
+        if (isMobileView) {
+            values = currentCarIndexes.map(index => cars[index].characteristics[characteristicKey]);
+        } else {
+            values = cars.map(car => car.characteristics[characteristicKey]);
+        }
 
-    return `
-        <div class="grid ${colClass} gap-0 py-3 px-6 hover:bg-gray-50 transition-colors duration-150">
-            <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4">${characteristicName}</div>
-            ${values.map((value, index) => `
-                <div class="text-gray-900 py-2 px-4 text-end ${
-                    index < values.length - 1 ? 'border-r border-gray-200' : ''
-                }">${value || '—'}</div>
-            `).join('')}
-        </div>
-    `;
-}
+        const colClass = isMobileView 
+            ? 'grid-cols-[1fr_1fr]' 
+            : 'grid-cols-[1fr_1fr_1fr_1fr]';
 
-    // Функция для обновления таблицы характеристик
+        return `
+            <div class="grid ${colClass} gap-0 py-3 px-6 hover:bg-gray-50 transition-colors duration-150">
+                <div class="font-medium text-gray-700 py-2 border-r border-gray-200 pr-4">${characteristicName}</div>
+                ${values.map((value, index) => `
+                    <div class="text-gray-900 py-2 px-4 text-end ${
+                        index < values.length - 1 ? 'border-r border-gray-200' : ''
+                    }">${value || '—'}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+
     function updateComparisonTable() {
         const sections = {
             'Основное': [
@@ -465,7 +360,8 @@ function createCharacteristicRow(characteristicName, characteristicKey) {
         };
 
         const comparisonTable = document.getElementById('comparison-table');
-        
+        if (!comparisonTable) return;
+
         const sectionsHTML = Object.keys(sections).map(sectionName => 
             createCharacteristicSection(sectionName, sections[sectionName])
         ).join('');
@@ -473,33 +369,89 @@ function createCharacteristicRow(characteristicName, characteristicKey) {
         comparisonTable.innerHTML = sectionsHTML;
     }
 
-    // Функция для обработки изменения размера окна
-    function handleResize() {
-        const newIsMobileView = window.innerWidth < 1280;
-        
-        if (newIsMobileView !== isMobileView) {
-            isMobileView = newIsMobileView;
-            if (isMobileView) {
-                // При переходе в мобильный вид — оставляем только 2 карточки
-                currentCarIndexes = [0, 1];
+    // === РЕНДЕР КАРТОЧЕК ===
+
+    function renderCarCards() {
+        const cardsContainer = document.querySelector('[data-cars-comparison]');
+        if (!cardsContainer) return;
+
+        isMobileView = window.innerWidth < 1280;
+
+        if (isMobileView) {
+            cardsContainer.className = 'grid grid-cols-2 gap-6 mb-10 sticky top-0';
+            if (cardsContainer.children.length !== 2) {
+                cardsContainer.innerHTML = '';
+                for (let i = 0; i < 2; i++) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'car-slider-wrapper';
+                    cardsContainer.appendChild(wrapper);
+                }
             }
-            renderCarCards();
-            updateComparisonTable();
+
+            const wrappers = cardsContainer.querySelectorAll('.car-slider-wrapper');
+            wrappers.forEach((wrapper, index) => {
+                wrapper.innerHTML = `
+                    ${createCarCard(cars[currentCarIndexes[index]], index)}
+                    ${createSlider(index)}
+                `;
+            });
+
+        } else {
+            cardsContainer.className = 'grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 sticky top-0';
+            cardsContainer.innerHTML = cars.map((car, index) => 
+                createCarCard(car, index)
+            ).join('');
         }
+
+        addSliderEventListeners();
     }
 
-    // Инициализация
-    renderCarCards();
-    updateComparisonTable();
+    // === СЛАЙДЕРЫ ===
 
-    // Обработчик изменения размера окна
-    window.addEventListener('resize', handleResize);
+    function addSliderEventListeners() {
+        if (!isMobileView) return;
 
-    // Добавляем функцию для переключения аккордеонов
+        document.querySelectorAll('.slider-prev').forEach(button => {
+            button.removeEventListener('click', sliderPrevHandler);
+            button.addEventListener('click', sliderPrevHandler);
+        });
+
+        document.querySelectorAll('.slider-next').forEach(button => {
+            button.removeEventListener('click', sliderNextHandler);
+            button.addEventListener('click', sliderNextHandler);
+        });
+    }
+
+    function sliderPrevHandler(e) {
+        const sliderIndex = parseInt(e.target.closest('.slider-prev').dataset.index);
+        navigateSlider(sliderIndex, -1);
+    }
+
+    function sliderNextHandler(e) {
+        const sliderIndex = parseInt(e.target.closest('.slider-next').dataset.index);
+        navigateSlider(sliderIndex, 1);
+    }
+
+    function navigateSlider(sliderIndex, direction) {
+        let newIndex = currentCarIndexes[sliderIndex] + direction;
+        if (newIndex < 0) newIndex = cars.length - 1;
+        if (newIndex >= cars.length) newIndex = 0;
+        selectCar(sliderIndex, newIndex);
+    }
+
+    function selectCar(sliderIndex, carIndex) {
+        const otherIndex = sliderIndex === 0 ? 1 : 0;
+        if (currentCarIndexes[otherIndex] === carIndex) return;
+        currentCarIndexes[sliderIndex] = carIndex;
+        renderCarCards();
+        updateComparisonTable();
+    }
+
+    // === АККОРДЕОН ===
+
     window.toggleAccordion = function(button) {
         const content = button.nextElementSibling;
         const icon = button.querySelector('i');
-        
         if (content.classList.contains('hidden')) {
             content.classList.remove('hidden');
             icon.classList.replace('fa-plus', 'fa-minus');
@@ -509,21 +461,59 @@ function createCharacteristicRow(characteristicName, characteristicKey) {
         }
     };
 
-    // Добавляем нижнюю панель с табами (как на картинке)
+    // === ТАБЫ ===
+
+    window.switchTab = function(tab) {
+        const sections = document.querySelectorAll('.comparison-section');
+        sections.forEach(section => {
+            const title = section.querySelector('button').textContent.trim();
+            const shouldShow = 
+                (tab === 'standard' && ['Основное', 'Интерьер', 'Безопасность', 'Комфорт', 'Мультимедиа'].includes(title)) ||
+                (tab === 'technical' && ['Двигатель', 'Трансмиссия', 'Экстерьер'].includes(title));
+            
+            section.classList.toggle('hidden', !shouldShow);
+
+            // Если секция скрыта — закрываем её содержимое
+            if (!shouldShow) {
+                const content = section.querySelector('.bg-white');
+                const icon = section.querySelector('i');
+                if (content && !content.classList.contains('hidden')) {
+                    content.classList.add('hidden');
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                }
+            }
+        });
+    };
+
+    // === НИЖНЯЯ ПАНЕЛЬ ===
+
     const bottomTabs = document.createElement('div');
+    bottomTabs.className = 'fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 flex justify-around items-center shadow-lg z-50';
     bottomTabs.innerHTML = `
-        <button class="text-sm font-medium text-gray-700" onclick="switchTab('standard')">
+        <button class="text-xs sm:text-sm font-medium text-gray-700 px-3 py-2 rounded-md hover:bg-gray-100 transition" onclick="switchTab('standard')">
             Стандартное<br>оборудование
         </button>
-        <button class="text-sm font-medium text-gray-700" onclick="switchTab('technical')">
+        <button class="text-xs sm:text-sm font-medium text-gray-700 px-3 py-2 rounded-md hover:bg-gray-100 transition" onclick="switchTab('technical')">
             Технические<br>характеристики
         </button>
     `;
     document.body.appendChild(bottomTabs);
 
-    // Функция переключения табов
-    window.switchTab = function(tab) {
-        console.log('Переключено на:', tab);
-        // Можно расширить функционал позже
-    };
+    // === РЕСАЙЗ ===
+
+    function handleResize() {
+        const newIsMobileView = window.innerWidth < 1280;
+        if (newIsMobileView !== isMobileView) {
+            isMobileView = newIsMobileView;
+            if (isMobileView) currentCarIndexes = [0, 1];
+            renderCarCards();
+            updateComparisonTable();
+        }
+    }
+
+    // === ИНИЦИАЛИЗАЦИЯ ===
+
+    renderCarCards();
+    updateComparisonTable();
+    window.addEventListener('resize', handleResize);
 });
