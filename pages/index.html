@@ -931,20 +931,19 @@
     <script src="../scripts/components/modals/widget/feedback.js"></script>
     <script src="../scripts/components/modals/dialog/FortuneWheel.js"></script>
 
-  <style>
-    @keyframes spin {
-      from {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      to {
-        transform: translate(-50%, -50%) rotate(3600deg); /* 10 оборотов */
-      }
-    }
+    <style>
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
 
-    .spinning {
-      animation: spin 4s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
-    }
-  </style>
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
 
 </html>
