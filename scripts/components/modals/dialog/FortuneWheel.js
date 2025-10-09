@@ -145,80 +145,82 @@ function showPrizeAlert(prize, closeWheelModalCallback) {
   closeWheelModalCallback();
 
   const prizeOverlay = document.createElement('div');
-  prizeOverlay.className = 'fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-[60] flex items-center justify-center p-2 sm:p-3 md:p-4';
+  prizeOverlay.className = 'fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-[60] flex items-center justify-center overflow-hidden p-2 sm:p-3 md:p-4';
 
   const prizeModal = document.createElement('div');
-  prizeModal.className = 'bg-white rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 w-full max-w-6xl shadow-lg relative mx-2 max-h-[90vh] overflow-y-auto';
+  prizeModal.className = 'bg-white rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 w-full max-w-6xl shadow-lg relative mx-2 max-h-[90vh] overflow-hidden ';
 
   prizeModal.innerHTML = `
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center p-4 sm:p-6 md:p-8 bg-white rounded-xl max-w-4xl mx-auto">
-      <!-- Текст и форма -->
-      <div class="flex-1 space-y-4 min-w-0 w-full">
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center lg:text-left">
-          Вы выиграли ${prize.name}!
-        </h3>
-        <p class="text-gray-600 text-sm sm:text-base text-center lg:text-left">
-          Оставьте заявку на обратный звонок, чтобы зафиксировать подарок за вами!
-        </p>
+<div class="max-w-4xl mx-auto ">
+  <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center p-4 sm:p-6 md:p-8 bg-white rounded-xl relative">
+    <!-- Текст и форма -->
+    <div class="flex flex-col justify-center items-center space-y-4 min-w-0 w-full">
+      <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center lg:text-left">
+        Вы выиграли ${prize.name}!
+      </h3>
+      <p class="text-gray-600 text-sm sm:text-base text-center lg:text-left">
+        Оставьте заявку на обратный звонок, чтобы зафиксировать подарок за вами!
+      </p>
 
-        <form id="prizeForm" class="space-y-4" data-car-form>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="phone" class="block text-xs font-medium text-gray-700 mb-1">ТЕЛЕФОН*</label>
-              <input 
-                type="tel" 
-                id="phone" 
-                name="phone"
-                data-validate="phone"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"
-                placeholder="+7 (XXX) XXX-XX-XX"
-              >
-            </div>
-            <div>
-              <label for="name" class="block text-xs font-medium text-gray-700 mb-1">ИМЯ*</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name"
-                data-validate="name"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"
-                placeholder="Введите"
-              >
-            </div>
-          </div>
-
-          <!-- Кастомный чекбокс как было ранее -->
-          <div class="flex items-start space-x-2.5 sm:space-x-3 mt-2 sm:mt-3 md:mt-4">
-            <label class="custom-checkbox-square relative inline-flex items-start">
-              <input type="checkbox" id="myCheckbox" data-validate="required" checked/>
-              <span class="checkmark ml-1.5 sm:ml-2">✓</span>
-            </label>
-            <span class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-              Согласен с <a href="./privacypolicy.html" class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки персональных данных</a> *
-            </span>
-          </div>
-
-          <div class="text-center pt-2">
-            <button 
-              type="submit"
-              class="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors text-sm w-full sm:w-auto"
+      <form id="prizeForm" class="space-y-4" data-car-form>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="phone" class="block text-xs font-medium text-gray-700 mb-1">ТЕЛЕФОН*</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone"
+              data-validate="phone"
+              required
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"
+              placeholder="+7 (XXX) XXX-XX-XX"
             >
-              ОТПРАВИТЬ
-            </button>
           </div>
-        </form>
-      </div>
+          <div>
+            <label for="name" class="block text-xs font-medium text-gray-700 mb-1">ИМЯ*</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name"
+              data-validate="name"
+              required
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-sm"
+              placeholder="Введите"
+            >
+          </div>
+        </div>
 
-      <div class="flex-shrink-0 w-[180px] h-[160px] sm:w-[220px] sm:h-[200px] md:w-[260px] md:h-[240px] lg:w-[300px] lg:h-[280px] relative overflow-hidden mt-4 lg:mt-0">
-        <img 
-          src="${prize.image}" 
-          alt="${prize.name}" 
-          class="w-auto h-full object-contain mx-auto"
-        >
-      </div>
+        <div class="flex items-start space-x-2.5 sm:space-x-3 mt-2 sm:mt-3 md:mt-4">
+          <label class="custom-checkbox-square relative inline-flex items-start">
+            <input type="checkbox" id="myCheckbox" data-validate="required" checked/>
+            <span class="checkmark ml-1.5 sm:ml-2">✓</span>
+          </label>
+          <span class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Согласен с <a href="./privacypolicy.html" class="text-[#3366BD] underline hover:text-[#2a55a0]">политикой обработки персональных данных</a> *
+          </span>
+        </div>
+
+        <div class="text-center pt-2">
+          <button 
+            type="submit"
+            class="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors text-sm w-full sm:w-auto"
+          >
+            ОТПРАВИТЬ
+          </button>
+        </div>
+      </form>
     </div>
+
+    <!-- Картинка, выходящая за пределы -->
+    </div>
+    <div class="flex-shrink-0 absolute -right-[20px] bottom-0 w-[180px] h-[160px] sm:w-[220px] sm:h-[200px] md:w-[260px] md:h-[240px] lg:w-[300px] lg:h-[280px] overflow-hidden">
+      <img 
+        src="${prize.image}" 
+        alt="${prize.name}" 
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto h-[140%] object-contain"
+      >
+    </div>
+</div>
   `;
 
   prizeOverlay.appendChild(prizeModal);
