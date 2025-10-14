@@ -2,21 +2,18 @@
   const carImage = document.getElementById('car-image');
 
   const colors = [
-    { name: "Rectangle 2 (2).png", hex: "#ef4444" },
-    { name: "Rectangle 2 (2).png", hex: "#f97316" },
-    { name: "Rectangle 2 (2).png", hex: "#f59e0b" },
-    { name: "Rectangle 2 (2).png", hex: "#eab308" },
-    { name: "Rectangle 2 (2).png", hex: "#84cc16" },
-    { name: "Rectangle 2 (2).png", hex: "#3b82f6" },
-    { name: "Rectangle 2 (2).png", hex: "#6366f1" },
-    { name: "Rectangle 2 (2).png", hex: "#78716c" }
+    { name: "69ccc72f88f27002c49049497bb400cf88f57f4d.png", hex: "#FFFFFF" },
+    { name: "Rectangle 2 (2).png", hex: "#FFFFFF" },
+    { name: "Rectangle 2 (2).png", hex: "#949494" },
+    { name: "Rectangle 2 (2).png", hex: "#000000" },
+    { name: "Rectangle 2 (2).png", hex: "#BFBFBF" }
   ];
 
   let activeColorElem = null;
 
   colors.forEach((color) => {
     const colorElem = document.createElement('div');
-    colorElem.className = 'w-8 h-8 border-2 border-gray-300 rounded cursor-pointer';
+    colorElem.className = 'w-[48px] h-[48px] border-2 border-gray-300 rounded-[6px] cursor-pointer';
     colorElem.style.backgroundColor = color.hex;
     colorElem.title = `${color.name} — ${color.hex}`;
     colorElem.dataset.color = color.name;
@@ -33,7 +30,7 @@
       activeColorElem = e.target;
 
       const selectedColor = e.target.dataset.color;
-      carImage.src = `../assets/loanandsoon/${selectedColor}`;
+      carImage.src = `../assets/fix/${selectedColor}`;
     }
   });
 
