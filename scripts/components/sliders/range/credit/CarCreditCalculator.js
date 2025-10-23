@@ -1,316 +1,162 @@
-// Вспомогательные утилиты
-const formatNumber = (num) => {
-  return new Intl.NumberFormat('ru-RU').format(Math.round(num));
-};
+        document.addEventListener('DOMContentLoaded', function () {
+            // Данные: модели → комплектации → цена
+            const carData = {
+                T77: {
+                    'PRESTIGE PLUS (ДСТ) B70': 2_036_000,
+                    'COMFORT (МКПП)': 1_850_000,
+                },
+                T90: {
+                    'SPORT EDITION 1.5T': 2_450_000,
+                    'LUXURY 2.0T': 2_790_000,
+                }
+            };
 
-const getYearsForm = (n) => {
-  n = n % 100;
-  if (n >= 11 && n <= 19) return 'лет';
-  n = n % 10;
-  if (n === 1) return 'год';
-  if (n >= 2 && n <= 4) return 'года';
-  return 'лет';
-};
+            let selectedModel = null;
+            let carPrice = 0;
+            const interestRate = 12; // % годовых
 
-// Модель автомобиля
-class Car {
-  constructor(data) {
-    Object.assign(this, data);
-  }
+            // DOM
+            const modelSelect = document.querySelector('[data-select-model]');
+            const trimSelect = document.querySelector('[data-select-trim]');
+            const carPriceDisplay = document.getElementById('carPriceDisplay');
 
-  getMinMonthlyPayment() {
-    return Math.ceil((this.price * 0.9) / (7 * 12));
-  }
-}
+            const downSlider = document.getElementById('downPaymentSliderDesktop');
+            const downAmountEl = document.getElementById('downPaymentAmountDesktop');
+            const downPercentEl = document.getElementById('downPaymentPercentDesktop');
+            const downTrack = document.getElementById('downPaymentTrack');
+            const downDisplayEl = document.getElementById('downPaymentDisplay');
 
-// Управление отображением данных
-class DisplayManager {
-  constructor(cars) {
-    this.cars = cars;
-    this.hiddenBlocks = Array.from(document.querySelectorAll('[data-hidden-block]'));
-    this.selectCars = Array.from(document.querySelectorAll('[data-select-car]'));
+            const termSlider = document.getElementById('loanTermSliderDesktop');
+            const termYearsEl = document.getElementById('loanTermYearsDesktop');
+            const termTrack = document.getElementById('loanTermTrack');
+            const termDisplayEl = document.getElementById('loanTermDisplay');
 
-    this.hiddenBlocks.forEach(block => block.classList.add('hidden'));
-  }
+            const creditAmountEl = document.getElementById('creditAmount');
+            const monthlyPaymentEl = document.getElementById('monthlyPaymentDisplay');
 
-  resetBlock(block) {
-    const defaults = {
-      model: '—',
-      price: '0 ₽',
-      description: '—',
-      engine: '—',
-      transmission: '—',
-      drive: '—',
-      trim: '—',
-      color: '—'
-    };
+            const termButtons = document.querySelectorAll('[data-term]');
+            const offerCard = document.getElementById('offerCard');
+            const placeholderCard = document.getElementById('placeholderCard');
 
-    Object.entries(defaults).forEach(([key, value]) => {
-      const el = block.querySelector(`[data-${key}-target]`);
-      if (el) el.textContent = value;
-    });
+            // Форматирование
+            function formatCurrency(val) {
+                return new Intl.NumberFormat('ru-RU').format(Math.round(val)) + ' ₽';
+            }
 
-    const mobilePayment = block.querySelector('.text-xs.text-gray-400:last-of-type');
-    if (mobilePayment) mobilePayment.textContent = 'Платёж от 0 ₽/мес';
-  }
+            function getTermLabel(years) {
+                if (years === 0.5) return '6 мес.';
+                const n = Math.floor(years);
+                const remainder = years - n;
+                if (remainder === 0) {
+                    if (n % 10 === 1 && n % 100 !== 11) return n + ' год';
+                    if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return n + ' года';
+                    return n + ' лет';
+                } else {
+                    const months = Math.round(remainder * 12);
+                    if (n === 0) return `${months} мес.`;
+                    let yearPart = '';
+                    if (n % 10 === 1 && n % 100 !== 11) yearPart = n + ' год';
+                    else if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) yearPart = n + ' года';
+                    else yearPart = n + ' лет';
+                    return `${yearPart} ${months} мес.`;
+                }
+            }
 
-  updateBlock(block, car) {
-    const fields = {
-      model: car.model,
-      price: `${formatNumber(car.price)} ₽`,
-      description: car.description,
-      engine: car.engine,
-      transmission: car.transmission,
-      drive: car.drive,
-      trim: car.trim,
-      color: car.color
-    };
+            // Расчёт платежа
+            function calcPayment(principal, rate, months) {
+                if (months <= 0 || principal <= 0) return 0;
+                const r = rate / 100 / 12;
+                return principal * (r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
+            }
 
-    Object.entries(fields).forEach(([key, value]) => {
-      const el = block.querySelector(`[data-${key}-target]`);
-      if (el) el.textContent = value;
-    });
+            // Обновление всего (только если выбрана модель)
+            function updateAll() {
+                if (!selectedModel) {
+                    placeholderCard.classList.remove('hidden');
+                    offerCard.classList.add('hidden');
+                    return;
+                }
 
-    const mobilePayment = block.querySelector('.text-xs.text-gray-400:last-of-type');
-    if (mobilePayment) {
-      mobilePayment.textContent = `Платёж от ${formatNumber(car.getMinMonthlyPayment())} ₽/мес`;
-    }
-  }
+                placeholderCard.classList.add('hidden');
+                offerCard.classList.remove('hidden');
 
-  updateAllBlocks(selectedCar) {
-    if (!selectedCar) return;
-    this.hiddenBlocks.forEach(block => {
-      if (!block.classList.contains('hidden')) {
-        this.updateBlock(block, selectedCar);
-      }
-    });
-  }
+                const downPerc = parseFloat(downSlider.value);
+                const termYears = parseFloat(termSlider.value);
 
-  resetAllDisplays() {
-    ['Mobile', 'Desktop'].forEach(suffix => {
-      const downPercent = document.getElementById(`downPaymentPercent${suffix}`);
-      const downAmount = document.getElementById(`downPaymentAmount${suffix}`);
-      const termYears = document.getElementById(`loanTermYears${suffix}`);
-      const monthly = document.getElementById(`monthlyPayment${suffix}`);
+                const downAmt = (carPrice * downPerc) / 100;
+                const credit = carPrice - downAmt;
+                const months = termYears * 12;
+                const payment = calcPayment(credit, interestRate, months);
 
-      if (downPercent) downPercent.textContent = '0%';
-      if (downAmount) downAmount.textContent = '0 ₽';
-      if (termYears) termYears.textContent = '0 лет';
-      if (monthly) monthly.textContent = '0 ₽';
-    });
-  }
-}
+                // Обновляем текст
+                carPriceDisplay.textContent = formatCurrency(carPrice);
+                downAmountEl.textContent = formatCurrency(downAmt);
+                downPercentEl.textContent = `(${Math.round(downPerc)}%)`;
+                downDisplayEl.textContent = `${formatCurrency(downAmt)} (${Math.round(downPerc)}%)`;
 
-// Управление слайдерами
-class SliderManager {
-  constructor(getSelectedCar) {
-    this.getSelectedCar = getSelectedCar;
-    this.suffixes = ['Mobile', 'Desktop'];
-  }
+                termYearsEl.textContent = getTermLabel(termYears);
+                termDisplayEl.textContent = getTermLabel(termYears);
 
-  init() {
-    this.bindSliders();
-    this.resetAllDisplays();
-  }
+                creditAmountEl.textContent = formatCurrency(credit);
+                monthlyPaymentEl.textContent = `${formatCurrency(Math.round(payment))}/мес.`;
 
-  resetAllDisplays() {
-    this.suffixes.forEach(suffix => {
-      const downPercent = document.getElementById(`downPaymentPercent${suffix}`);
-      const downAmount = document.getElementById(`downPaymentAmount${suffix}`);
-      const termYears = document.getElementById(`loanTermYears${suffix}`);
-      const monthly = document.getElementById(`monthlyPayment${suffix}`);
+                // Треки
+                const downWidth = (downPerc / 90) * 100;
+                downTrack.style.width = `${Math.max(0, downWidth)}%`;
 
-      if (downPercent) downPercent.textContent = '0%';
-      if (downAmount) downAmount.textContent = '0 ₽';
-      if (termYears) termYears.textContent = '0 лет';
-      if (monthly) monthly.textContent = '0 ₽';
-    });
-  }
+                const termWidth = ((termYears - 0.5) / (7 - 0.5)) * 100;
+                termTrack.style.width = `${Math.max(0, termWidth)}%`;
+            }
 
-  resetToDefaults() {
-    const car = this.getSelectedCar();
-    if (!car) {
-      this.resetAllDisplays();
-      return;
-    }
+            // Заполнить комплектации по модели
+            function populateTrims() {
+                const model = modelSelect.value;
+                trimSelect.innerHTML = '<option value="" disabled selected>Выберите комплектацию</option>';
 
-    this.suffixes.forEach(suffix => {
-      const downSlider = document.getElementById(`downPaymentSlider${suffix}`);
-      const termSlider = document.getElementById(`loanTermSlider${suffix}`);
+                if (!model || !carData[model]) {
+                    selectedModel = null;
+                    carPrice = 0;
+                    updateAll();
+                    return;
+                }
 
-      if (downSlider) {
-        downSlider.value = 10;
-        this.updateDownPaymentDisplay(10, suffix);
-      }
-      if (termSlider) {
-        termSlider.value = 7;
-        termSlider.min = 1;
-        termSlider.max = 7;
-        this.updateLoanTermDisplay(7, suffix);
-      }
-    });
-  }
+                selectedModel = model;
+                const trims = carData[model];
+                for (const [trim, price] of Object.entries(trims)) {
+                    const option = document.createElement('option');
+                    option.value = price;
+                    option.textContent = `${trim} — ${formatCurrency(price)}`;
+                    trimSelect.appendChild(option);
+                }
 
-  updateDownPaymentDisplay(percent, suffix) {
-    const car = this.getSelectedCar();
-    if (!car) return;
+                trimSelect.value = '';
+                carPrice = 0;
+                updateAll();
+            }
 
-    const amount = car.price * (percent / 100);
-    document.getElementById(`downPaymentPercent${suffix}`).textContent = `${percent}%`;
-    document.getElementById(`downPaymentAmount${suffix}`).textContent = `${formatNumber(amount)} ₽`;
+            // Обработчики
+            modelSelect.addEventListener('change', populateTrims);
 
-    const termSlider = document.getElementById(`loanTermSlider${suffix}`);
-    const years = termSlider ? parseInt(termSlider.value) : 7;
-    this.updateMonthlyPayment(years, percent, suffix);
-  }
+            trimSelect.addEventListener('change', () => {
+                if (trimSelect.value) {
+                    carPrice = parseInt(trimSelect.value);
+                } else {
+                    carPrice = 0;
+                }
+                updateAll();
+            });
 
-  updateLoanTermDisplay(years, suffix) {
-    const car = this.getSelectedCar();
-    if (!car) return;
+            downSlider.addEventListener('input', updateAll);
+            termSlider.addEventListener('input', updateAll);
 
-    document.getElementById(`loanTermYears${suffix}`).textContent = `${years} ${getYearsForm(years)}`;
-    const downSlider = document.getElementById(`downPaymentSlider${suffix}`);
-    const percent = downSlider ? parseInt(downSlider.value) : 10;
-    this.updateMonthlyPayment(years, percent, suffix);
-  }
+            termButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const t = parseFloat(btn.dataset.term);
+                    termSlider.value = t;
+                    updateAll();
+                });
+            });
 
-  updateMonthlyPayment(years, downPercent, suffix) {
-    const car = this.getSelectedCar();
-    if (!car) return;
-
-    const loanAmount = car.price * (1 - downPercent / 100);
-    const monthly = loanAmount / (years * 12);
-    document.getElementById(`monthlyPayment${suffix}`).textContent = `${formatNumber(monthly)} ₽`;
-  }
-
-  bindSliders() {
-    this.suffixes.forEach(suffix => {
-      const downSlider = document.getElementById(`downPaymentSlider${suffix}`);
-      const termSlider = document.getElementById(`loanTermSlider${suffix}`);
-
-      if (downSlider) {
-        // Устанавливаем ограничения: мин 0%, макс 90%, шаг 10%
-        downSlider.min = 0;
-        downSlider.max = 90;
-        downSlider.step = 10;
-        
-        this.bindSliderTrack(downSlider);
-        downSlider.addEventListener('input', (e) => {
-          // Обеспечиваем шаг 10%
-          let value = Math.round(e.target.value / 10) * 10;
-          value = Math.max(0, Math.min(90, value)); // Ограничиваем диапазон (0-90%)
-          e.target.value = value;
-          this.updateDownPaymentDisplay(value, suffix);
+            // Инициализация
+            updateAll();
         });
-      }
-
-      if (termSlider) {
-        termSlider.min = 1;
-        termSlider.max = 7;
-        this.bindSliderTrack(termSlider);
-        termSlider.addEventListener('input', (e) => {
-          let val = Math.min(7, Math.max(1, parseInt(e.target.value)));
-          e.target.value = val;
-          this.updateLoanTermDisplay(val, suffix);
-        });
-      }
-    });
-  }
-
-  bindSliderTrack(slider) {
-    const track = slider.parentElement.querySelector('.slider-track');
-    if (!track) return;
-
-    const update = () => {
-      const percent = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-      track.style.width = `${percent}%`;
-    };
-
-    update();
-    slider.addEventListener('input', update);
-  }
-}
-
-// Основной класс
-export class CarCreditCalculator {
-  constructor(carsData) {
-    this.cars = {};
-    for (const id in carsData) {
-      this.cars[id] = new Car(carsData[id]);
-    }
-    this.selectedCarId = null;
-
-    this.display = new DisplayManager(this.cars);
-    this.sliders = new SliderManager(() => this.selectedCar);
-
-    this.init();
-  }
-
-  get selectedCar() {
-    return this.selectedCarId ? this.cars[this.selectedCarId] : null;
-  }
-
-  init() {
-    document.addEventListener('DOMContentLoaded', () => {
-      const selects = Array.from(document.querySelectorAll('[data-select-car]'));
-      const blocks = Array.from(document.querySelectorAll('[data-hidden-block]'));
-
-      selects.forEach((select, i) => {
-        const block = blocks[i];
-        if (!block) return;
-
-        this.display.resetBlock(block);
-
-        select.addEventListener('change', () => {
-          const carId = select.value || null;
-          this.handleSelectChange(select, block, carId);
-        });
-      });
-
-      this.sliders.init();
-      this.bindCalculateButtons();
-    });
-  }
-
-  handleSelectChange(select, block, carId) {
-    if (carId && this.cars[carId]) {
-      this.selectedCarId = carId;
-      this.display.updateBlock(block, this.cars[carId]);
-      block.classList.remove('hidden');
-      this.sliders.resetToDefaults();
-    } else {
-      this.selectedCarId = null;
-      this.display.resetBlock(block);
-      block.classList.add('hidden');
-      this.sliders.resetAllDisplays();
-    }
-  }
-
-  bindCalculateButtons() {
-    document.querySelectorAll('button').forEach(btn => {
-      if (btn.textContent.trim() === 'РАССЧИТАТЬ') {
-        btn.addEventListener('click', () => {
-          if (!this.selectedCar) {
-            alert('Пожалуйста, выберите автомобиль.');
-            return;
-          }
-
-          const down = document.getElementById('downPaymentAmountDesktop')?.textContent ||
-                       document.getElementById('downPaymentAmountMobile')?.textContent;
-          const term = document.getElementById('loanTermYearsDesktop')?.textContent ||
-                       document.getElementById('loanTermYearsMobile')?.textContent;
-          const monthly = document.getElementById('monthlyPaymentDesktop')?.textContent ||
-                          document.getElementById('monthlyPaymentMobile')?.textContent;
-
-          console.log('Кредит рассчитан:', {
-            car: this.selectedCar.model,
-            price: this.selectedCar.price,
-            downPayment: down,
-            term,
-            monthly
-          });
-        });
-      }
-    });
-  }
-}

@@ -473,181 +473,136 @@
                 </div>
             </div>
         </section>
-        <section class="p-6 text-white bg-[#282624]">
-            <div class="max-w-4xl mx-auto space-y-6">
-                <!-- Заголовок -->
-                <h1 class="text-center mb-10 text-white font-regular
-           text-4xl sm:text-5xl md:text-6xl lg:text-[52px]
-           md:mb-12 lg:mb-[42px]">Рассчитать кредит</h1>
+<section class="p-6 text-white bg-[#1E1E1E]">
+  <div class="container mx-auto space-y-6">
+    <!-- Заголовок -->
+    <h1 class="text-center mb-8 text-white font-regular text-4xl sm:text-5xl md:text-6xl lg:text-[52px]">
+      Рассчитать кредит
+    </h1>
 
-                <!-- МОБИЛЬНАЯ ВЕРСИЯ -->
-                <div class="md:hidden space-y-6">
-                    <!-- Шаг 1: Выберите авто -->
-                    <div class="space-y-4">
-                        <h2 class="text-[20px] font-medium text-gray-300">1. Выберите авто</h2>
-                        <select data-select-car data-sync="car-select"
-                            class="w-full p-2 bg-[#EDEDED33] text-white rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                            <option value="" class="text-gray-400">Выберите комплектацию</option>
-                            <option value="1" data-model="T77 PRESTIGE PLUS" class="text-gray-400">PRESTIGE PLUS (ДСТ)
-                                B70</option>
-                            <option value="2" data-model="T90 SPORT EDITION" class="text-gray-400">SPORT EDITION 1.5T
-                            </option>
-                        </select>
+    <!-- Основной контейнер: 2 колонки -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:min-h-[500px]">
+      <!-- ЛЕВАЯ КОЛОНКА: ФОРМА РАСЧЁТА -->
+      <div class="bg-[#4B4947] rounded-xl p-6 space-y-6 flex flex-col">
+        <!-- Шаг 1: Выберите авто -->
+        <div class="space-y-4">
+          <h2 class="text-[32px] font-medium text-white">Выберите авто</h2>
+          <p class="text-[16px] text-gray-300">Для расчета условий по автокредиту выберите модель и комплектацию</p>
 
-                        <!-- Карточка авто (изначально скрыта) -->
-                        <div data-hidden-block class="mt-4 rounded-xl overflow-hidden hidden">
-                            <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Автомобиль"
-                                class="w-full h-40 object-contain">
-                            <div class="p-4 space-y-2">
-                                <div class="text-xs text-gray-400">BESTUNE</div>
-                                <h3 data-model-target class="text-xl font-bold">—</h3>
-                                <p class="text-xs text-gray-400">PRESTIGE PLUS (ДСТ) B70, 2023</p>
-                                <p class="text-lg font-bold text-blue-400">2 036 000 ₽</p>
-                                <p class="text-xs text-gray-400">Платеж от 11 444 ₽/мес</p>
-                                <div class="mt-4 space-y-2 text-xs">
-                                    <div class="flex justify-between py-1 border-t border-gray-700">
-                                        <span class="flex items-center gap-2">
-                                            <img src="../assets/icons/Engine (1).svg" alt=""> Двигатель
-                                        </span>
-                                        <span>1.5 160 л.с.</span>
-                                    </div>
-                                    <div class="flex justify-between py-1 border-t border-gray-700">
-                                        <span class="flex items-center gap-2">
-                                            <img src="../assets/icons/2608061 1.svg" alt=""> Трансмиссия
-                                        </span>
-                                        <span>7DCT</span>
-                                    </div>
-                                    <div class="flex justify-between py-1 border-t border-gray-700">
-                                        <span class="flex items-center gap-2">
-                                            <img src="../assets/icons/Vector (6).svg" alt=""> Привод
-                                        </span>
-                                        <span>Передний (2WD)</span>
-                                    </div>
-                                    <div class="flex justify-between py-1 border-t border-gray-700">
-                                        <span class="flex items-center gap-2">
-                                            <img src="../assets/icons/Gear.svg" alt=""> Комплектация
-                                        </span>
-                                        <span>PRESTIGE PLUS (ДСТ) B70</span>
-                                    </div>
-                                    <div class="flex justify-between py-1 border-t border-gray-700">
-                                        <span class="flex items-center gap-2">
-                                            <img src="../assets/icons/PaintBrush.svg" alt=""> Цвет
-                                        </span>
-                                        <span>Серебро</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <!-- Выбор модели и комплектации -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <select data-select-model data-sync="car-select"
+              class="flex-1 p-2 bg-[#FAFAF933] text-gray-400 h-[46px] rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-sm">
+              <option value="" disabled selected>Выберите модель</option>
+              <option value="T77">T77</option>
+              <option value="T90">T90</option>
+            </select>
 
-                    <!-- Шаг 2: Первоначальный взнос -->
-                    <div class="space-y-4">
-                        <h2 class="text-sm font-medium text-gray-300">2. Введите сумму первоначального взноса</h2>
-                        <div class="relative">
-                            <input type="range" min="0" max="100" value="10" id="downPaymentSliderMobile"
-                                class="custom-slider">
-                            <div class="slider-track" style="width: 10%;"></div>
-                        </div>
-                        <div class="slider-labels">
-                            <span>
-                                <div class="slider-value-box" id="downPaymentPercentMobile">10%</div> Первоначальный
-                                взнос
-                            </span>
-                            <div class="slider-value-box" id="downPaymentAmountMobile">500 000 ₽</div>
-                        </div>
-                    </div>
+            <select data-select-trim data-sync="car-select"
+              class="flex-1 p-2 bg-[#FAFAF933] text-gray-400 h-[46px] rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#3366BD] text-sm">
+              <option value="" disabled selected>Выберите комплектацию</option>
+              <!-- Заполняется динамически -->
+            </select>
+          </div>
 
-                    <!-- Шаг 3: Срок кредита -->
-                    <div class="space-y-4">
-                        <h2 class="text-sm font-medium text-gray-300">3. Выберите комфортный платёж</h2>
-                        <div class="relative">
-                            <input type="range" min="1" max="10" value="10" id="loanTermSliderMobile"
-                                class="custom-slider">
-                            <div class="slider-track" style="width: 100%;"></div>
-                        </div>
-                        <div class="slider-labels">
-                            <span>
-                                <div class="slider-value-box" id="loanTermYearsMobile">10 лет</div> Срок кредита
-                            </span>
-                            <div class="slider-value-box" id="monthlyPaymentMobile">500 000 ₽</div>
-                        </div>
-                    </div>
+          <div class="mt-4 flex items-center gap-3 md:gap-6">
+            <label class="block text-sm text-gray-400 mb-1">Стоимость автомобиля:</label>
+            <span id="carPriceDisplay" class="text-lg font-bold text-[#3366BD]">—</span>
+          </div>
+        </div>
 
-                    <!-- Кнопка рассчитать -->
-                    <button data-action="open-booking-modal"
-                        class="w-full py-3 bg-[#3366BD] text-white font-semibold rounded-lg hover:bg-[#3366BD] transition text-sm">
-                        РАССЧИТАТЬ
-                    </button>
-                </div>
+        <!-- Шаг 2: Первоначальный взнос -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-medium text-white">Первоначальный взнос</h2>
+          <div class="flex items-center gap-2">
+            <span id="downPaymentAmountDesktop" class="text-xl font-bold text-white">0 ₽</span>
+            <span id="downPaymentPercentDesktop" class="text-xl text-gray-300">(0%)</span>
+          </div>
 
-                <!-- ДЕСКТОПНАЯ ВЕРСИЯ -->
-                <div class="hidden md:block space-y-6">
-                    <!-- Шаг 1: Выберите авто -->
-                    <div class="space-y-4">
-                        <h2 class="text-lg font-medium text-white">1. Выберите авто</h2>
-                        <select data-select-car data-sync="car-select"
-                            class="w-full p-3 bg-white/20 text-white rounded-lg border border-[1px] border-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="" class="text-gray-400">Выберите комплектацию</option>
-                            <option value="1" data-model="T77 PRESTIGE PLUS" class="text-gray-400">PRESTIGE PLUS (ДСТ)
-                                B70</option>
-                            <option value="2" data-model="T90 SPORT EDITION" class="text-gray-400">SPORT EDITION 1.5T
-                            </option>
-                        </select>
+          <div class="relative h-10">
+            <input type="range" min="0" max="90" value="0" step="10" id="downPaymentSliderDesktop"
+              class="custom-slider w-full bg-[#6E6C6B] border border-white/40">
+            <div id="downPaymentTrack" class="slider-track" style="width: 0%;"></div>
+          </div>
 
-                        <div data-hidden-block
-                            class="mt-4 p-4 bg-white/20 border border-[1px] border-white/50 rounded-xl flex items-center justify-between hidden">
-                            <div class="space-y-1">
-                                <h3 data-model-target class="text-[40px] font-light text-white">—</h3>
-                                <p class="text-[20px] text-white/40">PRESTIGE 1.5T (DCT) (new b70) (160 л.с.)</p>
-                                <p class="text-[20px] text-white/40 mt-2">Стоимость</p>
-                                <p class="text-[40px] font-medium text-white">2 036 000 ₽</p>
-                            </div>
-                            <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png" alt="Автомобиль"
-                                class="rounded-md">
-                        </div>
-                    </div>
+          <div class="flex justify-between text-[12px] sm:text-xs text-gray-400 sm:mt-1">
+            <span>0%</span>
+            <span>10%</span>
+            <span>20%</span>
+            <span>30%</span>
+            <span>40%</span>
+            <span>50%</span>
+            <span>60%</span>
+            <span>70%</span>
+            <span>80%</span>
+            <span>90%</span>
+          </div>
+        </div>
 
-                    <!-- Шаг 2: Первоначальный взнос -->
-                    <div class="space-y-4">
-                        <h2 class="text-white text-[20px]">2. Введите сумму первоначального взноса</h2>
-                        <div class="relative">
-                            <input type="range" min="0" max="100" value="10" id="downPaymentSliderDesktop"
-                                class="custom-slider">
-                            <div class="slider-track" style="width: 10%;"></div>
-                        </div>
-                        <div class="slider-labels">
-                            <span>
-                                <div class="slider-value-box" id="downPaymentPercentDesktop">10%</div> Первоначальный
-                                взнос
-                            </span>
-                            <div class="slider-value-box" id="downPaymentAmountDesktop">500 000 ₽</div>
-                        </div>
-                    </div>
+        <!-- Шаг 3: Срок кредита -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-medium text-white">Срок кредита</h2>
+          <div class="flex items-center gap-2">
+            <span id="loanTermYearsDesktop" class="text-xl font-bold text-white">6 мес.</span>
+          </div>
 
-                    <!-- Шаг 3: Срок кредита -->
-                    <div class="space-y-4">
-                        <h2 class="text-white text-[20px]">3. Выберите комфортный платёж</h2>
-                        <div class="relative">
-                            <input type="range" min="1" max="10" value="10" id="loanTermSliderDesktop"
-                                class="custom-slider">
-                            <div class="slider-track" style="width: 100%;"></div>
-                        </div>
-                        <div class="slider-labels">
-                            <span>
-                                <div class="slider-value-box" id="loanTermYearsDesktop">10 лет</div> Срок кредита
-                            </span>
-                            <div class="slider-value-box" id="monthlyPaymentDesktop">500 000 ₽</div>
-                        </div>
-                    </div>
+          <div class="relative h-10">
+            <input type="range" min="0.5" max="7" value="0.5" step="0.5" id="loanTermSliderDesktop"
+              class="custom-slider w-full bg-[#6E6C6B] border border-white/40">
+            <div id="loanTermTrack" class="slider-track" style="width: 0%;"></div>
+          </div>
 
-                    <!-- Кнопка рассчитать -->
-                    <button data-action="open-booking-modal"
-                        class="w-full py-3 bg-[#3366BD] text-white font-semibold rounded-lg hover:bg-[#3366BD] transition">
-                        РАССЧИТАТЬ
-                    </button>
-                </div>
+          <div class="flex justify-between mt-4">
+            <button type="button" class="px-4 py-2 bg-[#3366BD] text-white rounded-full text-sm" data-term="0.5">6 мес.</button>
+            <button type="button" class="px-4 py-2 bg-[#3366BD] text-white rounded-full text-sm" data-term="7">7 лет</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ПРАВАЯ КОЛОНКА: ЗАГЛУШКА ИЛИ ПРЕДЛОЖЕНИЕ -->
+      <div class="flex flex-col lg:h-full">
+        <!-- Заглушка -->
+        <div id="placeholderCard" class="bg-[#4B4947] rounded-xl p-6 flex items-center justify-center flex-1 lg:flex-grow lg:min-h-0">
+          <p class="text-gray-400 text-center">Выберите модель автомобиля,<br>чтобы увидеть предложение</p>
+        </div>
+
+        <!-- Карточка предложения -->
+        <div id="offerCard" class="bg-[#4B4947] rounded-xl p-6 space-y-2 sm:space-y-6 flex flex-col hidden lg:flex-grow lg:min-h-0">
+          <div class="flex justify-center">
+            <img src="../assets/common/81ff94c5d17c2e8d9e596e4bd924fb374e63330c.png"
+              alt="Автомобиль" class="w-full h-auto max-h-64 object-contain rounded-lg">
+          </div>
+
+          <h2 class="text-[24px] font-regular text-white">Наше предложение</h2>
+
+          <div class="grid grid-cols-2 gap-4 text-sm flex-1">
+            <div>
+              <div class="text-gray-300 text-[16px] mb-1">Сумма кредита</div>
+              <div class="text-white text-[16px] font-bold" id="creditAmount">—</div>
             </div>
-        </section>
+            <div>
+              <div class="text-gray-300 text-[16px] mb-1">Срок кредита</div>
+              <div class="text-white text-[16px] font-bold" id="loanTermDisplay">—</div>
+            </div>
+            <div>
+              <div class="text-gray-300 text-[16px] mb-1">Первоначальный взнос</div>
+              <div class="text-white font-bold" id="downPaymentDisplay">—</div>
+            </div>
+            <div>
+              <div class="text-gray-300 text-[16px] mb-1">Ежемесячный платёж</div>
+              <div class="text-white font-bold" id="monthlyPaymentDisplay">—</div>
+            </div>
+          </div>
+
+          <button type="button" data-action="open-booking-modal"
+            class="w-full py-3 bg-[#3366BD] text-white font-semibold rounded-lg hover:bg-[#2a55a0] transition flex items-center justify-center gap-2">
+            Получить предложение →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
     <footer class=" text-white bg-[#282624] pt-12 pb-8">
         <div class="w-full px-6 md:px-12 lg:px-24">
@@ -759,7 +714,7 @@
     <script src="../scripts/components/sliders/range/creditBlock.js" type="module"></script>
     <script src="../scripts/utils/validation.js"></script>
     <script src="../scripts/components/modals/dialog/yourData.js"></script>
-
+    <script src="../scripts/components/sliders/range/credit/CarCreditCalculator.js"></script>
 </body>
 
 </html>
